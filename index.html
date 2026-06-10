@@ -23,6 +23,8 @@
       --white: #f5f0e8;
       --white-dim: rgba(245, 240, 232, 0.7);
       --batik-dark: #1a1208;
+      --g500: #2d6a4f;
+      --g300: #74c69d;
     }
 
     * {
@@ -709,6 +711,48 @@
     .eco-card.main {
       border-color: rgba(201, 168, 76, 0.4);
       background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), rgba(204, 34, 34, 0.04));
+    }
+
+    .eco-card.red-theme {
+      border-color: rgba(204, 34, 34, 0.3);
+      background: linear-gradient(135deg, rgba(204, 34, 34, 0.05), transparent);
+    }
+
+    .eco-card.red-theme::after {
+      background: linear-gradient(135deg, transparent 60%, rgba(204, 34, 34, 0.06));
+    }
+
+    .eco-card.red-theme:hover {
+      border-color: var(--red-bright);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(255, 51, 51, 0.2);
+    }
+
+    .eco-card.gold-theme {
+      border-color: rgba(200, 146, 42, 0.4);
+      background: linear-gradient(135deg, rgba(200, 146, 42, 0.08), transparent);
+    }
+
+    .eco-card.gold-theme::after {
+      background: linear-gradient(135deg, transparent 60%, rgba(200, 146, 42, 0.06));
+    }
+
+    .eco-card.gold-theme:hover {
+      border-color: var(--gold-light);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(201, 168, 76, 0.2);
+    }
+
+    .eco-card.green-theme {
+      border-color: rgba(45, 106, 79, 0.3);
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.06), transparent);
+    }
+
+    .eco-card.green-theme::after {
+      background: linear-gradient(135deg, transparent 60%, rgba(45, 106, 79, 0.06));
+    }
+
+    .eco-card.green-theme:hover {
+      border-color: var(--g300);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(116, 198, 157, 0.25);
     }
 
     .eco-badge {
@@ -1806,8 +1850,7 @@
       </a>
 
       <a href="https://pump.fun/coin/FQvM4owAV3ZTgrwZBZSDBmPysWYkBj9FLuJ7FAkLpump" target="_blank"
-        class="eco-card reveal"
-        style="border-color: rgba(204,34,34,0.3); background: linear-gradient(135deg, rgba(204,34,34,0.05), transparent);">
+        class="eco-card red-theme reveal">
         <div class="eco-badge" style="background:var(--red-bright); color:white;">LIVE NOW</div>
         <div class="eco-card-header">
           <div class="eco-icon">💊</div>
@@ -1828,8 +1871,7 @@
         </div>
       </a>
 
-      <a href="punakawan/" class="eco-card reveal"
-        style="border-color: rgba(200,146,42,0.4); background: linear-gradient(135deg, rgba(200,146,42,0.08), transparent);">
+      <a href="punakawan/" class="eco-card gold-theme reveal">
         <div class="eco-badge" style="background:var(--gold); color:var(--black);">UNIVERSE</div>
         <div class="eco-card-header">
           <div class="eco-icon">🎭</div>
@@ -1849,14 +1891,13 @@
         </div>
       </a>
 
-      <a href="https://kancane.baiwor.my.id" class="eco-card reveal"
-        style="border-color: rgba(45,106,79,0.3); background: linear-gradient(135deg, rgba(45,106,79,0.06), transparent);">
+      <a href="https://kancane.baiwor.my.id" class="eco-card green-theme reveal">
         <div class="eco-badge" style="background:var(--g500); color:white;">NEW APP</div>
         <div class="eco-card-header">
           <div class="eco-icon">👑</div>
           <div>
             <div class="eco-card-tag">PLATFORM · AI AGENT BUILDER</div>
-            <div class="eco-card-title">KancAIne</div>
+            <div class="eco-card-title">Kancane Agent AI</div>
           </div>
         </div>
         <div class="eco-card-body">
