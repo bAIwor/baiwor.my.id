@@ -1,0 +1,25 @@
+# Security headers
+Header always unset X-Powered-By
+Header set X-Content-Type-Options "nosniff"
+Header set X-Frame-Options "SAMEORIGIN"
+Header set X-XSS-Protection "1; mode=block"
+
+# Protect sensitive files
+<FilesMatch "\.(env|bak|orig|sql|log|sh)$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Block backup PHP files
+<FilesMatch "^(chat-orig|chat-old|chat_backup)\.php$">
+    Order deny,allow
+    Deny from all
+</FilesMatch>
+
+# Disable directory listing
+Options -Indexes
+
+# Force HTTPS
+RewriteEngine On
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]

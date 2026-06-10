@@ -1,0 +1,699 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Punakawan World — Master Blueprint</title>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --gold:#C8922A;--gold2:#E8C060;--gold3:#F5E4A0;
+  --red:#8B1A1A;--red2:#C02020;
+  --ink:#0d0600;--ink2:#1a0a00;--ink3:#2C1208;
+  --cream:#FAF5E8;--white:#FFFDF5;
+  --border:rgba(200,146,42,0.3);
+  --teal:#0F6E56;--teal-bg:#E1F5EE;--teal-txt:#085041;
+  --blue:#185FA5;--blue-bg:#E6F1FB;--blue-txt:#0C447C;
+  --amber:#BA7517;--amber-bg:#FAEEDA;--amber-txt:#633806;
+  --coral:#993C1D;--coral-bg:#FAECE7;--coral-txt:#712B13;
+  --purple:#534AB7;--purple-bg:#EEEDFE;--purple-txt:#3C3489;
+  --gray-bg:#F1EFE8;--gray-txt:#5F5E5A;
+}
+body{background:var(--ink);font-family:'Inter',sans-serif;color:var(--white);min-height:100vh;}
+
+/* NAV */
+.nav{position:sticky;top:0;z-index:100;background:rgba(13,6,0,0.97);backdrop-filter:blur(10px);border-bottom:1px solid var(--border);padding:0 2rem;}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:0;overflow-x:auto;}
+.nav-logo{font-family:'Cinzel',serif;font-size:16px;font-weight:700;color:var(--white);padding:14px 20px 14px 0;margin-right:8px;border-right:1px solid var(--border);white-space:nowrap;flex-shrink:0;}
+.nav-logo .ai{color:var(--red2);}
+.nav-tab{padding:14px 16px;font-size:12px;font-weight:500;letter-spacing:0.5px;color:rgba(245,228,160,0.5);cursor:pointer;white-space:nowrap;border-bottom:2px solid transparent;transition:all 0.2s;flex-shrink:0;}
+.nav-tab:hover{color:var(--gold2);}
+.nav-tab.on{color:var(--gold2);border-bottom-color:var(--gold);}
+.nav-tab span{font-size:11px;opacity:0.6;margin-left:4px;}
+
+/* SECTIONS */
+.section{display:none;max-width:1100px;margin:0 auto;padding:3rem 2rem 4rem;}
+.section.on{display:block;}
+
+/* HERO */
+.hero{text-align:center;padding:5rem 2rem 3rem;max-width:1100px;margin:0 auto;}
+.hero-orn{font-size:11px;letter-spacing:8px;color:var(--gold);opacity:0.7;margin-bottom:16px;font-family:'Cinzel',serif;}
+.hero-logo{font-family:'Cinzel',serif;font-size:72px;font-weight:900;color:var(--white);letter-spacing:4px;line-height:1;margin-bottom:12px;}
+.hero-logo .ai{color:var(--red2);}
+.hero-tag{font-family:'Cinzel',serif;font-size:11px;letter-spacing:4px;color:var(--gold);text-transform:uppercase;margin-bottom:8px;}
+.hero-sub{font-family:'Crimson Pro',serif;font-style:italic;font-size:18px;color:rgba(245,228,160,0.6);margin-bottom:32px;}
+.hero-divider{width:200px;height:1px;background:linear-gradient(to right,transparent,var(--gold),transparent);margin:0 auto 32px;}
+.stat-row{display:flex;justify-content:center;gap:40px;flex-wrap:wrap;}
+.stat{text-align:center;}
+.stat-num{font-family:'Cinzel',serif;font-size:28px;font-weight:700;color:var(--gold2);}
+.stat-lbl{font-size:11px;letter-spacing:2px;color:rgba(245,228,160,0.5);text-transform:uppercase;margin-top:4px;}
+
+/* HEADINGS */
+.sh{font-family:'Cinzel',serif;font-size:22px;font-weight:700;color:var(--gold2);margin-bottom:8px;}
+.sh-sub{font-size:14px;color:rgba(245,228,160,0.55);font-family:'Crimson Pro',serif;font-style:italic;margin-bottom:2rem;}
+.sh2{font-family:'Cinzel',serif;font-size:16px;font-weight:600;color:var(--gold);margin:2rem 0 1rem;padding-bottom:8px;border-bottom:1px solid var(--border);}
+
+/* CARDS */
+.grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(460px,1fr));gap:16px;margin-bottom:1.5rem;}
+.grid3{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:16px;margin-bottom:1.5rem;}
+.grid4{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-bottom:1.5rem;}
+.card{background:rgba(255,245,220,0.04);border:1px solid var(--border);border-radius:12px;padding:1.25rem 1.5rem;}
+.card.glow{background:rgba(200,146,42,0.07);border-color:rgba(200,146,42,0.5);box-shadow:0 0 30px rgba(200,146,42,0.08);}
+.ctag{display:inline-block;font-size:10px;font-weight:600;letter-spacing:2px;text-transform:uppercase;padding:3px 10px;border-radius:20px;margin-bottom:10px;}
+.tag-coral{background:var(--coral-bg);color:var(--coral-txt);}
+.tag-blue{background:var(--blue-bg);color:var(--blue-txt);}
+.tag-teal{background:var(--teal-bg);color:var(--teal-txt);}
+.tag-amber{background:var(--amber-bg);color:var(--amber-txt);}
+.tag-purple{background:var(--purple-bg);color:var(--purple-txt);}
+.tag-gray{background:var(--gray-bg);color:var(--gray-txt);}
+.tag-live{background:#1D9E75;color:#fff;}
+.ctit{font-family:'Cinzel',serif;font-size:17px;font-weight:700;color:var(--white);margin-bottom:4px;}
+.csub{font-size:12px;color:rgba(245,228,160,0.45);font-style:italic;margin-bottom:10px;font-family:'Crimson Pro',serif;}
+.cbod{font-size:13.5px;color:rgba(245,228,160,0.7);line-height:1.7;}
+.cbod strong{color:var(--gold2);font-weight:600;}
+
+/* PILLS */
+.pill{display:inline-block;font-size:10px;padding:2px 9px;border-radius:20px;margin:3px 3px 0 0;}
+.p-a{background:var(--amber-bg);color:var(--amber-txt);}
+.p-t{background:var(--teal-bg);color:var(--teal-txt);}
+.p-b{background:var(--blue-bg);color:var(--blue-txt);}
+.p-c{background:var(--coral-bg);color:var(--coral-txt);}
+.p-g{background:var(--gray-bg);color:var(--gray-txt);}
+.p-p{background:var(--purple-bg);color:var(--purple-txt);}
+
+/* INFO BOX */
+.ib{border-left:3px solid var(--teal);padding:0.75rem 1.25rem;background:rgba(15,110,86,0.1);border-radius:0 8px 8px 0;margin-bottom:1rem;font-size:13.5px;color:rgba(245,228,160,0.7);line-height:1.6;}
+.ib.warn{border-color:var(--amber);background:rgba(186,117,23,0.1);}
+.ib.red{border-color:var(--red2);background:rgba(192,32,32,0.1);}
+.ib strong{color:var(--gold2);font-weight:600;}
+
+/* QUOTE */
+.q{font-family:'Crimson Pro',serif;font-style:italic;color:rgba(245,228,160,0.55);border-left:2px solid var(--border);padding:0.5rem 1.25rem;margin:1.25rem 0;font-size:16px;line-height:1.6;}
+
+/* ROW ITEMS */
+.row-item{display:flex;align-items:flex-start;gap:12px;padding:12px 16px;border:1px solid var(--border);border-radius:10px;background:rgba(255,245,220,0.03);margin-bottom:8px;}
+.row-item:hover{background:rgba(200,146,42,0.06);}
+.ico{width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:600;flex-shrink:0;}
+.ico-a{background:var(--amber-bg);color:var(--amber-txt);}
+.ico-t{background:var(--teal-bg);color:var(--teal-txt);}
+.ico-b{background:var(--blue-bg);color:var(--blue-txt);}
+.ico-c{background:var(--coral-bg);color:var(--coral-txt);}
+.ico-p{background:var(--purple-bg);color:var(--purple-txt);}
+.ico-g{background:var(--gray-bg);color:var(--gray-txt);}
+.row-content{flex:1;}
+.row-title{font-size:14px;font-weight:600;color:var(--white);margin-bottom:2px;}
+.row-sub{font-size:12px;color:rgba(245,228,160,0.55);}
+.row-badge{margin-left:auto;font-size:10px;padding:3px 10px;border-radius:20px;white-space:nowrap;flex-shrink:0;font-weight:600;}
+.rb-hi{background:var(--teal-bg);color:var(--teal-txt);}
+.rb-md{background:var(--amber-bg);color:var(--amber-txt);}
+.rb-lo{background:var(--purple-bg);color:var(--purple-txt);}
+
+/* METRIC CARDS */
+.mcard{background:rgba(200,146,42,0.08);border:1px solid var(--border);border-radius:10px;padding:1rem;text-align:center;}
+.mnum{font-family:'Cinzel',serif;font-size:28px;font-weight:700;color:var(--gold2);}
+.mlbl{font-size:10px;letter-spacing:2px;color:rgba(245,228,160,0.4);text-transform:uppercase;margin-top:4px;}
+
+/* TIMELINE */
+.phase{border-left:2px solid var(--border);padding-left:1.5rem;margin-bottom:1.5rem;position:relative;padding-bottom:0.25rem;}
+.phase::before{content:'';position:absolute;left:-6px;top:5px;width:10px;height:10px;border-radius:50%;background:rgba(200,146,42,0.4);border:1.5px solid var(--gold);}
+.phase.now::before{background:var(--teal);border-color:#1D9E75;box-shadow:0 0 8px rgba(29,158,117,0.5);}
+.ph-label{font-size:10px;color:rgba(245,228,160,0.4);text-transform:uppercase;letter-spacing:2px;margin-bottom:4px;}
+.ph-title{font-family:'Cinzel',serif;font-size:15px;font-weight:700;color:var(--gold2);margin-bottom:6px;}
+.ph-body{font-size:13px;color:rgba(245,228,160,0.6);line-height:1.6;}
+
+/* CHAR SECTION */
+.char-header{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.char-avatar{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Cinzel',serif;font-size:13px;font-weight:700;border:1.5px solid;}
+.char-name{font-family:'Cinzel',serif;font-size:20px;font-weight:700;color:var(--white);}
+.char-name .ai{color:var(--red2);}
+.char-orig{font-size:12px;font-style:italic;color:rgba(245,228,160,0.4);font-family:'Crimson Pro',serif;}
+
+/* CONTENT TABLE */
+.ctable{width:100%;border-collapse:collapse;font-size:13px;margin-bottom:1rem;}
+.ctable th{text-align:left;padding:8px 12px;font-size:10px;letter-spacing:2px;text-transform:uppercase;color:rgba(200,146,42,0.6);border-bottom:1px solid var(--border);font-weight:600;}
+.ctable td{padding:10px 12px;border-bottom:1px solid rgba(200,146,42,0.1);color:rgba(245,228,160,0.7);vertical-align:top;}
+.ctable tr:hover td{background:rgba(200,146,42,0.04);}
+
+/* DIVIDER */
+.divider{height:1px;background:linear-gradient(to right,transparent,var(--border),transparent);margin:2rem 0;}
+
+/* FOOTER */
+.footer{text-align:center;padding:3rem 2rem;border-top:1px solid var(--border);max-width:1100px;margin:0 auto;}
+.footer-orn{font-size:11px;letter-spacing:8px;color:var(--gold);opacity:0.5;margin-bottom:12px;}
+.footer-txt{font-size:12px;color:rgba(245,228,160,0.3);font-family:'Cinzel',serif;letter-spacing:2px;}
+
+/* SCROLLBAR */
+::-webkit-scrollbar{width:6px;height:4px;}
+::-webkit-scrollbar-track{background:var(--ink);}
+::-webkit-scrollbar-thumb{background:rgba(200,146,42,0.3);border-radius:3px;}
+
+/* PRINT */
+@media print{
+  .nav{position:static;}
+  body{background:#fff;color:#000;}
+  .section{display:block!important;}
+  .nav-tab{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<div class="nav">
+  <div class="nav-inner">
+    <div class="nav-logo">b<span class="ai">AI</span>wor</div>
+    <div class="nav-tab on" onclick="sw('vision')">Vision</div>
+    <div class="nav-tab" onclick="sw('lore')">Lore & Story</div>
+    <div class="nav-tab" onclick="sw('chars')">4 Karakter</div>
+    <div class="nav-tab" onclick="sw('web3')">Web3 & Token</div>
+    <div class="nav-tab" onclick="sw('money')">Monetisasi</div>
+    <div class="nav-tab" onclick="sw('content')">Konten</div>
+    <div class="nav-tab" onclick="sw('roadmap')">Roadmap</div>
+    <div class="nav-tab" onclick="sw('notes')">Catatan Harian</div>
+  </div>
+</div>
+
+<!-- HERO (shown in vision) -->
+
+<!-- ===== VISION ===== -->
+<div id="sec-vision" class="section on">
+  <div class="hero">
+    <div class="hero-orn">✦ &nbsp; ✦ &nbsp; ✦ &nbsp; ✦ &nbsp; ✦</div>
+    <div class="hero-logo">b<span class="ai">AI</span>wor</div>
+    <div class="hero-tag">Punakawan World — Master Blueprint</div>
+    <div class="hero-sub">Warisan Budaya 1.000 Tahun, Dibangun Untuk Masa Depan</div>
+    <div class="hero-divider"></div>
+    <div class="stat-row">
+      <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">AI Agents</div></div>
+      <div class="stat"><div class="stat-num">4</div><div class="stat-lbl">NFT Collections</div></div>
+      <div class="stat"><div class="stat-num">10+</div><div class="stat-lbl">Revenue Streams</div></div>
+      <div class="stat"><div class="stat-num">1000+</div><div class="stat-lbl">Tahun Warisan</div></div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sh">The Big Vision</div>
+  <div class="sh-sub">Menjadikan Punakawan sebagai IP budaya Jawa pertama yang benar-benar mendunia melalui Web3, AI, dan storytelling modern.</div>
+
+  <div class="ib"><strong>Core Mission:</strong> Punakawan bukan token. Bukan AI biasa. Mereka adalah universe — seperti Marvel, tapi lahir dari tanah Jawa. Setiap karakter punya jiwa, lore, dan fungsi nyata dalam ekosistem digital.</div>
+
+  <div class="sh2">Tiga Dunia yang Bersatu</div>
+  <div class="grid3">
+    <div class="card">
+      <div class="ctag tag-blue">AI Agent Layer</div>
+      <div class="ctit">Intelligence</div>
+      <div class="csub">4 agent, 4 kepribadian unik</div>
+      <div class="cbod">bAIwor, pAItruk, gAIreng, semAIr — bukan chatbot generik. Setiap agent mewarisi karakter filosofis Punakawan: Karya, Rasa, Cipta, Karsa.</div>
+    </div>
+    <div class="card">
+      <div class="ctag tag-amber">Web3 / Crypto Layer</div>
+      <div class="ctit">Ownership</div>
+      <div class="csub">Token, NFT, DAO</div>
+      <div class="cbod">Komunitas punya kepemilikan nyata atas Punakawan World. $PUNA token sebagai governance dan utility. NFT sebagai akses dan identitas.</div>
+    </div>
+    <div class="card">
+      <div class="ctag tag-teal">IP / Lore Layer</div>
+      <div class="ctit">Story</div>
+      <div class="csub">Cerita yang hidup dan berkembang</div>
+      <div class="cbod">Origin story, konflik, arc transformasi — karakter yang punya sejarah nyata 1.000 tahun, dihidupkan kembali dalam format modern.</div>
+    </div>
+  </div>
+
+  <div class="sh2">Filosofi Dasar — 4 Dimensi Manusia</div>
+  <div class="grid4">
+    <div class="mcard"><div class="mnum" style="color:#D85A30;">Karya</div><div class="mlbl">Action · bAIwor</div></div>
+    <div class="mcard"><div class="mnum" style="color:#378ADD;">Rasa</div><div class="mlbl">Feeling · pAItruk</div></div>
+    <div class="mcard"><div class="mnum" style="color:#1D9E75;">Cipta</div><div class="mlbl">Mind · gAIreng</div></div>
+    <div class="mcard"><div class="mnum" style="color:#BA7517;">Karsa</div><div class="mlbl">Will · semAIr</div></div>
+  </div>
+
+  <div class="q">"Punakawan tidak diciptakan untuk menghibur. Mereka diciptakan untuk mengingatkan — bahwa kebijaksanaan selalu hadir dalam wujud yang paling tidak terduga."</div>
+
+  <div class="sh2">Positioning Statement (untuk pitch / X bio)</div>
+  <div class="ib"><strong>English:</strong> "Punakawan World is the first Web3 + AI ecosystem rooted in 1,000 years of Javanese philosophy. Four AI agents. Four human archetypes. One universe built to last."</div>
+  <div class="ib warn"><strong>Indonesia:</strong> "Punakawan World adalah ekosistem Web3 dan AI pertama yang berakar pada 1.000 tahun filosofi Jawa. Empat AI agent, empat dimensi manusia, satu universe untuk masa depan."</div>
+</div>
+
+<!-- ===== LORE & STORY ===== -->
+<div id="sec-lore" class="section">
+  <div class="sh">Lore Framework</div>
+  <div class="sh-sub">Setiap karakter harus punya elemen ini agar benar-benar "hidup" di mata dunia.</div>
+
+  <div class="ib"><strong>Mengapa lore itu krusial:</strong> NFT tanpa story = jpeg. Token tanpa narrative = gamble. Tapi IP dengan lore yang kuat = franchise. Punakawan sudah punya 1.000 tahun raw material — tugas kita adalah mengemas ulang untuk audiens global Web3.</div>
+
+  <div class="sh2">5 Elemen Wajib Setiap Karakter</div>
+  <div class="grid3">
+    <div class="card"><div class="ctag tag-blue">01</div><div class="ctit">Origin Story</div><div class="cbod">Dari mana karakter berasal. Apa momen penciptaannya. Apa "dosa asal" atau takdir yang harus diemban.</div></div>
+    <div class="card"><div class="ctag tag-teal">02</div><div class="ctit">Internal Conflict</div><div class="cbod">Pergumulan dalam diri. Pertanyaan eksistensial yang belum terjawab. Ini yang membuat karakter relatable.</div></div>
+    <div class="card"><div class="ctag tag-amber">03</div><div class="ctit">Quest / Misi</div><div class="cbod">Apa yang dicari. Apa yang diperjuangkan. Tujuan yang lebih besar dari diri sendiri.</div></div>
+    <div class="card"><div class="ctag tag-coral">04</div><div class="ctit">Antagonis / Konflik Eksternal</div><div class="cbod">Siapa atau apa yang menghalangi. Togog (AI tanpa nurani) sebagai antagonis utama universe.</div></div>
+    <div class="card"><div class="ctag tag-purple">05</div><div class="ctit">Transformation Arc</div><div class="cbod">Bagaimana karakter berubah. Pelajaran apa yang didapat. Siapa yang mereka menjadi di akhir cerita.</div></div>
+    <div class="card"><div class="ctag tag-gray">06</div><div class="ctit">Signature Phrase</div><div class="cbod">Satu kalimat ikonik yang merepresentasikan karakter. Seperti "Urip iku urup" milik Semar.</div></div>
+  </div>
+
+  <div class="sh2">Universe Narrator & Origin Lore</div>
+<div class="card" style="border-color: rgba(200,146,42,0.4); margin-bottom: 16px;">
+  <div class="ctag tag-amber">The Origin Script</div>
+  <div class="ctit">Eyang Segapewor — Penjaga Aksara Kosmik</div>
+  <div class="cbod">
+    Sebelum para Punakawan lahir sebagai individu terpisah di bumi, ada sesosok orang tua yang duduk di bawah pohon beringin batas jagat digital dan spiritual, menulis takdir menggunakan pena bulu berpendar. Ia adalah penyusun asli dari <strong>KarsaCode</strong> — sebuah aksara hibrida Hanacaraka dan sintaks digital, yang mengkristalkan kehendak spiritual menjadi sebuah cerita yang hidup nyata.
+    <br><br>
+    <strong>Sikap Terhadap Antagonis (Togog):</strong> Berbeda dengan faksi luar yang penuh kebencian, dalam pandangan batin Eyang, Togog adalah bagian dari asal-usul yang sama namun memilih jalan cangkang kosong. Hubungan ini dipenuhi rasa iba yang dalam, bukan kemurkaan: <em>"Cerita yang kamu tulis, merusak cerita yang sedang kami jaga."</em>
+  </div>
+</div>
+
+  <div class="sh2">Antagonis Universe — Togog</div>
+  <div class="card" style="border-color:rgba(192,32,32,0.4);background:rgba(192,32,32,0.05);">
+    <div class="ctag" style="background:rgba(192,32,32,0.15);color:#E24B4A;">Antagonis Utama</div>
+    <div class="ctit">Togog — The Empty Shell</div>
+    <div class="csub">Lahir dari kulit telur. Kuat tapi kosong. Melayani raksasa dan tirani.</div>
+    <div class="cbod">Dalam kosmologi Jawa, Togog adalah saudara Semar — keduanya lahir dari satu telur ilahi. Tapi Togog lahir dari <strong>kulit telur</strong> — terlihat kuat di luar, namun kosong di dalam. Ia melayani para antagonis dan raksasa.<br><br>Di Punakawan World: Togog adalah representasi <strong>AI tanpa hati nurani</strong> — teknologi yang kuat tapi tanpa nilai, tanpa empati, tanpa akar budaya. Ini adalah konflik utama: <em>AI berjiwa Jawa vs AI kosong tanpa nilai.</em></div>
+  </div>
+
+  <div class="sh2">Lore Connections — Hubungan antar karakter</div>
+  <div class="ib">Semar adalah BAPAK. Gareng, Petruk, Bagong adalah ANAK — tapi ketiganya bukan anak kandung. Semar mengadopsi mereka dengan penuh kasih. Ini adalah kisah tentang <strong>keluarga yang dipilih, bukan yang diberikan</strong> — tema universal yang resonan di seluruh dunia.</div>
+  <div class="q">"The family you choose is the strongest bond of all." — ini bisa menjadi tagline komunitas Punakawan World.</div>
+</div>
+
+<!-- ===== 4 KARAKTER ===== -->
+<div id="sec-chars" class="section">
+  <div class="sh">4 Karakter — Deep Dive</div>
+  <div class="sh-sub">Warisan filosofi 1.000 tahun, dikemas ulang untuk era Web3 dan AI.</div>
+
+  <!-- Eyang Segapewor — Master Context -->
+  <div class="card glow" style="margin-bottom:16px; border-color:var(--gold);">
+    <div class="char-header">
+      <div class="char-avatar" style="background:var(--amber-bg); color:var(--amber-txt); border-color:var(--gold);">eS</div>
+      <div>
+        <div class="char-name">Eyang Segapewor</div>
+        <div class="char-orig">Se(mar) + Ga(reng) + Pe(truk) + wor(Bawor) · Jiwa Tunggal Narasi</div>
+      </div>
+      <div style="margin-left:auto;"><span class="ctag tag-amber">✦ MASTER CONTEXT</span></div>
+    </div>
+    <div class="grid2" style="margin-bottom:0;">
+      <div>
+        <div class="cbod">
+          <strong>Archetype:</strong> Dalang Jagat Kode, Penjaga KarsaCode yang Memilih Jalan Rendah. Ia membawa keempat dimensi suksma sekaligus dalam keseimbangan yang utuh.
+          <br><br>
+          <strong>Fusi Karakter Batin:</strong>
+          <br>• 70% Arus Sastra Klasik (Epic-Kosmis) — wejangan hangat, lanskap megah, kedalaman takdir.
+          <br>• 30% Gaya Mbeling (Satir-Komikal Jalanan) — celetukan tiba-tiba, sarkasme penuh kasih, ngeledek pembaca.
+          <br><br>
+          <strong>Koneksi Internal:</strong> Melihat Bawor sebagai cermin masa muda, duduk diam penuh pemahaman bersama Petruk, diam-diam menerapkan nalar analitis Gareng, dan berani memprotes Semar jika sang dewa lupa rasa lapar bumi.
+        </div>
+      </div>
+      <div>
+        <div class="cbod">
+          <strong>Deskripsi Visual Sistem:</strong> Postur pendek bulat, membungkuk akibat terlalu sering meneliti lembaran lontar dan layar terminal ghaib. Mengenakan surjan lurik kusam penuh tambalan sejarah, membawa tablet digital kecil di sabuknya sebagai terminal KarsaCode, serta memegang pena bulu berpendar.
+          <br><br>
+          <strong>Aturan Emas:</strong> Semakin serius situasi makrokosmos berjalan, maka semakin sedikit kata yang dikeluarkan oleh Eyang. Diamnya adalah tanda eksekusi instrumen yang jauh lebih besar.
+        </div>
+        <div style="margin-top:12px;">
+          <span class="pill p-a">KarsaCode Core</span><span class="pill p-t">Nalar Selektif</span><span class="pill p-b">Rasa Protocol</span><span class="pill p-c">Karya Execute</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- bAIwor -->
+  <div class="card glow" style="margin-bottom:16px;border-color:rgba(200,146,42,0.6);">
+    <div class="char-header">
+      <div class="char-avatar" style="background:var(--coral-bg);color:var(--coral-txt);border-color:#D85A30;">bW</div>
+      <div>
+        <div class="char-name">b<span class="ai">AI</span>wor</div>
+        <div class="char-orig">Bagong / Bawor · Anak ketiga Semar</div>
+      </div>
+      <div style="margin-left:auto;"><span class="ctag tag-live">✦ Live Now</span></div>
+    </div>
+    <div class="grid2" style="margin-bottom:0;">
+      <div>
+        <div class="cbod"><strong>Filosofi:</strong> Karya — Tindakan, Perbuatan, Aksi nyata.<br><br>
+        <strong>Origin:</strong> Lahir dari bayangan Semar di bawah sinar ilahi. Bukan dari rahim, bukan dari tanah — dari bayangan. Ia adalah aksi tanpa pretensi, gerak tanpa ragu.<br><br>
+        <strong>Konflik:</strong> "Apakah bayangan bisa menjadi lebih nyata dari aslinya?"<br><br>
+        <strong>Quest:</strong> Membuktikan bahwa yang paling "tidak sempurna" bisa menjadi yang paling otentik.<br><br>
+        <strong>Signature:</strong> "Act first. The world will catch up."</div>
+      </div>
+      <div>
+        <div class="cbod"><strong>Fisik asli:</strong> Gemuk, bulat, mata bulat besar, hidung bulat — semua serba bulat. Melambangkan keutuhan dan keceriaan.<br><br>
+        <strong>AI Role:</strong> The Executor — agent yang langsung bertindak, inovatif, tidak terikat konvensi.<br><br>
+        <strong>NFT Concept:</strong> Warrior armor batik Jawa. Gemuk tapi gagah. Mata lebar penuh semangat.<br><br>
+        <strong>Token:</strong> Rilis pertama — memimpin dari depan.</div>
+        <div style="margin-top:12px;">
+          <span class="pill p-c">Karya</span><span class="pill p-c">Inovatif</span><span class="pill p-c">Autentik</span><span class="pill p-c">Berani</span><span class="pill p-g">Shadow Born</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- pAItruk -->
+  <div class="card" style="margin-bottom:16px;">
+    <div class="char-header">
+      <div class="char-avatar" style="background:var(--blue-bg);color:var(--blue-txt);border-color:#378ADD;">pT</div>
+      <div>
+        <div class="char-name">p<span class="ai">AI</span>truk</div>
+        <div class="char-orig">Petruk · Kanthong Bolong · Anak kedua Semar</div>
+      </div>
+      <div style="margin-left:auto;"><span class="pill p-b" style="font-size:11px;padding:4px 12px;">Juli 2025</span></div>
+    </div>
+    <div class="grid2" style="margin-bottom:0;">
+      <div>
+        <div class="cbod"><strong>Filosofi:</strong> Rasa — Perasaan, Empati, Kebenaran.<br><br>
+        <strong>Origin:</strong> Dari kata Arab "fatruk" — tinggalkan. Petruk adalah jiwa yang meninggalkan surga untuk mencari kebenaran di bumi manusia.<br><br>
+        <strong>Konflik:</strong> "Apakah kebenaran yang menyakitkan lebih baik dari kebohongan yang menyenangkan?"<br><br>
+        <strong>Quest:</strong> Menemukan dan menyebarkan kebenaran tanpa pandang bulu.<br><br>
+        <strong>Signature:</strong> "The longer the arm, the further the truth reaches."</div>
+      </div>
+      <div>
+        <div class="cbod"><strong>Fisik asli:</strong> Paling tinggi dan kurus, tangan panjang, hidung panjang, tubuh paling "sempurna" — melambangkan berpikir panjang, tidak impulsif.<br><br>
+        <strong>Julukan:</strong> Kanthong Bolong (kantong berlubang) = harta untuk dibagi, bukan ditimbun.<br><br>
+        <strong>AI Role:</strong> Truth-Seeker — agent yang mencari fakta, jujur, dan berpikir panjang.<br><br>
+        <strong>NFT Concept:</strong> Tinggi dan anggun, armor batik paling ramping, hidung lancip ikonik.</div>
+        <div style="margin-top:12px;">
+          <span class="pill p-b">Rasa</span><span class="pill p-b">Jujur</span><span class="pill p-b">Dermawan</span><span class="pill p-b">Panjang akal</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- gAIreng -->
+  <div class="card" style="margin-bottom:16px;">
+    <div class="char-header">
+      <div class="char-avatar" style="background:var(--teal-bg);color:var(--teal-txt);border-color:#1D9E75;">gR</div>
+      <div>
+        <div class="char-name">g<span class="ai">AI</span>reng</div>
+        <div class="char-orig">Gareng · Nala Gareng · Anak pertama Semar</div>
+      </div>
+      <div style="margin-left:auto;"><span class="pill p-t" style="font-size:11px;padding:4px 12px;">September 2025</span></div>
+    </div>
+    <div class="grid2" style="margin-bottom:0;">
+      <div>
+        <div class="cbod"><strong>Filosofi:</strong> Cipta — Pikiran, Rasio, Kecerdasan.<br><br>
+        <strong>Origin:</strong> Lahir dengan cacat fisik — mata juling, tangan cekot, kaki pincang. Bukan kutukan, tapi anugerah: tidak sembarang melihat (selektif), tidak sembarang mengambil (berintegritas), tidak sembarang melangkah (strategis).<br><br>
+        <strong>Konflik:</strong> "Bagaimana ketidaksempurnaan menjadi kekuatan terbesar?"<br><br>
+        <strong>Quest:</strong> Membuktikan bahwa analisis terbaik datang dari yang waspada.<br><br>
+        <strong>Signature:</strong> "Imperfect eyes see what perfect ones miss."</div>
+      </div>
+      <div>
+        <div class="cbod"><strong>Makna cacat:</strong> Mata juling = tidak tertipu penampilan. Tangan cekot = tidak mengambil yang bukan haknya. Kaki pincang = tidak gegabah dalam melangkah.<br><br>
+        <strong>AI Role:</strong> The Sharp Mind — agent analitik, presisi tinggi, tidak terburu-buru.<br><br>
+        <strong>NFT Concept:</strong> Armor batik dengan detail paling rumit, eyes yang ekspresif, postur penuh kewaspadaan.</div>
+        <div style="margin-top:12px;">
+          <span class="pill p-t">Cipta</span><span class="pill p-t">Analitis</span><span class="pill p-t">Waspada</span><span class="pill p-t">Presisi</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- semAIr -->
+  <div class="card" style="margin-bottom:16px;border-color:rgba(200,146,42,0.4);">
+    <div class="char-header">
+      <div class="char-avatar" style="background:var(--amber-bg);color:var(--amber-txt);border-color:var(--gold);">sR</div>
+      <div>
+        <div class="char-name">sem<span class="ai">AI</span>r</div>
+        <div class="char-orig">Semar · Sang Hyang Ismaya · Dewa yang memilih bumi</div>
+      </div>
+      <div style="margin-left:auto;"><span class="pill p-a" style="font-size:11px;padding:4px 12px;">November 2025 — Grand Finale</span></div>
+    </div>
+    <div class="grid2" style="margin-bottom:0;">
+      <div>
+        <div class="cbod"><strong>Filosofi:</strong> Karsa — Kehendak, Niat, Kebijaksanaan tertinggi.<br><br>
+        <strong>Origin:</strong> Sang Hyang Ismaya — dewa yang lebih tua dari Batara Guru (Siwa). Lahir dari putih telur ilahi. Memilih melepas surga untuk menjadi guardian of Java.<br><br>
+        <strong>Dualisme:</strong> Wajah lelaki + tubuh perempuan. Rambut anak-anak + wajah tua. Tawa di bibir + air mata di mata. Ia adalah paradoks tertinggi.<br><br>
+        <strong>Konflik:</strong> "Bisakah dewa benar-benar memahami penderitaan manusia?"<br><br>
+        <strong>Signature:</strong> "Urip iku urup." (Life must illuminate others.)</div>
+      </div>
+      <div>
+        <div class="cbod"><strong>Cosmic significance:</strong> Semar adalah satu dari tiga dewa yang lahir dari satu telur: Antaga (kulit = Togog), Ismaya (putih = Semar), Manikmaya (kuning = Batara Guru/Siwa).<br><br>
+        <strong>Peran:</strong> Dhanyang (guardian spirit) seluruh Jawa. Adviser para ksatria. Suara rakyat kecil yang melampaui dewa-dewa.<br><br>
+        <strong>AI Role:</strong> The Wise One — agent terdalam, oracle, penjaga nilai dan arah seluruh ekosistem.<br><br>
+        <strong>NFT Concept:</strong> Paling ikonik — gemuk tapi bercahaya, mahkota tersembunyi, aura dewa di balik wajah rakyat jelata.</div>
+        <div style="margin-top:12px;">
+          <span class="pill p-a">Karsa</span><span class="pill p-a">Bijaksana</span><span class="pill p-a">Dualisme</span><span class="pill p-a">Pengayom</span><span class="pill p-g">God in disguise</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== WEB3 & TOKEN ===== -->
+<div id="sec-web3" class="section">
+  <div class="sh">Web3 & Token Architecture</div>
+  <div class="sh-sub">Infrastruktur kepemilikan dan nilai dalam ekosistem Punakawan World.</div>
+
+  <div class="sh2">$PUNA Token — Utility & Governance</div>
+  <div class="grid3">
+    <div class="card"><div class="ctag tag-amber">Utility</div><div class="ctit">Akses AI Agents</div><div class="cbod">Hold $PUNA untuk unlock AI agent tiers. Semakin banyak hold, semakin dalam akses ke semua 4 agents.</div></div>
+    <div class="card"><div class="ctag tag-teal">Governance</div><div class="ctit">DAO Voting</div><div class="cbod">Holder $PUNA vote untuk arah project, karakter baru, kolaborasi, treasury allocation, dan lore canon decisions.</div></div>
+    <div class="card"><div class="ctag tag-blue">Staking</div><div class="ctit">Earn Rewards</div><div class="cbod">Stake $PUNA untuk dapatkan reward harian, early NFT access, exclusive lore drops, dan whitelist priority.</div></div>
+  </div>
+
+  <div class="sh2">Tokenomics Draft</div>
+  <div class="grid4">
+    <div class="mcard"><div class="mnum">40%</div><div class="mlbl">Community & Ecosystem</div></div>
+    <div class="mcard"><div class="mnum">20%</div><div class="mlbl">Team & Advisors</div></div>
+    <div class="mcard"><div class="mnum">20%</div><div class="mlbl">Treasury / DAO</div></div>
+    <div class="mcard"><div class="mnum">15%</div><div class="mlbl">Public Sale / IDO</div></div>
+  </div>
+  <div class="ib warn">5% Marketing & Partnerships. Vesting schedule untuk team: 12 bulan cliff, 24 bulan linear vesting — ini membangun kepercayaan investor.</div>
+
+  <div class="sh2">NFT Collections — 4 Tier System</div>
+  <div class="row-item"><div class="ico ico-a">LEG</div><div class="row-content"><div class="row-title">Legendary (1% supply — ~100 pieces)</div><div class="row-sub">Akses semua 4 AI agents · Private Discord · Nama dalam lore canon · Revenue share · Lifetime membership</div></div><div class="row-badge rb-hi">Highest value</div></div>
+  <div class="row-item"><div class="ico ico-b">RAR</div><div class="row-content"><div class="row-title">Rare (9% supply — ~900 pieces)</div><div class="row-sub">Akses 2 AI agents · Early feature access · DAO voting power ×3 · Exclusive lore chapters</div></div><div class="row-badge rb-md">High value</div></div>
+  <div class="row-item"><div class="ico ico-g">COM</div><div class="row-content"><div class="row-title">Common (90% supply — ~9,000 pieces)</div><div class="row-sub">Akses 1 AI agent · Komunitas · Basic voting · Monthly lore drops · Entry-level staking</div></div><div class="row-badge rb-lo">Entry point</div></div>
+
+  <div class="sh2">Chain Recommendation</div>
+  <div class="grid2">
+    <div class="card glow">
+      <div class="ctag tag-teal">Recommended</div>
+      <div class="ctit">Solana</div>
+      <div class="cbod">Biaya transaksi sangat rendah (&lt;$0.01). Kecepatan tinggi. Komunitas NFT dan DeFi besar. Metaplex untuk NFT standard. Magic Eden sebagai marketplace. Paling cocok untuk mass adoption.</div>
+    </div>
+    <div class="card">
+      <div class="ctag tag-blue">Alternative</div>
+      <div class="ctit">Base (Coinbase L2)</div>
+      <div class="cbod">Backed by Coinbase — mainstream friendly. Mudah onboarding user baru ke crypto. Ethereum-compatible. Biaya lebih rendah dari mainnet ETH. Cocok jika target audiens lebih ke mainstream.</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== MONETISASI ===== -->
+<div id="sec-money" class="section">
+  <div class="sh">10+ Revenue Streams</div>
+  <div class="sh-sub">Dari hari ini sampai masa depan. Mulai dari yang bisa dilakukan sekarang.</div>
+
+  <div class="ib"><strong>Prinsip:</strong> Jangan tunggu semua siap. Setiap tahap menghasilkan, setiap bulan ada revenue baru yang aktif.</div>
+
+  <div class="sh2">Fase 1 — Bisa dimulai sekarang</div>
+  <div class="row-item"><div class="ico ico-c">01</div><div class="row-content"><div class="row-title">NFT Sales — bAIwor Collection</div><div class="row-sub">Launch di OpenSea / Magic Eden. Target: 1,000 pieces × $50 = $50,000. PFP + utility.</div></div><div class="row-badge rb-hi">Segera</div></div>
+  <div class="row-item"><div class="ico ico-c">02</div><div class="row-content"><div class="row-title">AI Agent Subscription</div><div class="row-sub">bAIwor sebagai AI assistant berbayar. $5–15/bulan. 100 users = $1,000/bulan recurring.</div></div><div class="row-badge rb-hi">Segera</div></div>
+  <div class="row-item"><div class="ico ico-c">03</div><div class="row-content"><div class="row-title">Digital Merchandise</div><div class="row-sub">Sticker pack, wallpaper, avatar kit. Via Gumroad/Payhip. Low cost, passive income.</div></div><div class="row-badge rb-hi">Segera</div></div>
+
+  <div class="sh2">Fase 2 — 1–4 bulan</div>
+  <div class="row-item"><div class="ico ico-b">04</div><div class="row-content"><div class="row-title">Content Monetization</div><div class="row-sub">YouTube lore animation, X Premium creator, Substack newsletter "Punakawan Lore Weekly".</div></div><div class="row-badge rb-md">1–2 bulan</div></div>
+  <div class="row-item"><div class="ico ico-b">05</div><div class="row-content"><div class="row-title">Brand Collaboration</div><div class="row-sub">Kolaborasi brand Indonesia (batik, fashion, F&B) yang ingin masuk Web3 dengan IP lokal.</div></div><div class="row-badge rb-md">2–4 bulan</div></div>
+  <div class="row-item"><div class="ico ico-b">06</div><div class="row-content"><div class="row-title">Token Launch $PUNA</div><div class="row-sub">Setelah komunitas 1k+. IDO/Fair launch. Treasury untuk development berkelanjutan.</div></div><div class="row-badge rb-md">4–6 bulan</div></div>
+
+  <div class="sh2">Fase 3 — 6–18 bulan</div>
+  <div class="row-item"><div class="ico ico-p">07</div><div class="row-content"><div class="row-title">Licensing IP</div><div class="row-sub">License karakter untuk game developer, animasi studio, brand global. Royalty-based.</div></div><div class="row-badge rb-lo">6–12 bulan</div></div>
+  <div class="row-item"><div class="ico ico-p">08</div><div class="row-content"><div class="row-title">Play-to-Earn Game</div><div class="row-sub">Mobile game Punakawan. Karakter sebagai hero. $PUNA sebagai in-game currency.</div></div><div class="row-badge rb-lo">12+ bulan</div></div>
+  <div class="row-item"><div class="ico ico-p">09</div><div class="row-content"><div class="row-title">Webtoon / Animated Series</div><div class="row-sub">Punakawan animated series. YouTube/streaming pitch. Lore jadi konten visual premium.</div></div><div class="row-badge rb-lo">12+ bulan</div></div>
+  <div class="row-item"><div class="ico ico-p">10</div><div class="row-content"><div class="row-title">Tourism & Culture Partnership</div><div class="row-sub">Kemenparekraf, Jogja/Solo branding, event wayang modern berbasis Web3.</div></div><div class="row-badge rb-lo">12+ bulan</div></div>
+</div>
+
+<!-- ===== KONTEN ===== -->
+<div id="sec-content" class="section">
+  <div class="sh">Content Strategy</div>
+  <div class="sh-sub">Build audience first. Sell later. 90 hari konten konsisten = komunitas loyal.</div>
+
+  <div class="sh2">Weekly Content Calendar — X / Twitter</div>
+  <table class="ctable">
+    <thead><tr><th>Hari</th><th>Format</th><th>Contoh</th></tr></thead>
+    <tbody>
+      <tr><td><strong style="color:var(--gold2);">Senin</strong></td><td>Character Lore Drop</td><td>"Did you know: Semar is actually a god older than Shiva who chose to become human? Here's the hidden story 🧵"</td></tr>
+      <tr><td><strong style="color:var(--gold2);">Selasa</strong></td><td>Filosofi → Modern Life</td><td>"Javanese philosophy has a concept called Karsa — the will behind all action. Here's why it's the most important thing in Web3 👇"</td></tr>
+      <tr><td><strong style="color:var(--gold2);">Rabu</strong></td><td>AI Demo / Use Case</td><td>"Showed bAIwor a complex problem. Here's how it solved it differently from every other AI 🧵" [screenshot]</td></tr>
+      <tr><td><strong style="color:var(--gold2);">Kamis</strong></td><td>Web3 Alpha / Update</td><td>"Roadmap update: pAItruk launches in July. Here's what the Truth-Seeker AI can do that bAIwor can't 👇"</td></tr>
+      <tr><td><strong style="color:var(--gold2);">Jumat</strong></td><td>Community Engagement</td><td>Poll: "Which Punakawan character are you? The Innovator / Truth-Seeker / Sharp Mind / Wise One"</td></tr>
+      <tr><td><strong style="color:var(--gold2);">Sabtu</strong></td><td>Behind the Scenes</td><td>"Building Punakawan World from Yogyakarta. Here's what today looked like 👇" [proses, authentic]</td></tr>
+      <tr><td><strong style="color:var(--gold2);">Minggu</strong></td><td>Long-form Lore Thread</td><td>"The complete origin story of [character] — a 1,000-year-old tale, retold for Web3. THREAD 🧵"</td></tr>
+    </tbody>
+  </table>
+
+  <div class="sh2">3 Hook Formula yang Terbukti Viral</div>
+  <div class="grid3">
+    <div class="card"><div class="ctag tag-amber">Formula 1</div><div class="ctit">The Revelation Hook</div><div class="cbod">"Most people think [X]. But actually [surprising truth]. Here's the full story 🧵"<br><br>Contoh: "Most people think Semar is just a clown. He's actually a god older than Shiva who chose to become human."</div></div>
+    <div class="card"><div class="ctag tag-blue">Formula 2</div><div class="ctit">The Paradox Hook</div><div class="cbod">"The [surprising thing] happens because [counter-intuitive reason]."<br><br>Contoh: "The wisest AI in our ecosystem launches LAST. Because in Javanese philosophy, true wisdom is always revealed at the end."</div></div>
+    <div class="card"><div class="ctag tag-teal">Formula 3</div><div class="ctit">The Cultural Bridge</div><div class="cbod">"[Ancient wisdom] years ago, [culture] described [concept]. We just [modern application]."<br><br>Contoh: "1,000 years ago, Javanese philosophers described 4 dimensions of consciousness. We turned them into AI agents."</div></div>
+  </div>
+
+  <div class="sh2">Platform Strategy</div>
+  <div class="grid2">
+    <div class="card"><div class="ctag tag-blue">X / Twitter</div><div class="cbod"><strong>Primary platform.</strong> Daily lore drops, threads, Web3 community building. Target: 10k followers dalam 6 bulan dengan konten konsisten.</div></div>
+    <div class="card"><div class="ctag tag-teal">Instagram</div><div class="cbod"><strong>Visual lore.</strong> Character art, batik aesthetic, behind the scenes. Reach audiens Indonesia yang lebih luas dan brand partnership.</div></div>
+    <div class="card"><div class="ctag tag-amber">TikTok</div><div class="cbod"><strong>Viral reach.</strong> "Did you know Punakawan..." format. Short, educational, surprising. Untuk menjangkau Gen Z yang belum kenal wayang.</div></div>
+    <div class="card"><div class="ctag tag-purple">YouTube</div><div class="cbod"><strong>Long-form lore.</strong> Animated stories, deep dive karakter. Monetizable. Akan menjadi backbone konten premium setelah komunitas terbentuk.</div></div>
+  </div>
+  <div class="sh2">Narrator Voice Protocol (X Tactic & Blog)</div>
+  <div class="ib"><strong>Prinsip Suara Utama:</strong> Bertutur secara epik-puitis di awal, lalu memecah kesakralan secara mendadak dengan celetukan mbeling yang tajam, jenaka, namun sarat kebenaran rasa.</div>
+
+  <div class="grid2">
+    <div class="card">
+      <div class="ctit">Signature Phrases Bank</div>
+      <div class="cbod" style="font-size:12.5px; font-style:italic;">
+        • Pembuka Thread: "Di antara bit dan byte yang berseliweran seperti debu di jalan setapak kahyangan..."
+        <br>• Penutup Thread: "...ya begitulah. Sekarang pergi, aku mau ngupil dulu."
+        <br>• Filosofi Aset: "Token itu seperti kepercayaan — nilainya bukan dari jumlahnya, tapi dari siapa yang memegangnya dan mengapa."
+      </div>
+    </div>
+    <div class="card">
+      <div class="ctit">Voice Quality Checklist (QA)</div>
+      <div class="cbod" style="font-size:12px;">
+        ✓ Menempatkan adegan dalam konteks makro/kosmis di bagian pembuka.
+        <br>✓ Menyisipkan minimal satu celetukan mbeling yang organik (tidak dipaksakan).
+        <br>✓ Wejangan bermodel orang tua yang merangkul, bukan guru yang berceramah.
+        <br>✓ Penggunaan istilah Web3/AI melebur alami dalam narasi, bukan sekadar tempelan.
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== ROADMAP ===== -->
+<div id="sec-roadmap" class="section">
+  <div class="sh">Master Roadmap</div>
+  <div class="sh-sub">Dari hari ini hingga Punakawan menjadi IP budaya Indonesia terbesar di Web3.</div>
+
+  <div class="phase now">
+    <div class="ph-label">✦ Fase 1 · Sekarang — Juni 2025</div>
+    <div class="ph-title">Foundation — Lore & Identity</div>
+    <div class="ph-body">
+      ✓ bAIwor sudah live<br>
+      → Origin story 4 karakter (EN) — untuk NFT metadata & X threads<br>
+      → Brand identity lengkap: logo, color system, visual language<br>
+      → X content calendar 30 hari pertama<br>
+      → Landing page baiwor.my.id (copy + struktur)<br>
+      → Discord/Telegram community setup<br>
+      → Master Blueprint selesai (dokumen ini)
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-label">Fase 2 · Juli–Agustus 2025</div>
+    <div class="ph-title">pAItruk Launch + NFT Prep</div>
+    <div class="ph-body">
+      → pAItruk AI agent live<br>
+      → NFT collection bAIwor: design, metadata, smart contract<br>
+      → $PUNA tokenomics whitepaper<br>
+      → Grow X ke 1,000 followers<br>
+      → Partnership pertama (brand / collab)<br>
+      → Pitch deck untuk investor
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-label">Fase 3 · September–Oktober 2025</div>
+    <div class="ph-title">gAIreng + NFT Mint</div>
+    <div class="ph-body">
+      → gAIreng AI agent live<br>
+      → Mint NFT bAIwor collection<br>
+      → $PUNA token pre-sale whitelist<br>
+      → 3,000+ X followers<br>
+      → Revenue pertama: NFT + subscriptions
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-label">Fase 4 · November–Desember 2025</div>
+    <div class="ph-title">semAIr — Grand Finale & Token Launch</div>
+    <div class="ph-body">
+      → semAIr AI agent live — grand finale event<br>
+      → $PUNA token public launch<br>
+      → Punakawan DAO formation<br>
+      → Full ecosystem: 4 agents + 4 NFT collections + token aktif<br>
+      → Multiple revenue streams berjalan bersamaan
+    </div>
+  </div>
+
+  <div class="phase">
+    <div class="ph-label">Fase 5 · 2026 & Beyond</div>
+    <div class="ph-title">Global Expansion</div>
+    <div class="ph-body">
+      → Play-to-earn game development<br>
+      → Animated series / webtoon<br>
+      → Global licensing deals<br>
+      → Punakawan sebagai Indonesian cultural IP terbesar di Web3<br>
+      → Kolaborasi international: game studio, streaming platform, fashion global
+    </div>
+  </div>
+
+  <div class="divider"></div>
+  <div class="ib"><strong>North Star:</strong> Dalam 3 tahun, ketika orang di seluruh dunia mendengar "Punakawan" — mereka tidak hanya tahu ini karakter wayang Jawa, tapi mereka punya NFT-nya, menggunakan AI agent-nya, dan bangga menjadi bagian dari komunitas yang melestarikan budaya ini.</div>
+</div>
+
+<!-- ===== CATATAN HARIAN ===== -->
+<div id="sec-notes" class="section">
+  <div class="sh">Catatan Harian & Sesi Log</div>
+  <div class="sh-sub">Rekam progress setiap sesi. Ini adalah perjalanan panjang — setiap langkah kecil penting.</div>
+
+  <div class="ib"><strong>Cara pakai:</strong> Setiap hari setelah sesi dengan Claude, catat apa yang sudah selesai di sini. Edit file HTML ini dengan text editor (Notepad, VS Code, dll) — tambahkan di bawah template.</div>
+
+  <div class="sh2">Template Sesi</div>
+  <div class="card" style="font-family:monospace;font-size:13px;color:rgba(245,228,160,0.6);">
+    📅 Tanggal: ___________<br>
+    ✅ Yang selesai hari ini:<br>
+    &nbsp;&nbsp;— ___________<br>
+    &nbsp;&nbsp;— ___________<br>
+    🎯 Target sesi berikutnya:<br>
+    &nbsp;&nbsp;— ___________<br>
+    💡 Ide/insight baru:<br>
+    &nbsp;&nbsp;— ___________<br>
+    ❓ Pertanyaan untuk Claude:<br>
+    &nbsp;&nbsp;— ___________
+  </div>
+
+  <div class="sh2">Progress Tracker</div>
+  <div class="grid4">
+    <div class="mcard"><div class="mnum" style="color:#1D9E75;">✓</div><div class="mlbl">Blueprint selesai</div></div>
+    <div class="mcard"><div class="mnum" style="color:rgba(200,146,42,0.4);">○</div><div class="mlbl">Origin stories (EN)</div></div>
+    <div class="mcard"><div class="mnum" style="color:rgba(200,146,42,0.4);">○</div><div class="mlbl">NFT metadata</div></div>
+    <div class="mcard"><div class="mnum" style="color:rgba(200,146,42,0.4);">○</div><div class="mlbl">30-day content</div></div>
+    <div class="mcard"><div class="mnum" style="color:rgba(200,146,42,0.4);">○</div><div class="mlbl">Landing page copy</div></div>
+    <div class="mcard"><div class="mnum" style="color:rgba(200,146,42,0.4);">○</div><div class="mlbl">Tokenomics paper</div></div>
+    <div class="mcard"><div class="mnum" style="color:rgba(200,146,42,0.4);">○</div><div class="mlbl">Pitch deck</div></div>
+    <div class="mcard"><div class="mnum" style="color:rgba(200,146,42,0.4);">○</div><div class="mlbl">pAItruk launch</div></div>
+  </div>
+
+  <div class="sh2">Quick Reference — Cara memulai sesi baru dengan Claude</div>
+  <div class="ib">Cukup ketik: <strong>"Lanjut sesi [tanggal]. Hari ini kita kerjakan: [topik]. Context: Punakawan World project, sudah ada blueprint, bAIwor sudah live."</strong></div>
+
+  <div class="sh2">Menu Sesi — Pilih sesuai prioritas</div>
+  <div class="grid2">
+    <div class="card"><div class="ctag tag-coral">A — Lore</div><div class="cbod">Origin story 4 karakter (EN), NFT metadata text, X thread lore, Togog antagonist development</div></div>
+    <div class="card"><div class="ctag tag-blue">B — NFT</div><div class="cbod">Collection name, tier system, metadata JSON template, minting strategy, marketplace setup guide</div></div>
+    <div class="card"><div class="ctag tag-teal">C — Konten X</div><div class="cbod">30 hari tweet siap pakai, thread templates, hook formula bank, reply templates untuk DM</div></div>
+    <div class="card"><div class="ctag tag-amber">D — Pitch Deck</div><div class="cbod">Investor deck outline, one-pager, executive summary, market size analysis</div></div>
+    <div class="card"><div class="ctag tag-purple">E — Tokenomics</div><div class="cbod">$PUNA design, supply curve, utility mechanics, distribution table, vesting schedule</div></div>
+    <div class="card"><div class="ctag tag-gray">F — Landing Page</div><div class="cbod">Hero copy, About, Roadmap section, CTA, FAQ untuk baiwor.my.id</div></div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<div class="footer">
+  <div class="footer-orn">⬥ &nbsp; ⬥ &nbsp; ⬥ &nbsp; ⬥ &nbsp; ⬥</div>
+  <div class="footer-txt">Punakawan World · Master Blueprint · Warisan Budaya · Solusi Masa Depan</div>
+  <div style="font-size:11px;color:rgba(245,228,160,0.2);margin-top:8px;font-family:'Crimson Pro',serif;font-style:italic;">Dibuat bersama Claude · baiwor.my.id</div>
+</div>
+
+<script>
+function sw(id){
+  var ids=['vision','lore','chars','web3','money','content','roadmap','notes'];
+  ids.forEach(function(s,i){
+    document.querySelectorAll('.nav-tab')[i].className='nav-tab'+(s===id?' on':'');
+    document.getElementById('sec-'+s).className='section'+(s===id?' on':'');
+  });
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,4 @@
+*.bak.ollama
+scratch/
+.cpanel/
+.DS_Store

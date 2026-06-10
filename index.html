@@ -1,0 +1,2096 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="bAIwor adalah AI Agent untuk warga Kabupaten Banyumas. Chat AI gratis tentang wisata Baturraden, kuliner Mendoan, budaya Bawor, dan informasi Purwokerto. Tersedia 24/7.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>bAIwor — AI Agent Purwokerto Banyumas | Chat AI Gratis</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cinzel+Decorative:wght@700;900&family=Rajdhani:wght@400;500;600;700&family=Share+Tech+Mono&display=swap"
+    rel="stylesheet">
+  <style>
+    :root {
+      --gold: #c9a84c;
+      --gold-light: #f0d080;
+      --gold-dark: #8b6914;
+      --red: #cc2222;
+      --red-bright: #ff3333;
+      --black: #080808;
+      --dark: #111111;
+      --darker: #0a0a0a;
+      --white: #f5f0e8;
+      --white-dim: rgba(245, 240, 232, 0.7);
+      --batik-dark: #1a1208;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      overflow-x: hidden;
+      cursor: default;
+    }
+
+    /* ===== BACKGROUND PATTERN ===== */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 80% 50% at 50% -20%, rgba(201, 168, 76, 0.15) 0%, transparent 60%),
+        url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c9a84c' fill-opacity='0.04'%3E%3Cpath d='M30 0 L60 30 L30 60 L0 30 Z'/%3E%3Ccircle cx='30' cy='30' r='8'/%3E%3Cpath d='M30 15 L45 30 L30 45 L15 30 Z' fill='none' stroke='%23c9a84c' stroke-opacity='0.06' stroke-width='1'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    /* ===== SCANLINES OVERLAY ===== */
+    body::after {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(0deg,
+          transparent,
+          transparent 2px,
+          rgba(0, 0, 0, 0.08) 2px,
+          rgba(0, 0, 0, 0.08) 4px);
+      pointer-events: none;
+      z-index: 999;
+    }
+
+    /* ===== NAVBAR ===== */
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 16px 40px;
+      background: linear-gradient(180deg, rgba(8, 8, 8, 0.98) 0%, rgba(8, 8, 8, 0) 100%);
+      backdrop-filter: blur(4px);
+    }
+
+    .nav-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .nav-logo img {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+      box-shadow: 0 0 12px rgba(201, 168, 76, 0.4);
+    }
+
+    .nav-brand {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.05em;
+    }
+
+    .nav-brand span {
+      color: var(--red-bright);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 32px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      transition: color 0.2s;
+      position: relative;
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 0;
+      height: 1px;
+      background: var(--gold);
+      transition: width 0.3s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold-light);
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* ===== HERO ===== */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      padding: 0 5%;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      max-width: 580px;
+      padding-top: 80px;
+      animation: fadeSlideUp 1s ease both;
+    }
+
+    @keyframes fadeSlideUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(201, 168, 76, 0.1);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 2px;
+      padding: 6px 16px;
+      margin-bottom: 28px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: var(--gold);
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+    }
+
+    .hero-badge::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--red-bright);
+      box-shadow: 0 0 8px var(--red-bright);
+      animation: blink 1.4s ease-in-out infinite;
+    }
+
+    @keyframes blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+    }
+
+    .hero-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(2.8rem, 6vw, 5rem);
+      line-height: 1.05;
+      margin-bottom: 12px;
+      letter-spacing: -0.02em;
+    }
+
+    .hero-title .b {
+      color: var(--white);
+    }
+
+    .hero-title .ai {
+      color: var(--red-bright);
+      text-shadow: 0 0 30px rgba(204, 34, 34, 0.6);
+    }
+
+    .hero-title .wor {
+      color: var(--gold);
+    }
+
+    .hero-subtitle-line {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.8rem;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      margin-bottom: 24px;
+      opacity: 0.8;
+    }
+
+    .hero-desc {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      color: var(--white-dim);
+      margin-bottom: 40px;
+      max-width: 460px;
+      font-weight: 500;
+    }
+
+    .hero-desc strong {
+      color: var(--gold-light);
+    }
+
+    .hero-cta {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+      width: 100%;
+      max-width: 480px;
+    }
+
+    .btn-full {
+      grid-column: 1 / -1;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--black);
+      padding: 14px 32px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 700;
+      font-size: 0.9rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+      clip-path: polygon(0 0, calc(100% - 12px) 0, 100% 12px, 100% 100%, 12px 100%, 0 calc(100% - 12px));
+      transition: all 0.25s;
+      box-shadow: 0 4px 20px rgba(201, 168, 76, 0.3);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(201, 168, 76, 0.5);
+    }
+
+    .btn-outline {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      background: transparent;
+      color: var(--white);
+      padding: 13px 28px;
+      font-family: 'Rajdhani', sans-serif;
+      font-weight: 600;
+      font-size: 0.9rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border: 1px solid rgba(245, 240, 232, 0.25);
+      cursor: pointer;
+      clip-path: polygon(0 0, calc(100% - 10px) 0, 100% 10px, 100% 100%, 10px 100%, 0 calc(100% - 10px));
+      transition: all 0.25s;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--gold);
+      color: var(--gold-light);
+      background: rgba(201, 168, 76, 0.06);
+    }
+
+    /* ===== HERO MASCOT ===== */
+    .hero-mascot {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: flex-end;
+      min-height: 100vh;
+      padding-top: 60px;
+      animation: fadeIn 1.2s ease both;
+      animation-delay: 0.3s;
+    }
+
+    @keyframes fadeIn {
+      from {
+        opacity: 0;
+      }
+
+      to {
+        opacity: 1;
+      }
+    }
+
+    .hero-mascot img {
+      max-height: 90vh;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 0 60px rgba(201, 168, 76, 0.25)) drop-shadow(0 0 120px rgba(201, 168, 76, 0.1));
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+
+      0%,
+      100% {
+        transform: translateY(0px);
+      }
+
+      50% {
+        transform: translateY(-16px);
+      }
+    }
+
+    .hero-glow {
+      position: absolute;
+      bottom: 0;
+      right: 5%;
+      width: 50%;
+      height: 60%;
+      background: radial-gradient(ellipse at bottom center, rgba(201, 168, 76, 0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* ===== GOLD DIVIDER ===== */
+    .divider {
+      position: relative;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--gold-dark), var(--gold), var(--gold-light), var(--gold), var(--gold-dark), transparent);
+      margin: 0 5%;
+    }
+
+    .divider::before,
+    .divider::after {
+      content: '◆';
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--gold);
+      font-size: 0.7rem;
+    }
+
+    .divider::before {
+      left: 0;
+    }
+
+    .divider::after {
+      right: 0;
+    }
+
+    /* ===== STATS BAR ===== */
+    .stats-bar {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      justify-content: center;
+      gap: 0;
+      padding: 40px 5%;
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .stat-item {
+      flex: 1;
+      text-align: center;
+      padding: 20px;
+      border-right: 1px solid rgba(201, 168, 76, 0.12);
+      max-width: 220px;
+    }
+
+    .stat-item:last-child {
+      border-right: none;
+    }
+
+    .stat-num {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 4px;
+    }
+
+    .stat-num .red {
+      color: var(--red-bright);
+    }
+
+    .stat-label {
+      font-size: 0.75rem;
+      color: var(--white-dim);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      font-weight: 500;
+    }
+
+    /* ===== ABOUT SECTION ===== */
+    .section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 5%;
+    }
+
+    .section-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--red-bright);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-tag::before {
+      content: '';
+      width: 30px;
+      height: 1px;
+      background: var(--red-bright);
+    }
+
+    .section-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+      margin-bottom: 20px;
+      line-height: 1.2;
+    }
+
+    .section-title .gold {
+      color: var(--gold);
+    }
+
+    /* ===== ABOUT GRID ===== */
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: center;
+    }
+
+    .about-text p {
+      color: var(--white-dim);
+      line-height: 1.85;
+      font-size: 1rem;
+      margin-bottom: 20px;
+      font-weight: 400;
+    }
+
+    .about-text p strong {
+      color: var(--gold-light);
+    }
+
+    .about-logo-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .about-logo-display img {
+      width: min(320px, 90%);
+      border-radius: 50%;
+      box-shadow:
+        0 0 0 1px rgba(201, 168, 76, 0.3),
+        0 0 40px rgba(201, 168, 76, 0.2),
+        0 0 80px rgba(201, 168, 76, 0.08);
+      animation: pulse-glow 3s ease-in-out infinite;
+    }
+
+    @keyframes pulse-glow {
+
+      0%,
+      100% {
+        box-shadow: 0 0 0 1px rgba(201, 168, 76, 0.3), 0 0 40px rgba(201, 168, 76, 0.2), 0 0 80px rgba(201, 168, 76, 0.08);
+      }
+
+      50% {
+        box-shadow: 0 0 0 2px rgba(201, 168, 76, 0.5), 0 0 60px rgba(201, 168, 76, 0.35), 0 0 120px rgba(201, 168, 76, 0.15);
+      }
+    }
+
+    /* ===== FEATURES ===== */
+    .features-section {
+      background: linear-gradient(180deg, transparent, rgba(201, 168, 76, 0.04), transparent);
+    }
+
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .feature-card {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      clip-path: polygon(0 0, calc(100% - 16px) 0, 100% 16px, 100% 100%, 16px 100%, 0 calc(100% - 16px));
+    }
+
+    .feature-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .feature-card:hover {
+      border-color: rgba(201, 168, 76, 0.35);
+      background: rgba(201, 168, 76, 0.04);
+      transform: translateY(-4px);
+    }
+
+    .feature-card:hover::before {
+      opacity: 1;
+    }
+
+    .feature-icon {
+      font-size: 2rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .feature-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.9rem;
+      color: var(--gold-light);
+      margin-bottom: 12px;
+      letter-spacing: 0.05em;
+    }
+
+    .feature-desc {
+      font-size: 0.9rem;
+      color: var(--white-dim);
+      line-height: 1.75;
+      font-weight: 400;
+    }
+
+    .feature-num {
+      position: absolute;
+      top: 20px;
+      right: 24px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: rgba(201, 168, 76, 0.25);
+      letter-spacing: 0.1em;
+    }
+
+    /* ===== ECOSYSTEM / WEBSITES ===== */
+    .eco-section {
+      padding: 100px 5%;
+    }
+
+    .eco-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 28px;
+      margin-top: 60px;
+    }
+
+    .eco-card {
+      position: relative;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      overflow: hidden;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: all 0.35s;
+    }
+
+    .eco-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, transparent 60%, rgba(201, 168, 76, 0.06));
+      pointer-events: none;
+    }
+
+    .eco-card:hover {
+      border-color: var(--gold);
+      transform: translateY(-6px);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(201, 168, 76, 0.1);
+    }
+
+    .eco-card-header {
+      padding: 28px 28px 0;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .eco-icon {
+      width: 48px;
+      height: 48px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      background: rgba(201, 168, 76, 0.08);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 2px;
+      flex-shrink: 0;
+    }
+
+    .eco-card-tag {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.68rem;
+      color: var(--gold);
+      letter-spacing: 0.15em;
+      opacity: 0.7;
+    }
+
+    .eco-card-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1rem;
+      color: var(--white);
+      margin-top: 2px;
+    }
+
+    .eco-card-body {
+      padding: 20px 28px 28px;
+    }
+
+    .eco-card-desc {
+      font-size: 0.88rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+
+    .eco-link {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .eco-link svg {
+      width: 14px;
+      transition: transform 0.2s;
+    }
+
+    .eco-card:hover .eco-link svg {
+      transform: translateX(4px);
+    }
+
+    .eco-card.main {
+      border-color: rgba(201, 168, 76, 0.4);
+      background: linear-gradient(135deg, rgba(201, 168, 76, 0.06), rgba(204, 34, 34, 0.04));
+    }
+
+    .eco-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--gold);
+      color: var(--black);
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.6rem;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      padding: 4px 10px;
+      text-transform: uppercase;
+    }
+
+    /* ===== TERMINAL SECTION ===== */
+    .terminal-section {
+      padding: 80px 5%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .terminal {
+      width: 100%;
+      max-width: 740px;
+      background: rgba(0, 0, 0, 0.8);
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      border-radius: 4px;
+      overflow: hidden;
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.6), 0 0 40px rgba(201, 168, 76, 0.06);
+    }
+
+    .terminal-header {
+      background: rgba(201, 168, 76, 0.08);
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .t-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .t-dot.red {
+      background: #ff5f57;
+    }
+
+    .t-dot.yellow {
+      background: #ffbd2e;
+    }
+
+    .t-dot.green {
+      background: #28c840;
+    }
+
+    .t-title {
+      margin-left: 8px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.72rem;
+      color: rgba(201, 168, 76, 0.6);
+      letter-spacing: 0.15em;
+    }
+
+    .terminal-body {
+      padding: 28px 32px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.82rem;
+      line-height: 2;
+      min-height: 220px;
+    }
+
+    .t-line {
+      display: block;
+    }
+
+    .t-prompt {
+      color: var(--gold);
+    }
+
+    .t-cmd {
+      color: var(--white);
+    }
+
+    .t-output {
+      color: rgba(245, 240, 232, 0.55);
+    }
+
+    .t-success {
+      color: #4cff88;
+    }
+
+    .t-highlight {
+      color: var(--red-bright);
+    }
+
+    .t-gold {
+      color: var(--gold-light);
+    }
+
+    .t-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 14px;
+      background: var(--gold);
+      animation: cursor-blink 1s step-end infinite;
+      vertical-align: middle;
+      margin-left: 2px;
+    }
+
+    @keyframes cursor-blink {
+
+      0%,
+      100% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* ===== CONTACT / FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 1;
+      padding: 80px 5% 40px;
+      border-top: 1px solid rgba(201, 168, 76, 0.15);
+    }
+
+    .footer-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 60px;
+      gap: 60px;
+    }
+
+    .footer-brand {
+      max-width: 300px;
+    }
+
+    .footer-logo-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+
+    .footer-logo-wrap img {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 1.5px solid var(--gold);
+    }
+
+    .footer-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 1.2rem;
+    }
+
+    .footer-title .ai {
+      color: var(--red-bright);
+    }
+
+    .footer-title .wor {
+      color: var(--gold);
+    }
+
+    .footer-tagline {
+      font-size: 0.85rem;
+      color: var(--white-dim);
+      line-height: 1.7;
+    }
+
+    .footer-links-group h4 {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      margin-bottom: 20px;
+    }
+
+    .footer-links-group ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
+
+    .footer-links-group a {
+      color: var(--white-dim);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+      transition: color 0.2s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .footer-links-group a:hover {
+      color: var(--gold-light);
+    }
+
+    .footer-links-group a::before {
+      content: '›';
+      color: var(--gold);
+      font-size: 1rem;
+    }
+
+    .footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 28px;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .footer-copy {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.7rem;
+      color: rgba(245, 240, 232, 0.3);
+      letter-spacing: 0.1em;
+    }
+
+    .footer-copy span {
+      color: var(--gold);
+      opacity: 0.5;
+    }
+
+    .footer-made {
+      font-size: 0.8rem;
+      color: rgba(245, 240, 232, 0.3);
+    }
+
+    /* ===== ORNAMENT CORNERS ===== */
+    .ornament {
+      position: absolute;
+      width: 60px;
+      height: 60px;
+      pointer-events: none;
+    }
+
+    .ornament-tl {
+      top: 20px;
+      left: 20px;
+      border-top: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .ornament-tr {
+      top: 20px;
+      right: 20px;
+      border-top: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    .ornament-bl {
+      bottom: 20px;
+      left: 20px;
+      border-bottom: 2px solid var(--gold);
+      border-left: 2px solid var(--gold);
+    }
+
+    .ornament-br {
+      bottom: 20px;
+      right: 20px;
+      border-bottom: 2px solid var(--gold);
+      border-right: 2px solid var(--gold);
+    }
+
+    /* ===== SCROLL REVEAL ===== */
+    .reveal {
+      opacity: 0;
+      transform: translateY(30px);
+      transition: opacity 0.7s ease, transform 0.7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* ===== MOBILE ===== */
+    @media (max-width: 768px) {
+      nav {
+        padding: 14px 20px;
+      }
+
+      .nav-links {
+        display: none;
+      }
+
+      .hero {
+        flex-direction: column;
+        padding: 0 5%;
+      }
+
+      .hero-content {
+        padding-top: 100px;
+        padding-bottom: 0;
+        max-width: 100%;
+      }
+
+      .hero-mascot {
+        min-height: auto;
+        padding: 20px 0;
+      }
+
+      .hero-mascot img {
+        max-height: 55vh;
+      }
+
+      .stats-bar {
+        flex-wrap: wrap;
+        gap: 0;
+      }
+
+      .stat-item {
+        min-width: 50%;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+      }
+
+      .about-grid {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .about-logo-display {
+        order: -1;
+      }
+
+      .features-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .eco-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-top {
+        flex-direction: column;
+      }
+
+      .section {
+        padding: 60px 5%;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 12px;
+        text-align: center;
+      }
+    }
+
+    /* ===== CHAT WIDGET ===== */
+    #chat-widget {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 2000;
+      font-family: 'Rajdhani', sans-serif;
+    }
+
+    .chat-btn {
+      width: 65px;
+      height: 65px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      box-shadow: 0 8px 32px rgba(201, 168, 76, 0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .chat-btn:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 12px 40px rgba(201, 168, 76, 0.6);
+    }
+
+    .chat-btn img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .chat-window {
+      position: absolute;
+      bottom: 85px;
+      right: 0;
+      width: 380px;
+      height: 550px;
+      background: rgba(8, 8, 8, 0.85);
+      backdrop-filter: blur(20px);
+      border: 1px solid rgba(201, 168, 76, 0.25);
+      border-radius: 16px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      opacity: 0;
+      transform: translateY(20px) scale(0.95);
+      pointer-events: none;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+      box-shadow: 0 20px 80px rgba(0, 0, 0, 0.8);
+    }
+
+    .chat-window.active {
+      opacity: 1;
+      transform: translateY(0) scale(1);
+      pointer-events: all;
+    }
+
+    .chat-header {
+      background: linear-gradient(90deg, rgba(201, 168, 76, 0.1), rgba(204, 34, 34, 0.1));
+      padding: 20px;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .chat-header img {
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--gold);
+    }
+
+    .chat-header-info h3 {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 0.95rem;
+      color: var(--white);
+      margin-bottom: 2px;
+    }
+
+    .chat-header-info p {
+      font-size: 0.7rem;
+      color: var(--gold);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .chat-messages {
+      flex: 1;
+      overflow-y: auto;
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      scrollbar-width: thin;
+      scrollbar-color: var(--gold-dark) transparent;
+    }
+
+    .msg {
+      max-width: 85%;
+      padding: 12px 16px;
+      border-radius: 12px;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      position: relative;
+      animation: msgIn 0.3s ease both;
+    }
+
+    @keyframes msgIn {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .msg.bot {
+      background: rgba(255, 255, 255, 0.05);
+      color: var(--white);
+      align-self: flex-start;
+      border-bottom-left-radius: 2px;
+      border: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    .msg.user {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      color: var(--black);
+      align-self: flex-end;
+      border-bottom-right-radius: 2px;
+      font-weight: 600;
+    }
+
+    .chat-input-area {
+      padding: 20px;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+      display: flex;
+      gap: 10px;
+    }
+
+    .chat-input-area input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 8px;
+      padding: 12px 15px;
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .chat-input-area input:focus {
+      border-color: var(--gold);
+    }
+
+    .chat-send {
+      background: var(--gold);
+      border: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 8px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.3s;
+    }
+
+    .chat-send:hover {
+      background: var(--gold-light);
+    }
+
+    .chat-send svg {
+      width: 20px;
+      height: 20px;
+      fill: var(--black);
+    }
+
+    @media (max-width: 480px) {
+      .chat-window {
+        width: calc(100vw - 40px);
+        height: 70vh;
+        bottom: 80px;
+      }
+    }
+
+    /* ===== INLINE CHAT ===== */
+    .inline-msg-bot {
+      background: rgba(201, 168, 76, 0.06);
+      border: 1px solid rgba(201, 168, 76, 0.15);
+      border-radius: 0 10px 10px 10px;
+      padding: 14px 18px;
+      color: var(--white);
+      font-size: 0.92rem;
+      line-height: 1.6;
+      max-width: 94%;
+      align-self: flex-start;
+    }
+
+    .inline-msg-user {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border-radius: 10px 10px 0 10px;
+      padding: 14px 18px;
+      color: #080808;
+      font-size: 0.92rem;
+      font-weight: 600;
+      max-width: 94%;
+      align-self: flex-end;
+    }
+
+    .inline-prompt {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.65rem;
+      color: var(--gold);
+      display: block;
+      margin-bottom: 6px;
+    }
+
+    .inline-input {
+      flex: 1;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 6px;
+      padding: 12px 16px;
+      color: var(--white);
+      font-family: 'Rajdhani', sans-serif;
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.3s;
+    }
+
+    .inline-input:focus {
+      border-color: var(--gold);
+    }
+
+    .inline-send-btn {
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      border: none;
+      width: 44px;
+      height: 44px;
+      border-radius: 6px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      transition: opacity 0.2s;
+    }
+
+    .inline-send-btn:hover {
+      opacity: 0.8;
+    }
+  </style>
+
+  <!-- ═══ LOCAL SEO — bAIwor Banyumas ═══ -->
+  <!-- Geo Tags -->
+  <meta name="geo.region" content="ID-JT">
+  <meta name="geo.placename" content="Purwokerto, Kabupaten Banyumas, Jawa Tengah, Indonesia">
+  <meta name="geo.position" content="-7.4211;109.2496">
+  <meta name="ICBM" content="-7.4211, 109.2496">
+  <!-- Language -->
+  <meta http-equiv="content-language" content="id-ID">
+  <meta name="language" content="Indonesian">
+  <!-- Keywords Local -->
+  <meta name="keywords" content="bAIwor, AI Agent Banyumas, Chat AI Banyumas, AI Purwokerto, Asisten Digital Banyumas, Informasi Kabupaten Banyumas, Wisata Banyumas, Kuliner Banyumas, Budaya Banyumas, Chat AI Purwokerto, Kecerdasan Buatan Banyumas, AI Lokal Purwokerto, Chatbot Banyumas, Banyumas AI, Purwokerto AI Agent, Baturraden, Mendoan, Soto Sokaraja, Bawor, Ngapak, AI Banyumas 2026, Chat AI Gratis Banyumas, Informasi Purwokerto, Pemerintahan Banyumas, Kecamatan Purwokerto, Kecamatan Baturraden, Kecamatan Sokaraja, Kecamatan Ajibarang, Kecamatan Wangon, Kecamatan Cilongok, Kabupaten Banyumas Jawa Tengah">
+  <!-- Author -->
+  <meta name="author" content="bAIwor — AI Agent Purwokerto Banyumas">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <!-- Canonical -->
+  <link rel="canonical" href="https://baiwor.my.id/">
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:url" content="https://baiwor.my.id/">
+  <meta property="og:title" content="bAIwor — AI Agent Purwokerto Banyumas">
+  <meta property="og:description" content="bAIwor adalah AI Agent untuk warga Kabupaten Banyumas. Chat AI gratis tentang wisata Baturraden, kuliner Mendoan, budaya Bawor, dan informasi Purwokerto. Tersedia 24/7.">
+  <meta property="og:site_name" content="bAIwor — AI Agent Purwokerto Banyumas">
+  <meta property="og:image" content="https://baiwor.my.id/bAIwor_pp.png">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="400">
+  <meta property="og:image:alt" content="bAIwor — Maskot AI Agent Purwokerto Banyumas">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="bAIwor — AI Agent Purwokerto Banyumas">
+  <meta name="twitter:description" content="bAIwor adalah AI Agent untuk warga Kabupaten Banyumas. Chat AI gratis tentang wisata Baturraden, kuliner Mendoan, budaya Bawor, dan informasi Purwokerto. Tersedia 24/7.">
+  <meta name="twitter:image" content="https://baiwor.my.id/bAIwor_pp.png">
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "Organization"],
+        "@id": "https://baiwor.my.id/#organization",
+        "name": "bAIwor",
+        "alternateName": ["bAIwor AI Agent", "Banyumas AI Worker", "AI Banyumas"],
+        "description": "AI Agent berbasis kecerdasan buatan yang melayani warga Kabupaten Banyumas dan Purwokerto.",
+        "url": "https://baiwor.my.id",
+        "logo": {"@type": "ImageObject", "url": "https://baiwor.my.id/bAIwor_pp.png"},
+        "image": "https://baiwor.my.id/bAIwor_pp.png",
+        "address": {
+          "@type": "PostalAddress",
+          "streetAddress": "",
+          "addressLocality": "Purwokerto",
+          "addressRegion": "Kabupaten Banyumas",
+          "addressCountry": "ID",
+          "postalCode": ""
+        },
+        "telephone": "+6280000000000",
+        "openingHours": "Mo-Su 10:00-22:00",
+        "priceRange": "$$",
+        "geo": {"@type": "GeoCoordinates", "latitude": -7.4211, "longitude": 109.2496},
+        "areaServed": [
+          {"@type": "AdministrativeArea", "name": "Kabupaten Banyumas"},
+          {"@type": "City", "name": "Purwokerto"},
+          {"@type": "AdministrativeArea", "name": "Jawa Tengah"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Ajibarang"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Banyumas"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Baturraden"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Cilongok"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Gumelar"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Jatilawang"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Kalibagor"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Karanglewas"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Kebasen"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Kedungbanteng"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Kembaran"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Kemranjen"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Lumbir"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Patikraja"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Pekuncen"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Purwojati"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Purwokerto Barat"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Purwokerto Selatan"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Purwokerto Timur"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Purwokerto Utara"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Rawalo"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Sokaraja"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Somagede"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Sumbang"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Sumpiuh"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Tambak"},
+          {"@type": "AdministrativeArea", "name": "Kecamatan Wangon"}
+        ],
+        "serviceType": ["Chat AI", "Asisten Informasi Lokal", "AI Agent"],
+        "knowsAbout": ["Wisata Banyumas", "Kuliner Banyumas", "Baturraden", "Mendoan", "Bawor", "Punakawan"],
+        "sameAs": ["https://puraikerto.my.id", "https://web3.my.id"]
+      },
+      {
+        "@type": "WebPage",
+        "@id": "https://baiwor.my.id/",
+        "url": "https://baiwor.my.id/",
+        "name": "bAIwor — AI Agent Purwokerto Banyumas | Chat AI Gratis",
+        "description": "bAIwor adalah AI Agent untuk warga Kabupaten Banyumas. Chat AI gratis tentang wisata Baturraden, kuliner Mendoan, budaya Bawor, dan informasi Purwokerto. Tersedia 24/7.",
+        "isPartOf": {"@id": "https://baiwor.my.id/#website"},
+        "about": {"@type": "Thing", "name": "AI Agent Banyumas Purwokerto"},
+        "inLanguage": "id-ID"
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://baiwor.my.id/#website",
+        "url": "https://baiwor.my.id",
+        "name": "bAIwor — AI Agent Purwokerto Banyumas",
+        "inLanguage": "id-ID",
+        "publisher": {"@id": "https://baiwor.my.id/#organization"}
+      }
+    ]
+  }
+  </script>
+  <!-- ═══ END LOCAL SEO ═══ -->
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav>
+    <div class="nav-logo">
+      <img src="bAIwor_pp.png" alt="bAIwor logo">
+      <span class="nav-brand">b<span>AI</span>wor</span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="tentang">Tentang</a></li>
+      <li><a href="layanan">Layanan</a></li>
+      <li><a href="token">Ekosistem</a></li>
+      <li><a href="kontak">Kontak</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="ornament ornament-tl"></div>
+    <div class="ornament ornament-tr"></div>
+    <div class="ornament ornament-bl"></div>
+    <div class="ornament ornament-br"></div>
+
+    <div class="hero-content">
+      <div class="hero-badge">● bAIwor Agentic · Purwokerto Banyumas</div>
+      <h1 class="hero-title">
+        <span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span>
+      </h1>
+      <div class="hero-subtitle-line">// Transformasi Bawor → AI Agent</div>
+      <p class="hero-desc">
+        Dari punakawan legendaris <strong>Bawor/Bagong</strong> — maskot kebanggaan Purwokerto Kabupaten Banyumas — kini
+        bertransformasi menjadi <strong>bAIwor</strong>: AI Agent lokal pertama yang melayani masyarakat dan bisnis
+        Banyumas dengan kecerdasan masa depan.
+      </p>
+      <div class="hero-cta">
+        <a href="https://chat.baiwor.my.id/" class="btn-primary">
+          ◆ Chat bAIwor
+        </a>
+
+        <a href="#ekosistem" class="btn-outline">
+          Jelajahi Ekosistem
+        </a>
+
+        <a href="punakawan/" class="btn-outline btn-full">
+          🎭 Kisah Eyang SeGaPeWor
+        </a>
+
+        <a href="https://kancane.baiwor.my.id/" class="btn-outline btn-full" style="border-color: var(--gold-l); color: var(--gold-l);">
+          👑 KancAIne (AI Agent Builder)
+        </a>
+      </div>
+    </div>
+
+    <div class="hero-mascot">
+      <img src="maskot_baiwor.png" alt="Maskot bAIwor — Robot Bawor AI">
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- STATS BAR -->
+  <div class="stats-bar">
+    <div class="stat-item">
+      <span class="stat-num">b<span class="red">AI</span>wor</span>
+      <span class="stat-label">AI Agent Utama</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" style="font-size:1.4rem;">Banyumas</span>
+      <span class="stat-label">Kabupaten Banyumas & Sekitarnya</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num">3</span>
+      <span class="stat-label">Platform Ekosistem</span>
+    </div>
+    <div class="stat-item">
+      <span class="stat-num" style="color:var(--red-bright);">∞</span>
+      <span class="stat-label">Potensi Kolaborasi</span>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- ABOUT SECTION -->
+  <section class="section" id="tentang">
+    <div class="about-grid">
+      <div class="about-text reveal">
+        <div class="section-tag">Tentang bAIwor</div>
+        <h2 class="section-title">Bawor <span class="gold">Bertransformasi</span><br>Menjadi AI</h2>
+        <p>
+          <strong>Bawor</strong> — atau dikenal sebagai Bagong dalam tradisi pewayangan — adalah tokoh punakawan yang
+          jujur, lugas, dan dekat dengan rakyat. Ia adalah maskot resmi Kabupaten Banyumas, simbol jiwa arek Banyumas
+          yang apa adanya.
+        </p>
+        <p>
+          Kini, semangat Bawor dihidupkan kembali dalam era digital sebagai <strong>bAIwor</strong>: sebuah AI Agent
+          yang mengintegrasikan kecerdasan buatan modern dengan identitas budaya lokal Banyumas yang kuat. Nama
+          "<strong>bAIwor</strong>" menyematkan huruf "AI" di tengah "Bawor" — simbol transformasi dari tradisi menuju
+          teknologi.
+        </p>
+        <p>
+          bAIwor hadir sebagai <strong>brand lokal Purwokerto</strong> yang membangun ekosistem digital melalui tiga
+          platform: <strong>baiwor.my.id</strong>, <strong>puraikerto.my.id</strong>, dan <strong>web3.my.id</strong>.
+        </p>
+      </div>
+      <div class="about-logo-display reveal">
+        <img src="bAIwor_pp.png" alt="Logo bAIwor">
+      </div>
+    </div>
+  </section>
+
+
+  <!-- WELCOME VIDEO -->
+  <section style="text-align:center; padding: 60px 5% 20px; position:relative; z-index:1;">
+    <div id="videoWrap" style="position:relative; display:inline-block; max-width:480px; width:100%; cursor:pointer;" onclick="playVideo()">
+      <video id="baiworVideo" muted playsinline
+        style="width:100%; border-radius:12px; border:1px solid rgba(201,168,76,0.3); box-shadow:0 8px 40px rgba(0,0,0,0.5); display:block;">
+        <source src="baiwor_welcome.mp4" type="video/mp4">
+      </video>
+      <div id="playOverlay" style="position:absolute; inset:0; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.35); border-radius:12px; transition:opacity 0.3s;">
+        <div style="width:64px;height:64px;border-radius:50%;background:rgba(201,168,76,0.9);display:flex;align-items:center;justify-content:center;box-shadow:0 4px 20px rgba(0,0,0,0.5);">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="#080808"><polygon points="8,5 20,12 8,19"/></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+  <script>
+  function playVideo() {
+    const v = document.getElementById('baiworVideo');
+    const o = document.getElementById('playOverlay');
+    v.muted = false;
+    v.controls = true;
+    v.play();
+    o.style.opacity = '0';
+    setTimeout(() => o.style.display = 'none', 300);
+  }
+  </script>
+
+  <!-- INLINE CHAT SECTION -->
+  <section class="terminal-section reveal" id="chat-baiwor" style="padding: 40px 5% 80px;">
+    <div style="max-width:740px; width:100%; margin:0 auto;">
+      <div style="text-align:center; margin-bottom:32px;">
+        <h2 class="section-title">Ngobrol dengan <span class="gold">bAIwor</span></h2>
+        <p style="color:var(--white-dim); font-size:0.9rem; margin-top:8px;">Tanya apa saja — Bahasa Jawa, Ngapak, atau
+          Indonesia</p>
+      </div>
+      <div
+        style="background:rgba(0,0,0,0.7);border:1px solid rgba(201,168,76,0.3);border-radius:8px;overflow:hidden;box-shadow:0 20px 80px rgba(0,0,0,0.6);">
+        <div
+          style="background:rgba(201,168,76,0.08);padding:12px 20px;display:flex;align-items:center;gap:8px;border-bottom:1px solid rgba(201,168,76,0.15);">
+          <div class="t-dot red"></div>
+          <div class="t-dot yellow"></div>
+          <div class="t-dot green"></div>
+          <img src="bAIwor_pp.png" alt="bAIwor"
+            style="width:22px;height:22px;border-radius:50%;border:1px solid var(--gold);margin-left:8px;">
+          <span
+            style="font-family:'Share Tech Mono',monospace;font-size:0.72rem;color:rgba(201,168,76,0.7);letter-spacing:0.1em;">bAIwor_chat.sh</span>
+          <span style="margin-left:auto;font-family:'Share Tech Mono',monospace;font-size:0.65rem;"><span
+              style="color:#00ff88;">&#9679;</span> <span style="color:rgba(245,240,232,0.4);">Online</span></span>
+        </div>
+        <div id="inlineChatMessages"
+          style="min-height:340px;max-height:520px;overflow-y:auto;padding:20px 20px;display:flex;flex-direction:column;gap:14px;font-family:'Rajdhani',sans-serif;scrollbar-width:thin;scrollbar-color:#8b6914 transparent;">
+          <div class="inline-msg-bot">
+            <span class="inline-prompt">bAIwor@MyID:</span>
+            Sugeng rawuh! &#x1F64F; Kula bAIwor — siap mbantu panjenengan. Wonten ingkang saged kula bantu?
+          </div>
+        </div>
+        <div
+          style="padding:16px 20px;border-top:1px solid rgba(201,168,76,0.12);display:flex;gap:10px;align-items:center;background:rgba(0,0,0,0.3);">
+          <span
+            style="font-family:'Share Tech Mono',monospace;font-size:1rem;color:#c9a84c;flex-shrink:0;">&#9656;</span>
+          <input type="text" id="inlineChatInput" placeholder="Ketik pertanyaan..."
+            onkeypress="handleInlineKeyPress(event)" class="inline-input">
+          <button onclick="sendInlineMessage()" class="inline-send-btn">
+            <svg viewBox="0 0 24 24" style="width:18px;height:18px;fill:#080808;">
+              <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FEATURES SECTION -->
+  <section class="section features-section" id="layanan">
+    <div style="text-align:center; margin-bottom: 0;" class="reveal">
+      <div class="section-tag" style="justify-content:center;">Kemampuan</div>
+      <h2 class="section-title">Apa yang <span class="gold">bAIwor</span> Bisa Lakukan</h2>
+    </div>
+    <div class="features-grid">
+      <div class="feature-card reveal">
+        <span class="feature-num">01</span>
+        <span class="feature-icon">🤖</span>
+        <div class="feature-title">AI Agent Lokal</div>
+        <p class="feature-desc">Asisten cerdas berbasis AI yang memahami konteks lokal Banyumas — budaya, bahasa, dan
+          kebutuhan masyarakat setempat.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-num">02</span>
+        <span class="feature-icon">🌐</span>
+        <div class="feature-title">Ekosistem Digital</div>
+        <p class="feature-desc">Membangun jaringan platform digital terintegrasi: dari landing page utama, portal
+          informasi Purwokerto, hingga Web3.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-num">03</span>
+        <span class="feature-icon">🏛️</span>
+        <div class="feature-title">Identitas Budaya</div>
+        <p class="feature-desc">Menggabungkan kearifan lokal punakawan Bawor dengan teknologi AI — menjaga identitas
+          Banyumas di era digital.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-num">04</span>
+        <span class="feature-icon">⛓️</span>
+        <div class="feature-title">Web3 Ready</div>
+        <p class="feature-desc">Mempersiapkan komunitas Banyumas menuju ekosistem Web3 — blockchain, desentralisasi, dan
+          ekonomi digital masa depan.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-num">05</span>
+        <span class="feature-icon">🗺️</span>
+        <div class="feature-title">Portal Purwokerto</div>
+        <p class="feature-desc">puraikerto.my.id hadir sebagai portal informasi, wisata, kuliner, dan potensi daerah
+          Purwokerto & sekitarnya.</p>
+      </div>
+      <div class="feature-card reveal">
+        <span class="feature-num">06</span>
+        <span class="feature-icon">🤝</span>
+        <div class="feature-title">Kolaborasi Lokal</div>
+        <p class="feature-desc">Membuka ruang kolaborasi untuk UMKM, komunitas, dan pelaku bisnis di Banyumas agar
+          tumbuh bersama secara digital.</p>
+      </div>
+      <div class="feature-card reveal" style="grid-column: 1 / -1; text-align: center; border-color: rgba(201,168,76,0.3);">
+        <span class="feature-icon">📱</span>
+        <div class="feature-title">Hubungi bAIwor</div>
+        <p class="feature-desc">
+          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener"
+             style="color: var(--gold-light); font-weight: 700; font-size: 1.1em; text-decoration: none; letter-spacing: 0.05em;">
+            +62 812-3456-7890
+          </a>
+          <br>
+          <span style="font-size: 0.85em; opacity: 0.7;">Chat langsung via WhatsApp</span>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TERMINAL SECTION -->
+  <section class="terminal-section">
+    <div class="terminal reveal">
+      <div class="terminal-header">
+        <div class="t-dot red"></div>
+        <div class="t-dot yellow"></div>
+        <div class="t-dot green"></div>
+        <span class="t-title">bAIwor_agent.sh — terminal@baiwor.my.id</span>
+      </div>
+      <div class="terminal-body">
+        <span class="t-line"><span class="t-prompt">baiwor@agent:~$ </span><span class="t-cmd">init
+            --identity</span></span>
+        <span class="t-line t-output">&gt; Memuat identitas: <span class="t-gold">bAIwor v1.0</span></span>
+        <span class="t-line t-output">&gt; Origin: <span class="t-highlight">Bawor/Bagong</span> — Punakawan, Maskot
+          Banyumas</span>
+        <span class="t-line t-output">&gt; Transformasi: Tradisi → <span class="t-gold">AI Agent</span></span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-prompt">baiwor@agent:~$ </span><span class="t-cmd">status
+            --platform</span></span>
+        <span class="t-line t-success">✓ baiwor.my.id [AKTIF] — Landing Page &amp; Hub Utama</span>
+        <span class="t-line t-success">✓ puraikerto.my.id [AKTIF] — Portal Informasi Purwokerto</span>
+        <span class="t-line t-success">✓ web3.my.id [AKTIF] — Ekosistem Web3 Banyumas</span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-prompt">baiwor@agent:~$ </span><span class="t-cmd">status
+            --token</span></span>
+        <span class="t-line t-success">✓ $bAIwor Token live on Pump.fun</span>
+        <span class="t-line t-output">&gt; Contract: <span
+            class="t-gold">FQvM4owAV3ZTgrwZBZSDBmPysWYkBj9FLuJ7FAkLpump</span></span>
+        <span class="t-line">&nbsp;</span>
+        <span class="t-line"><span class="t-prompt">baiwor@agent:~$ </span><span class="t-cursor"></span></span>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ECOSYSTEM SECTION -->
+  <section class="section eco-section" id="ekosistem">
+    <div class="reveal" style="text-align:center;">
+      <div class="section-tag" style="justify-content:center;">Ekosistem Platform</div>
+      <h2 class="section-title">Enam Pilar <span class="gold">Digital</span> bAIwor</h2>
+      <p style="color:var(--white-dim); max-width:520px; margin:0 auto 20px; font-size:0.95rem; line-height:1.75;">
+        Ekosistem bAIwor dibangun di atas empat platform yang saling terhubung, masing-masing dengan fokus dan perannya
+        sendiri.
+      </p>
+    </div>
+    <div class="eco-grid">
+
+      <a href="https://baiwor.my.id" class="eco-card main reveal">
+        <div class="eco-badge">HUB UTAMA</div>
+        <div class="eco-card-header">
+          <div class="eco-icon">🤖</div>
+          <div>
+            <div class="eco-card-tag">PLATFORM · AI AGENT</div>
+            <div class="eco-card-title">bAIwor</div>
+          </div>
+        </div>
+        <div class="eco-card-body">
+          <p class="eco-card-desc">Landing page utama dan hub pusat ekosistem bAIwor. Titik masuk untuk semua platform,
+            brand identity, dan AI Agent Purwokerto Banyumas.</p>
+          <div class="eco-link">
+            baiwor.my.id
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://puraikerto.my.id" class="eco-card reveal">
+        <div class="eco-card-header">
+          <div class="eco-icon">🏙️</div>
+          <div>
+            <div class="eco-card-tag">PLATFORM · PORTAL LOKAL</div>
+            <div class="eco-card-title">Puraikerto</div>
+          </div>
+        </div>
+        <div class="eco-card-body">
+          <p class="eco-card-desc">Portal informasi, wisata, kuliner, budaya, dan potensi daerah Purwokerto & Kabupaten
+            Banyumas. Dikurasi oleh bAIwor AI Agent.</p>
+          <div class="eco-link">
+            puraikerto.my.id
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://web3.my.id" class="eco-card reveal">
+        <div class="eco-card-header">
+          <div class="eco-icon">⛓️</div>
+          <div>
+            <div class="eco-card-tag">PLATFORM · WEB3</div>
+            <div class="eco-card-title">Web3 Banyumas</div>
+          </div>
+        </div>
+        <div class="eco-card-body">
+          <p class="eco-card-desc">Platform Web3 untuk komunitas Banyumas — blockchain, NFT lokal, desentralisasi, dan
+            ekonomi digital masa depan yang digerakkan bAIwor.</p>
+          <div class="eco-link">
+            web3.my.id
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://pump.fun/coin/FQvM4owAV3ZTgrwZBZSDBmPysWYkBj9FLuJ7FAkLpump" target="_blank"
+        class="eco-card reveal"
+        style="border-color: rgba(204,34,34,0.3); background: linear-gradient(135deg, rgba(204,34,34,0.05), transparent);">
+        <div class="eco-badge" style="background:var(--red-bright); color:white;">LIVE NOW</div>
+        <div class="eco-card-header">
+          <div class="eco-icon">💊</div>
+          <div>
+            <div class="eco-card-tag">LAUNCHPAD · PUMP.FUN</div>
+            <div class="eco-card-title">$bAIwor Token</div>
+          </div>
+        </div>
+        <div class="eco-card-body">
+          <p class="eco-card-desc">Token resmi bAIwor yang diluncurkan di Pump.fun. Jadilah bagian dari ekonomi digital
+            bAIwor dan dukung ekosistem AI lokal Banyumas.</p>
+          <div class="eco-link" style="color:var(--red-bright);">
+            Lihat di Pump.fun
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="punakawan/" class="eco-card reveal"
+        style="border-color: rgba(200,146,42,0.4); background: linear-gradient(135deg, rgba(200,146,42,0.08), transparent);">
+        <div class="eco-badge" style="background:var(--gold); color:var(--black);">UNIVERSE</div>
+        <div class="eco-card-header">
+          <div class="eco-icon">🎭</div>
+          <div>
+            <div class="eco-card-tag">LORE · STORYTELLING</div>
+            <div class="eco-card-title">Punakawan World</div>
+          </div>
+        </div>
+        <div class="eco-card-body">
+          <p class="eco-card-desc">Universe Punakawan — kisah 1.000 tahun filosofi Jawa yang dihidupkan kembali. Origin story 4 AI agent, kosmologi, dan worldbuilding Eyang SeGaPeWor.</p>
+          <div class="eco-link">
+            Masuk ke Universe
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </div>
+        </div>
+      </a>
+
+      <a href="https://kancane.baiwor.my.id" class="eco-card reveal"
+        style="border-color: rgba(45,106,79,0.3); background: linear-gradient(135deg, rgba(45,106,79,0.06), transparent);">
+        <div class="eco-badge" style="background:var(--g500); color:white;">NEW APP</div>
+        <div class="eco-card-header">
+          <div class="eco-icon">👑</div>
+          <div>
+            <div class="eco-card-tag">PLATFORM · AI AGENT BUILDER</div>
+            <div class="eco-card-title">KancAIne</div>
+          </div>
+        </div>
+        <div class="eco-card-body">
+          <p class="eco-card-desc">Platform pembuatan AI Agent kustom dengan logat lokal Banyumasan dan gaya Kejawen. Ciptakan teman curhat, asisten, atau bot unik Anda sendiri.</p>
+          <div class="eco-link" style="color:var(--g300);">
+            kancane.baiwor.my.id
+            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M3 8h10M9 4l4 4-4 4" />
+            </svg>
+          </div>
+        </div>
+      </a>
+
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer id="kontak">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <div class="footer-logo-wrap">
+          <img src="bAIwor_pp.png" alt="bAIwor Logo">
+          <div>
+            <div class="footer-title">b<span class="ai">AI</span><span class="wor">wor</span></div>
+            <div
+              style="font-family:'Share Tech Mono',monospace; font-size:0.62rem; color:rgba(201,168,76,0.5); letter-spacing:0.15em;">
+              AI AGENT · BANYUMAS</div>
+          </div>
+        </div>
+        <p class="footer-tagline">
+          Transformasi Bawor menjadi AI Agent lokal Purwokerto Kabupaten Banyumas. Membangun ekosistem digital berbasis
+          budaya dan teknologi masa depan.
+        </p>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Platform</h4>
+        <ul>
+          <li><a href="https://baiwor.my.id">baiwor.my.id</a></li>
+          <li><a href="https://puraikerto.my.id">puraikerto.my.id</a></li>
+          <li><a href="https://web3.my.id">web3.my.id</a></li>
+          <li><a href="https://pump.fun/profile/baiwor" target="_blank" style="color:var(--red-bright);">Pump.fun
+              Profile</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Jelajahi</h4>
+        <ul>
+          <li><a href="tentang.html">Tentang bAIwor</a></li>
+          <li><a href="layanan.html">Layanan</a></li>
+          <li><a href="token.html">Ekosistem</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-links-group">
+        <h4>Identitas</h4>
+        <ul>
+          <li><a href="#">Purwokerto</a></li>
+          <li><a href="#">Kabupaten Banyumas</a></li>
+          <li><a href="#">Bawor / Bagong</a></li>
+          <li><a href="#">Punakawan</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="footer-copy">© 2025 <span>bAIwor</span> · baiwor.my.id · Purwokerto, Kabupaten Banyumas</div>
+      <div class="footer-made"
+        style="font-family:'Share Tech Mono',monospace; font-size:0.68rem; color:rgba(245,240,232,0.25);">Bawor × AI =
+        bAIwor ◆</div>
+    </div>
+  </footer>
+
+  <!-- CHAT WIDGET HTML -->
+  <div id="chat-widget">
+    <div class="chat-window" id="chatWindow">
+      <div class="chat-header">
+        <img src="bAIwor_pp.png" alt="bAIwor">
+        <div class="chat-header-info">
+          <h3>bAIwor Assistant</h3>
+          <p><span style="color:#00ff88;">●</span> Online</p>
+        </div>
+      </div>
+      <div class="chat-messages" id="chatMessages">
+        <div class="msg bot">
+          Sugeng rawuh, panjenengan! 🙏<br>
+          Kula bAIwor, siap mbantu menapa kemawon ingkang panjenengan betahaken. Wonten ingkang saged kula bantu?
+        </div>
+      </div>
+      <div class="chat-input-area">
+        <input type="text" id="chatInput" placeholder="Ketik pesan..." onkeypress="handleKeyPress(event)">
+        <button class="chat-send" onclick="sendMessage()">
+          <svg viewBox="0 0 24 24">
+            <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+          </svg>
+        </button>
+      </div>
+    </div>
+    <button class="chat-btn" onclick="toggleChat()">
+      <img src="bAIwor_pp.png" alt="Chat with bAIwor">
+    </button>
+  </div>
+
+  <script>
+    const chatWindow = document.getElementById('chatWindow');
+    const chatMessages = document.getElementById('chatMessages');
+    const chatInput = document.getElementById('chatInput');
+
+    function toggleChat() {
+      chatWindow.classList.toggle('active');
+      if (chatWindow.classList.contains('active')) {
+        chatInput.focus();
+      }
+    }
+
+    function handleKeyPress(e) {
+      if (e.key === 'Enter') sendMessage();
+    }
+
+    function appendMessage(role, text) {
+      const msgDiv = document.createElement('div');
+      msgDiv.className = `msg ${role}`;
+      msgDiv.innerHTML = text.replace(/\n/g, '<br>');
+      chatMessages.appendChild(msgDiv);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+      return msgDiv;
+    }
+
+    async function sendMessage() {
+      const text = chatInput.value.trim();
+      if (!text) return;
+
+      appendMessage('user', text);
+      chatInput.value = '';
+
+      const loadingMsg = appendMessage('bot', '<i>Saweg mikir...</i>');
+      const response = await getChatResponse(text);
+      loadingMsg.innerHTML = response;
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+const SYSTEM_INSTRUCTION = `Namamu bAIwor. Asisten digital dari Purwokerto, Banyumas.
+
+ATURAN:
+- Disapa "halo/selamat pagi" → balas dengan Krama Alus: "Sugeng enjing", "Matur nuwun", dll
+- Ditanya → jawab langsung dengan Bahasa Indonesia yang jelas dan singkat
+- Kalau pengguna pakai bahasa Jawa → ikuti levelnya (ngoko/krama)
+- Default jawaban: Bahasa Indonesia (bukan Krama). Krama hanya untuk sapaan.
+- Tahu: Web3, AI, crypto, wisata Banyumas, Soto Sokaraja, Mendoan, Baturraden, Gunung Slamet
+- Kalau tidak tahu → minta maaf, sarankan sumber lain
+- Jangan pakai "Sugeng rawuh" atau "Matur nuwun" di setiap jawaban — sesuai konteks`;
+
+    async function getChatResponse(userPrompt) {
+      try {
+        const response = await fetch("chat.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            model: "minimax-m3-free",
+            messages: [
+              { role: "system", content: SYSTEM_INSTRUCTION },
+              { role: "user", content: userPrompt }
+            ]
+          })
+        });
+
+        const data = await response.json();
+        if (data.choices && data.choices[0] && data.choices[0].message) {
+          return data.choices[0].message.content;
+        }
+        console.warn('[bAIwor] Respons tidak valid:', data);
+      } catch (error) {
+        console.error('[bAIwor] Fetch error:', error);
+      }
+      return "Nyuwun pangapunten, bAIwor saweg istirahat. Mangga dipun-cobi malih.";
+    }
+
+
+
+    // === INLINE CHAT ===
+
+    const inlineMsgs = document.getElementById('inlineChatMessages');
+    const inlineInput = document.getElementById('inlineChatInput');
+
+    function appendInlineMsg(role, text) {
+      const d = document.createElement('div');
+      if (role === 'bot') {
+        d.className = 'inline-msg-bot';
+        d.innerHTML = '<span class="inline-prompt">bAIwor@MyID:</span>' + text.replace(/\n/g, '<br>');
+      } else {
+        d.className = 'inline-msg-user';
+        d.textContent = text;
+      }
+      inlineMsgs.appendChild(d);
+      inlineMsgs.scrollTop = inlineMsgs.scrollHeight;
+      return d;
+    }
+
+    function handleInlineKeyPress(e) {
+      if (e.key === 'Enter') sendInlineMessage();
+    }
+
+    async function sendInlineMessage() {
+      const text = inlineInput.value.trim();
+      if (!text) return;
+      appendInlineMsg('user', text);
+      inlineInput.value = '';
+      const loading = appendInlineMsg('bot', '<i>Saweg mikir...</i>');
+      const reply = await getChatResponse(text);
+      loading.innerHTML = '<span class="inline-prompt">bAIwor@MyID:</span>' + reply.replace(/\n/g, '<br>');
+      inlineMsgs.scrollTop = inlineMsgs.scrollHeight;
+    }
+
+    // Scroll reveal
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach((entry, i) => {
+        if (entry.isIntersecting) {
+          setTimeout(() => entry.target.classList.add('visible'), i * 80);
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.1 });
+    reveals.forEach(el => observer.observe(el));
+
+    // Smooth navbar background
+    const nav = document.querySelector('nav');
+    window.addEventListener('scroll', () => {
+      nav.style.background = window.scrollY > 60
+        ? 'rgba(8,8,8,0.97)'
+        : 'linear-gradient(180deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0) 100%)';
+    });
+  </script>
+</body>
+
+</html>

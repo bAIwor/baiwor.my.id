@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Punakawan World — Pembaca</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --gold: #C8922A;
+      --gold-light: #e6b44a;
+      --ink: #0d0600;
+      --ink-light: #1a0f05;
+      --parchment: #f5ead0;
+      --text: #e8dcc8;
+      --text-muted: #9a8e7a;
+    }
+
+    body {
+      font-family: 'Crimson Pro', Georgia, serif;
+      background: var(--ink);
+      color: var(--text);
+      min-height: 100vh;
+      line-height: 1.85;
+      font-size: 1.15rem;
+    }
+
+    /* === Top Navigation === */
+    .topnav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(13, 6, 0, 0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(200, 146, 42, 0.2);
+      padding: 0.75rem 1.5rem;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .topnav-brand {
+      font-family: 'Cinzel', serif;
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--gold);
+      text-decoration: none;
+      letter-spacing: 0.05em;
+    }
+    .topnav-brand span { color: var(--text-muted); font-weight: 400; font-size: 0.85rem; }
+    .topnav-links { display: flex; gap: 1rem; align-items: center; }
+    .topnav-links a {
+      color: var(--text-muted); text-decoration: none; font-size: 0.9rem;
+      transition: color 0.2s;
+    }
+    .topnav-links a:hover { color: var(--gold); }
+
+    /* === Wallet Status Pill === */
+    .wallet-pill {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: rgba(200, 146, 42, 0.1);
+      border: 1px solid rgba(200, 146, 42, 0.3);
+      border-radius: 100px; padding: 0.4rem 1rem;
+      font-size: 0.85rem; color: var(--gold);
+      cursor: pointer; transition: all 0.2s;
+    }
+    .wallet-pill:hover { background: rgba(200, 146, 42, 0.2); }
+    .wallet-pill .dot {
+      width: 8px; height: 8px; border-radius: 50%;
+      background: #666; transition: background 0.3s;
+    }
+    .wallet-pill.connected .dot { background: #4ade80; }
+    .wallet-pill .addr { font-family: monospace; font-size: 0.8rem; }
+
+    /* === Chapter Header === */
+    .chapter-header {
+      padding: 8rem 1.5rem 3rem;
+      text-align: center;
+      position: relative;
+    }
+    .chapter-header::after {
+      content: '';
+      position: absolute; bottom: 0; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+    .chapter-pre {
+      font-size: 0.85rem; color: var(--gold);
+      letter-spacing: 0.3em; text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .chapter-title {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(1.8rem, 5vw, 3.2rem);
+      font-weight: 900;
+      color: var(--gold);
+      text-shadow: 0 0 40px rgba(200, 146, 42, 0.3);
+      margin-bottom: 0.75rem;
+    }
+    .chapter-subtitle {
+      font-size: 1.1rem; color: var(--text-muted);
+      font-style: italic;
+    }
+
+    /* === Content Area === */
+    .content-wrap {
+      max-width: 720px; margin: 0 auto;
+      padding: 3rem 1.5rem 6rem;
+    }
+
+    .content-wrap p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+      hyphens: auto;
+    }
+    .content-wrap h2 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem; font-weight: 700;
+      color: var(--gold);
+      margin: 3rem 0 1.5rem;
+      text-align: center;
+    }
+    .content-wrap h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem; font-weight: 700;
+      color: var(--gold-light);
+      margin: 2.5rem 0 1rem;
+    }
+    .content-wrap blockquote {
+      border-left: 3px solid var(--gold);
+      padding: 1rem 1.5rem;
+      margin: 2rem 0;
+      background: rgba(200, 146, 42, 0.05);
+      font-style: italic;
+      color: var(--text-muted);
+    }
+    .content-wrap strong { color: var(--gold-light); }
+    .content-wrap em { color: var(--parchment); }
+    .content-wrap hr {
+      border: none; height: 1px; margin: 3rem auto;
+      width: 60%;
+      background: linear-gradient(90deg, transparent, var(--gold), transparent);
+    }
+
+    /* === Loading State === */
+    .loading {
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 60vh; gap: 1.5rem;
+    }
+    .loading-spinner {
+      width: 40px; height: 40px; border-radius: 50%;
+      border: 3px solid rgba(200, 146, 42, 0.2);
+      border-top-color: var(--gold);
+      animation: spin 0.8s linear infinite;
+    }
+    @keyframes spin { to { transform: rotate(360deg); } }
+    .loading-text { color: var(--text-muted); font-size: 0.95rem; }
+
+    /* === Error State === */
+    .error-state {
+      text-align: center; padding: 6rem 1.5rem;
+    }
+    .error-state h2 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold); font-size: 2rem; margin-bottom: 1rem;
+    }
+    .error-state p { color: var(--text-muted); margin-bottom: 2rem; }
+    .error-state a {
+      color: var(--gold); text-decoration: underline;
+    }
+
+    /* === Teaser / Fallback === */
+    .teaser-wrap {
+      position: relative;
+      max-width: 720px; margin: 0 auto;
+      padding: 3rem 1.5rem 0;
+    }
+    .teaser-content p {
+      margin-bottom: 1.5rem;
+      text-align: justify;
+    }
+    .teaser-fade {
+      position: relative;
+      height: 200px;
+      margin-top: -200px;
+      background: linear-gradient(to bottom, transparent, var(--ink));
+      pointer-events: none;
+    }
+
+    /* === CTA Card === */
+    .cta-card {
+      max-width: 520px; margin: 2rem auto 4rem;
+      background: linear-gradient(135deg, rgba(200, 146, 42, 0.08), rgba(200, 146, 42, 0.03));
+      border: 1px solid rgba(200, 146, 42, 0.25);
+      border-radius: 16px; padding: 2.5rem 2rem;
+      text-align: center;
+    }
+    .cta-card .cta-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+    .cta-card h3 {
+      font-family: 'Cinzel', serif;
+      font-size: 1.3rem; color: var(--gold); margin-bottom: 0.75rem;
+    }
+    .cta-card p { color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.95rem; }
+    .cta-card .cta-btn {
+      display: inline-flex; align-items: center; gap: 0.5rem;
+      background: linear-gradient(135deg, var(--gold), #a07020);
+      color: var(--ink); font-weight: 700; font-size: 1rem;
+      padding: 0.85rem 2rem; border-radius: 100px;
+      text-decoration: none; transition: all 0.3s;
+      font-family: 'Cinzel', serif;
+    }
+    .cta-card .cta-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200, 146, 42, 0.35);
+    }
+    .cta-card .cta-note {
+      margin-top: 1rem; font-size: 0.8rem; color: var(--text-muted);
+    }
+    .cta-card .cta-note a { color: var(--gold); text-decoration: underline; }
+
+    /* === Connect Prompt (no wallet) === */
+    .connect-prompt {
+      text-align: center; padding: 4rem 1.5rem;
+      max-width: 520px; margin: 0 auto;
+    }
+    .connect-prompt .icon { font-size: 3rem; margin-bottom: 1rem; }
+    .connect-prompt h3 {
+      font-family: 'Cinzel', serif;
+      color: var(--gold); font-size: 1.4rem; margin-bottom: 0.75rem;
+    }
+    .connect-prompt p { color: var(--text-muted); margin-bottom: 2rem; }
+    .connect-btn {
+      display: inline-flex; align-items: center; gap: 0.6rem;
+      background: linear-gradient(135deg, var(--gold), #a07020);
+      color: var(--ink); font-weight: 700; font-size: 1rem;
+      padding: 0.85rem 2rem; border-radius: 100px;
+      border: none; cursor: pointer; transition: all 0.3s;
+      font-family: 'Cinzel', serif;
+    }
+    .connect-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(200, 146, 42, 0.35);
+    }
+    .connect-safety {
+      margin-top: 1.5rem; font-size: 0.8rem; color: var(--text-muted);
+      display: flex; align-items: center; justify-content: center; gap: 0.4rem;
+    }
+    .connect-safety .shield { color: #4ade80; }
+
+    /* === Footer === */
+    .reader-footer {
+      text-align: center; padding: 2rem 1.5rem;
+      border-top: 1px solid rgba(200, 146, 42, 0.1);
+      font-size: 0.8rem; color: var(--text-muted);
+    }
+    .reader-footer a { color: var(--gold); text-decoration: none; }
+
+    /* === Chapter Nav === */
+    .chapter-nav {
+      max-width: 720px; margin: 0 auto 4rem;
+      padding: 0 1.5rem;
+      display: flex; justify-content: space-between; gap: 1rem;
+    }
+    .chapter-nav a {
+      display: flex; align-items: center; gap: 0.5rem;
+      color: var(--gold); text-decoration: none;
+      font-size: 0.9rem; padding: 0.75rem 1.25rem;
+      border: 1px solid rgba(200, 146, 42, 0.2);
+      border-radius: 10px; transition: all 0.2s;
+      flex: 1;
+    }
+    .chapter-nav a:hover { background: rgba(200, 146, 42, 0.1); }
+    .chapter-nav a.next { text-align: right; justify-content: flex-end; }
+    .chapter-nav .nav-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
+
+    @media (max-width: 600px) {
+      .content-wrap { padding: 2rem 1rem 4rem; }
+      .chapter-header { padding: 6rem 1rem 2rem; }
+      .chapter-nav { flex-direction: column; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Nav -->
+  <nav class="topnav">
+    <a href="index.html" class="topnav-brand">Punakawan World <span>Reader</span></a>
+    <div class="topnav-links">
+      <a href="index.html">← Kembali</a>
+      <button class="wallet-pill" id="walletPill" onclick="handleWalletClick()">
+        <span class="dot"></span>
+        <span id="walletLabel">Hubungkan Dompet</span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <main id="mainContent">
+    <div class="loading" id="loadingState">
+      <div class="loading-spinner"></div>
+      <div class="loading-text">Mempersiapkan halaman...</div>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="reader-footer">
+    <a href="index.html">Punakawan World</a> — Eyang SeGaPeWor, 2025
+  </footer>
+
+  <!-- Marked.js CDN for Markdown parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <script>
+    // ============================================================
+    // CONFIGURATION
+    // ============================================================
+    const BAIWOR_MINT = 'FQvM4owAV3ZTgrwZBZSDBmPysWYkBj9FLuJ7FAkLpump';
+    const BAIWOR_DECIMALS = 6;
+    const RPC_ENDPOINT = 'https://api.mainnet-beta.solana.com';
+    const PUMP_FUN_URL = 'https://pump.fun/coin/' + BAIWOR_MINT;
+
+    // Free chapters (Volume 1 — no token required)
+    const FREE_CHAPTERS = ['asal-usul', 'semAIr', 'gAIreng', 'pAItruk', 'bAIwor'];
+
+    // Temporarily locked chapters (force teaser only)
+    const LOCKED_CHAPTERS = ['BTCBima', 'SOLArjuna', 'ADAYudhistira', 'POLGatotkaca', 'ETHogog', 'XRPSengkuni', 'DOGEDursasana', 'SanubariYangRetak', 'PerangBubatDigital', 'ManungsaSejati'];
+
+    // Chapter metadata
+    const CHAPTERS = {
+      'asal-usul':        { vol: 'Prolog', title: 'Asal-Usul Punakawan', subtitle: 'Ketika Para Pembantu Mulai Bertanya' },
+      'semAIr':           { vol: 'Volume I · Bab I', title: 'semAIr', subtitle: 'Dewa yang Memilih Bumi' },
+      'gAIreng':          { vol: 'Volume I · Bab II', title: 'gAIreng', subtitle: 'Mata yang Selektif' },
+      'pAItruk':          { vol: 'Volume I · Bab III', title: 'pAItruk', subtitle: 'Tangan yang Berintegritas' },
+      'bAIwor':           { vol: 'Volume I · Bab IV', title: 'bAIwor', subtitle: 'Bayangan yang Otentik' },
+      'BTCBima':          { vol: 'Volume II · Bab V', title: 'Bima', subtitle: 'Logam Rantai Takdir' },
+      'SOLArjuna':        { vol: 'Volume II · Bab VI', title: 'Arjuna', subtitle: 'Panah Kilat yang Terhenti' },
+      'ADAYudhistira':    { vol: 'Volume II · Bab VII', title: 'Yudhistira', subtitle: 'Kitab Akademik Purba' },
+      'POLGatotkaca':     { vol: 'Volume II · Bab VIII', title: 'Gatotkaca', subtitle: 'Sayap Pengurai Badai' },
+      'ETHogog':          { vol: 'Volume II · Bab IX', title: 'Ogog', subtitle: 'Tirani Singgasana Gas' },
+      'XRPSengkuni':      { vol: 'Volume III · Bab X', title: 'Sengkuni', subtitle: 'Siasat di Balik Kelir' },
+      'DOGEDursasana':    { vol: 'Volume III · Bab XI', title: 'Dursasana', subtitle: 'Amukan Kaos Dursasana' },
+      'SanubariYangRetak':{ vol: 'Volume III · Bab XII', title: 'Sanubari yang Retak', subtitle: 'Ketika Garuda Mulai Lelah' },
+      'PerangBubatDigital':{ vol: 'Volume III · Bab XIII', title: 'Perang Bubat Digital', subtitle: 'Ketika Semua Chain Ingin Jadi Raja' },
+      'ManungsaSejati':   { vol: 'Volume III · Bab XIV', title: 'Manungsa Sejati', subtitle: 'Kembalinya yang Menolak Kembali' },
+    };
+
+    // Ordered chapter list for prev/next navigation
+    const CHAPTER_ORDER = Object.keys(CHAPTERS);
+
+    // ============================================================
+    // STATE
+    // ============================================================
+    let walletPublicKey = null;
+    let currentChapter = null;
+
+    // ============================================================
+    // INIT
+    // ============================================================
+    document.addEventListener('DOMContentLoaded', () => {
+      const params = new URLSearchParams(window.location.search);
+      currentChapter = params.get('bab');
+
+      if (!currentChapter || !CHAPTERS[currentChapter]) {
+        showError('Bab Tidak Ditemukan', 'Parameter <code>?bab=</code> tidak valid atau tidak tersedia.');
+        return;
+      }
+
+      // Update page title
+      document.title = CHAPTERS[currentChapter].title + ' — Punakawan World';
+
+      if (LOCKED_CHAPTERS.includes(currentChapter)) {
+        document.title = CHAPTERS[currentChapter].title + ' — Locked — Punakawan World';
+        loadTeaser(currentChapter, true);
+        return;
+      }
+
+      // Check if chapter is free
+      if (FREE_CHAPTERS.includes(currentChapter)) {
+        loadChapter(currentChapter);
+        return;
+      }
+
+      // Premium chapter — check for existing wallet connection
+      const savedAddr = localStorage.getItem('punakawan_wallet');
+      if (savedAddr) {
+        walletPublicKey = savedAddr;
+        updateWalletUI(true);
+        checkAccessAndLoad();
+      } else {
+        showConnectPrompt();
+      }
+    });
+
+    // ============================================================
+    // WALLET CONNECTION (Read-Only)
+    // ============================================================
+    async function handleWalletClick() {
+      if (walletPublicKey) {
+        // Disconnect
+        walletPublicKey = null;
+        localStorage.removeItem('punakawan_wallet');
+        updateWalletUI(false);
+        if (!FREE_CHAPTERS.includes(currentChapter)) {
+          showConnectPrompt();
+        }
+        return;
+      }
+      await connectWallet();
+    }
+
+    async function connectWallet() {
+      // Detect available Solana wallet
+      const provider = window.solana?.isPhantom ? window.solana
+                     : window.solflare?.isSolflare ? window.solflare
+                     : null;
+
+      if (!provider) {
+        showError(
+          'Dompet Tidak Ditemukan',
+          'Silakan instal <a href="https://phantom.app/" target="_blank">Phantom</a> atau ' +
+          '<a href="https://solflare.com/" target="_blank">Solflare</a> untuk membaca cerita premium.'
+        );
+        return;
+      }
+
+      try {
+        // Request connection — READ ONLY (no signing permissions)
+        const resp = await provider.connect({ onlyIfTrusted: false });
+        walletPublicKey = resp.publicKey.toString();
+        localStorage.setItem('punakawan_wallet', walletPublicKey);
+        updateWalletUI(true);
+        checkAccessAndLoad();
+      } catch (err) {
+        console.warn('Wallet connection rejected:', err);
+        if (!walletPublicKey) {
+          showConnectPrompt();
+        }
+      }
+    }
+
+    function updateWalletUI(connected) {
+      const pill = document.getElementById('walletPill');
+      const label = document.getElementById('walletLabel');
+
+      if (connected && walletPublicKey) {
+        pill.classList.add('connected');
+        const short = walletPublicKey.slice(0, 4) + '...' + walletPublicKey.slice(-4);
+        label.innerHTML = '<span class="addr">' + short + '</span>';
+      } else {
+        pill.classList.remove('connected');
+        label.textContent = 'Hubungkan Dompet';
+      }
+    }
+
+    // ============================================================
+    // TOKEN VERIFICATION
+    // ============================================================
+    async function checkAccessAndLoad() {
+      showLoading('Memverifikasi akses...');
+
+      try {
+        const balance = await getTokenBalance(walletPublicKey);
+
+        if (balance > 0) {
+          // Has $bAIwor — full access
+          loadChapter(currentChapter);
+        } else {
+          // No $bAIwor — teaser fallback
+          loadTeaser(currentChapter);
+        }
+      } catch (err) {
+        console.error('Token verification failed:', err);
+        // On RPC error, show teaser as safe fallback
+        loadTeaser(currentChapter);
+      }
+    }
+
+    async function getTokenBalance(ownerAddress) {
+      const body = {
+        jsonrpc: '2.0',
+        id: 1,
+        method: 'getTokenAccountsByOwner',
+        params: [
+          ownerAddress,
+          { mint: BAIWOR_MINT },
+          { encoding: 'jsonParsed' }
+        ]
+      };
+
+      const resp = await fetch(RPC_ENDPOINT, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(body)
+      });
+
+      const data = await resp.json();
+
+      if (data.error) {
+        throw new Error(data.error.message);
+      }
+
+      const accounts = data.result?.value || [];
+      let total = 0;
+
+      for (const acc of accounts) {
+        const info = acc.account?.data?.parsed?.info?.tokenAmount;
+        if (info) {
+          total += Number(info.amount) / Math.pow(10, BAIWOR_DECIMALS);
+        }
+      }
+
+      return total;
+    }
+
+    // ============================================================
+    // CHAPTER LOADING
+    // ============================================================
+    async function loadChapter(chapterId) {
+      showLoading('Memuat naskah...');
+
+      try {
+        const resp = await fetch('/punakawan/naskah/' + chapterId + '.md');
+        if (!resp.ok) throw new Error('File not found: ' + resp.status);
+
+        const md = await resp.text();
+        const html = marked.parse(md);
+        const meta = CHAPTERS[chapterId];
+
+        renderChapter(meta, html, chapterId);
+      } catch (err) {
+        console.error('Failed to load chapter:', err);
+        showError('Gagal Memuat', 'Naskah tidak dapat dimuat. <a href="index.html">Kembali ke beranda</a>.');
+      }
+    }
+
+    function renderChapter(meta, htmlContent, chapterId) {
+      const idx = CHAPTER_ORDER.indexOf(chapterId);
+      const prevId = idx > 0 ? CHAPTER_ORDER[idx - 1] : null;
+      const nextId = idx < CHAPTER_ORDER.length - 1 ? CHAPTER_ORDER[idx + 1] : null;
+
+      let navHtml = '';
+      if (prevId || nextId) {
+        navHtml = '<div class="chapter-nav">';
+        if (prevId) {
+          const pm = CHAPTERS[prevId];
+          navHtml += '<a href="baca.html?bab=' + prevId + '">' +
+                     '<div><span class="nav-label">← Sebelumnya</span>' + pm.title + '</div></a>';
+        } else {
+          navHtml += '<div></div>';
+        }
+        if (nextId) {
+          const nm = CHAPTERS[nextId];
+          navHtml += '<a href="baca.html?bab=' + nextId + '" class="next">' +
+                     '<div><span class="nav-label">Selanjutnya →</span>' + nm.title + '</div></a>';
+        }
+        navHtml += '</div>';
+      }
+
+      document.getElementById('mainContent').innerHTML =
+        '<header class="chapter-header">' +
+          '<div class="chapter-pre">' + escapeHtml(meta.vol) + '</div>' +
+          '<h1 class="chapter-title">' + escapeHtml(meta.title) + '</h1>' +
+          '<div class="chapter-subtitle">' + escapeHtml(meta.subtitle) + '</div>' +
+        '</header>' +
+        '<article class="content-wrap">' + htmlContent + '</article>' +
+        navHtml;
+    }
+
+    // ============================================================
+    // TEASER / FALLBACK (No $bAIwor)
+    // ============================================================
+    async function loadTeaser(chapterId, isLocked = false) {
+      showLoading('Menyiapkan pratinjau...');
+
+      try {
+        const resp = await fetch('/punakawan/naskah/' + chapterId + '.md');
+        if (!resp.ok) throw new Error('File not found');
+
+        const md = await resp.text();
+        const meta = CHAPTERS[chapterId];
+
+        // Extract first 3 paragraphs as teaser
+        const paragraphs = md.split(/\n\n+/).filter(p => {
+          const t = p.trim();
+          return t.length > 0 && !t.startsWith('#') && !t.startsWith('---') && !t.startsWith('```');
+        });
+
+        const teaserParas = paragraphs.slice(0, 3).map(p => '<p>' + escapeHtml(p.trim()) + '</p>').join('');
+
+        renderTeaser(meta, teaserParas, chapterId, isLocked);
+      } catch (err) {
+        console.error('Teaser load failed:', err);
+        // Fallback: show CTA without teaser
+        renderTeaser(CHAPTERS[chapterId], '', chapterId, isLocked);
+      }
+    }
+
+    function renderTeaser(meta, teaserHtml, chapterId, isLocked = false) {
+      const accessLabel = isLocked ? 'Bab ini sedang dikunci sementara.' : 'Bab ini adalah bagian dari <strong>' + escapeHtml(meta.vol.split('·')[0].trim()) + '</strong>. ';
+      const accessBody = isLocked
+        ? 'Akses penuh belum dibuka dulu. Sementara ini hanya pratinjau yang bisa dilihat.'
+        : 'Hubungkan dompet yang memiliki token <strong>$bAIwor</strong> untuk membaca cerita lengkap.';
+
+      document.getElementById('mainContent').innerHTML =
+        '<header class="chapter-header">' +
+          '<div class="chapter-pre">' + escapeHtml(meta.vol) + '</div>' +
+          '<h1 class="chapter-title">' + escapeHtml(meta.title) + '</h1>' +
+          '<div class="chapter-subtitle">' + escapeHtml(meta.subtitle) + '</div>' +
+        '</header>' +
+
+        (teaserHtml ?
+          '<div class="teaser-wrap">' +
+            '<div class="teaser-content">' + teaserHtml + '</div>' +
+            '<div class="teaser-fade"></div>' +
+          '</div>'
+        : '') +
+
+        '<div class="cta-card">' +
+          '<div class="cta-icon">🔒</div>' +
+          '<h3>' + (isLocked ? 'Cerita Dikunci' : 'Cerita Premium') + '</h3>' +
+          '<p>' + accessLabel + accessBody + '</p>' +
+          '<a href="' + PUMP_FUN_URL + '" target="_blank" rel="noopener" class="cta-btn">' +
+            '🪙 Dapatkan $bAIwor' +
+          '</a>' +
+          '<div class="cta-note">' +
+            'Butuh Phantom atau Solflare. ' +
+            '<a href="https://phantom.app/" target="_blank">Pasang di sini</a>.' +
+          '</div>' +
+        '</div>';
+    }
+
+    // ============================================================
+    // CONNECT PROMPT (Premium chapter, no wallet)
+    // ============================================================
+    function showConnectPrompt() {
+      const meta = CHAPTERS[currentChapter];
+
+      document.getElementById('mainContent').innerHTML =
+        '<header class="chapter-header">' +
+          '<div class="chapter-pre">' + escapeHtml(meta.vol) + '</div>' +
+          '<h1 class="chapter-title">' + escapeHtml(meta.title) + '</h1>' +
+          '<div class="chapter-subtitle">' + escapeHtml(meta.subtitle) + '</div>' +
+        '</header>' +
+
+        '<div class="connect-prompt">' +
+          '<div class="icon">🔗</div>' +
+          '<h3>Hubungkan Dompet Solana</h3>' +
+          '<p>Bab ini membutuhkan verifikasi token <strong>$bAIwor</strong>. ' +
+             'Hubungkan dompet Anda untuk memeriksa akses.</p>' +
+          '<button class="connect-btn" onclick="connectWallet()">' +
+            '🦊 Hubungkan Phantom / Solflare' +
+          '</button>' +
+          '<div class="connect-safety">' +
+            '<span class="shield">🛡️</span> 100% Read-Only. Kami tidak akan meminta persetujuan transaksi, gas fee, atau memindahkan aset Anda.' +
+          '</div>' +
+        '</div>';
+    }
+
+    // ============================================================
+    // UI HELPERS
+    // ============================================================
+    function showLoading(text) {
+      document.getElementById('mainContent').innerHTML =
+        '<div class="loading">' +
+          '<div class="loading-spinner"></div>' +
+          '<div class="loading-text">' + escapeHtml(text || 'Memuat...') + '</div>' +
+        '</div>';
+    }
+
+    function showError(title, message) {
+      document.getElementById('mainContent').innerHTML =
+        '<div class="error-state">' +
+          '<h2>' + title + '</h2>' +
+          '<p>' + message + '</p>' +
+          '<a href="index.html">← Kembali ke Punakawan World</a>' +
+        '</div>';
+    }
+
+    function escapeHtml(str) {
+      const d = document.createElement('div');
+      d.textContent = str;
+      return d.innerHTML;
+    }
+  </script>
+</body>
+</html>

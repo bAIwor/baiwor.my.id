@@ -1,0 +1,29 @@
+User-agent: *
+Allow: /
+Sitemap: https://baiwor.my.id/sitemap.xml
+
+# Izinkan semua crawler utama untuk SEO
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yahoo! Slurp
+Allow: /
+
+# Blokir crawler AI training
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Google-Extended
+Disallow: /

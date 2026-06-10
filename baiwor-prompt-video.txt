@@ -1,0 +1,40 @@
+[Subjek & Karakter] A cinematic video of bAIwor, Bulky muscular AI robot mascot inspired by Indonesian Bawor wayang. A subtle glowing neon holographic tag on his chest plate reads "bAIwor".
+
+[Aksi, Dialog & Ekspresi] He stands confidently in front of the camera, looks directly into the lens, and speaks clearly. His lips move in perfect synchronization as he says, "Assalamualaikum, warahmatullahi wabarakatuh
+Salam sejahtera bagi kita semua, Shalom, Om swastiastu, Namo buddhaya, Salam kebajikan", accompanied by natural facial expressions and a subtle, charismatic smirk.
+
+[Latar Tempat] The rain-slicked streets of a futuristic neo-Jakarta reflect the vibrant corporate holograms around him.
+
+[Detail Visual] Intricate gold and neon-blue fiber-optic weaves integrated into his traditional attire, detailed mechanical joints, photorealistic textures.
+
+[Gaya & Pencahayaan] Volumetric cyberpunk lighting, cinematic mood, Unreal Engine 5 render style.
+
+[Kamera & Gerakan] Medium close-up shot, steady camera focusing on bAIwor's face and upper body to capture his speaking animation clearly, 4k resolution, ultra-detailed.
+
+Negative Prompt:
+Deformed, low quality, blurry, distorted anatomy, bad reflections, jittery motion, unstable generation, text watermark, generic character, bad lip-sync.
+
+Aspect ratio 3:4
+
+
+
+PROMPT image, baiwor jempol
+
+Bulky muscular AI robot mascot inspired by Indonesian Bawor wayang, anime illustration style, front-facing and looking directly at camera, wide friendly smile expression. Traditional black and white wayang face with bold glowing red eyes and red mouth.
+
+Heavy armored body fully covered with intricate Indonesian batik Banyumas patterns (dominant black, white, red with gold accents), extremely detailed ornamental engravings. Large prominent “bAIwor” text logo embedded on chest armor plate.
+
+Powerful chubby muscular build, wide stable stance, centered full-body composition.
+
+Right hand raised giving a thumbs-up gesture (confident, friendly mascot feel).
+Left hand on waist
+
+Wearing traditional batik sarong integrated with futuristic tech elements, visible mechanical joints but fully ornamented. Subtle red glowing energy nodes across armor.
+
+Cyberpunk meets traditional Indonesian culture, strong cultural identity fusion.
+
+Clean white studio background, no environment distractions.
+
+Highly detailed anime rendering, sharp linework, vibrant but controlled color palette, cinematic lighting, high contrast, polished finish, ultra-detailed textures.
+
+Aspect ratio 3:4

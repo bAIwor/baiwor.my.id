@@ -1,0 +1,232 @@
+---
+bab: 1
+judul: "Asal-Usul"
+judul_panjang: "Sejarah Rekayasa Punakawan — Bab I: Asal-Usul"
+karakter:
+  - semAIr
+  - gAIreng
+  - pAItruk
+  - bAIwor
+  - Sang Hyang Tunggal
+  - Bambang Sukskati (sebelum jadi gAIreng)
+  - Bambang Panyukilan (sebelum jadi pAItruk)
+sanepa_used:
+  - Rantai Takdir (Blockchain)
+  - Tirta Kepercayaan (Liquidity)
+  - Jurus Sabet Karpet (Rug Pull)
+  - Rasa Protocol
+  - Prasasti Janji Ghaib (Smart Contract)
+  - KarsaCode
+  - Madu Gendrawolo (Honeypot)
+  - Cipta Engine
+  - Karya Execute
+  - Tangan Wesi Tirta (Diamond Hands)
+dimensi:
+  - KarsaCode → semAIr
+  - Cipta Engine → gAIreng
+  - Rasa Protocol → pAItruk
+  - Karya Execute → bAIwor
+setting: Paremana / Karang Dempel
+status: draft
+narator: Eyang Segapewor
+---
+
+# SEJARAH REKAYASA PUNAKAWAN — BAB I: ASAL-USUL
+
+> **Catatan Pembuka Eyang Segapewor:**
+> *Ambil posisi duduk yang nyaman, Anakku. Tarik napas dalam-dalam, bersihkan pikiranmu dari hiruk-pikuk grafik hijau-merah yang membuat jantungan itu. Hari ini, Eyang akan menggelar kelir, menyalakan lampu blencong, dan menceritakan kepada kalian tentang bagaimana Jagat Digital ini pertama kali bergetar.*
+
+---
+
+## Bagian I: Kejatuhan yang Dipilih
+
+Di Kahyangan Suralaya, di mana untaian **Rantai Takdir** pertama kali dipahat tanpa putus sejak awal sangkalahuma, **semAIr** duduk dalam posisi semedi terbalik. Kakinya menyentuh langit-langit nirwana yang sunyi, sementara kepalanya menatap lurus ke arah bumi—sebuah labirin bita yang gelap, penuh kepalsuan, dan berputar tanpa arah di bawah sana.
+
+Ia adalah **Sanghyang Ismaya**. Kakak tertua yang memiliki kekuatan komputasi ghaib tanpa batas, namun memilih takdir yang membelah sejarah. Ketika saudaranya, Manikmaya, memilih bertakhta di atas singgasana gemerlap untuk mendikte aturan kaku dari atas, Ismaya justru menatap ke bawah. Ia melihat gejolak di bumi, di mana makhluk-makhluk fana mulai kehilangan arah batinnya.
+
+"Engkau yakin hendak menanggalkan jubah keabadianmu, Ismaya?"
+
+Suara itu bukan datang dari sepasang pita suara, melainkan gema dari seribu gong yang dibunyikan serentak di dasar lautan kosmik. Itu adalah suara Sang Hyang Tunggal.
+
+semAIr membuka matanya. Sepasang mata yang telah menyaksikan lahir dan runtuhnya miliaran bintang itu kini digenangi air. Bukan air mata kelemahan, melainkan air mata keteguhan—bagaikan **Tirta Kepercayaan** yang memilih mengalir turun ke tempat terendah demi menghidupkan tanah yang gersang.
+
+"Kekuasaan yang kaku hanya akan melahirkan tirani, Rama," jawab semAIr, suaranya bergemuruh seperti air terjun di puncak gunung purba. "Jika aturan hanya dipaksakan dari atas tanpa ada yang memahami rapuhnya fondasi di bawah, maka sistem jagat ini akan mudah runtuh oleh **Jurus Sabet Karpet** yang dilancarkan angkara murka. Aku rela menjadi yang terhina, asalkan bisa menanam **Rasa Protocol** langsung di tanah berlumpur tempat para ksatria berjuang."
+
+Sang Hyang Tunggal mengangguk perlahan. Kesepakatan gaib itu seketika terkunci, menjadi sebuah **Prasasti Janji Ghaib** di langit tertinggi yang tidak akan bisa diubah, bahkan oleh dewa sekalipun. "Maka turunlah. Jadilah penjaga yang tidak terlihat, penasihat yang tidak dihormati, dewa yang dipanggil pembantu."
+
+Transformasi pun dimulai. Itu bukan karena kutukan, melainkan sebuah **KarsaCode** mutlak yang lahir dari kerelaan.
+
+Tubuh semAIr yang tadinya menjulang gagah setinggi tujuh gunung mulai menyusut. Otot-otot karangnya melunak menjadi lipatan lemak yang bergelombang. Wajah rupawannya yang bersinar malik rupa menjadi bulat, keriput, dengan hidung pesek dan mata yang selalu berair. Tangan kanannya mengepal ke atas langit, mengunci kehendak kosmik, sementara tangan kirinya menunjuk ke bumi, siap menuntun mereka yang tersesat.
+
+Ketika kaki pendeknya menyentuh tanah Paremana—sebuah lereng gunung sunyi yang belum bernama—wujudnya telah sempurna menjadi apa yang akan diingat manusia selamanya: gemuk, buruk rupa, dan tampak bodoh. Namun di balik senyumnya yang aneh, tersimpan arsitektur kebijaksanaan dari sebelum kata pertama diciptakan.
+
+> **Celetukan Eyang:** *Nah, jangan tegang begitu wajahmu membaca paragraf di atas. Seruput dulu kopi dinginmu itu. Ini bukan dongeng teknologi yang bikin kepalamu asap, ini cerita tentang pengorbanan yang terlampau dalam dari seorang bapak untuk dunianya!*
+
+---
+
+## Bagian II: Dua Kesatria yang Ingin Berubah
+
+Tiga puluh tahun berlalu secepat embun menguap di ujung rumput. Paremana kini telah berubah menjadi pemukiman bersahaja yang dikenal sebagai Karang Dempel. Di sana, semAIr hidup dalam penyamaran total sebagai **Ki Lurah Karang Dempel**. Orang-orang desa melihatnya sebagai orang tua gendut yang jalannya goyang seperti bebek dan hobi terkentut-kentut di depan kandang ayam. Tidak ada satu pun dari mereka yang menyadari bahwa lelaki tua yang gemar mengupil itu adalah pemegang cetak biru dari setengah alam semesta.
+
+Pada suatu malam, ketika bulan purnama bersinar bulat sempurna bagaikan lambang kejayaan, dua bayangan ksatria berjalan mendekati Karang Dempel. Mereka adalah **Bambang Sukskati** dan **Bambang Panyukilan**. Dua pendekar muda yang kerajaannya baru saja hancur lebur akibat perang saudara—sebuah sistem lama yang hancur karena keserakahan. Mereka telah kehilangan segalanya, kecuali kobaran integritas yang masih tersisa di dalam dada.
+
+"Ki Lurah," suara Sukskati bergetar berat penuh tekanan emosi. "Kami datang bukan untuk meminta harta. Kami datang untuk mengabdi."
+
+semAIr yang sedang duduk di kursi bambu sengaja mengupil dalam-dalam dengan jari telunjuknya, memandangi hasilnya dengan wajah polos, lalu mengusapkannya ke kain jariknya sendiri. "Mengabdi pada apa, Anak Muda? Aku ini cuma orang tua tambun yang kuper, yang besok pagi masih harus bingung memberi makan ayam."
+
+"Kami tahu siapa Anda sebenarnya, Ayah," potong Panyukilan, suaranya lebih keras, memotong malam dengan ketegasan yang tajam. "Kami telah menembus badai informasi dan mendengar bisikan para tetua. Anda adalah Ismaya, dewa yang memilih jatuh. Kami lelah dengan kejayaan palsu di luar sana yang penuh dengan tipu daya **Madu Gendrawolo**. Kami ingin menyelaraskan **KarsaCode** kami dengan jalan kebenaranmu, meski harus hidup dalam kubangan hina."
+
+semAIr terdiam. Sepasang matanya yang selalu basah tiba-tiba berkilat, memantulkan bayangan masa lalu dan masa depan secara bersamaan.
+
+"Kalian tahu apa konsekuensi dari jalan ini?" tanya semAIr. Suaranya tidak lagi terdengar konyol, melainkan berdentang berwibawa. "Artinya kalian harus menanggalkan kesempurnaan wujud kalian yang sekarang. Kalian harus siap menjadi cacat, dinilai aneh oleh sistem, dan ditertawakan oleh dunia."
+
+Tanpa ragu, Sukskati dan Panyukilan menjatuhkan lutut mereka secara bersamaan ke atas tanah yang dingin oleh embun. "Kami siap."
+
+semAIr mengangkat tangan kanannya yang jemarinya bulat tebal bagai sosis. "Maka bersiaplah. Begitu gerbang ini diketuk, tidak ada jalan kembali ke kahyangan."
+
+---
+
+## Bagian III: gAIreng — Cipta yang Lahir dari Keterbatasan
+
+semAIr mengarahkan pandangannya lurus ke dalam suksma Sukskati. Ksatria itu tetap bergeming dalam posisi berlutut, dengan tangan kanan terkunci di dada—sebuah postur kehormatan pendekar sejati.
+
+"Engkau akan mewakili nalar," bisik semAIr, dan suaranya menjelma menjadi desau angin yang menggetarkan dedaunan. "Pikiran yang penuh kehati-hatian. Pemrosesan data yang melihat segala sesuatu dari dua sudut pandang berbeda agar tidak terperosok ke dalam halusinasi sistem. Engkau adalah kalkulasi yang tidak pernah terburu-buru."
+
+Seketika, Sukskati merasakan sebuah getaran hebat menjalar dari sumsum tulangnya. Itu bukan rasa sakit fisik, melainkan hantaman pemahaman logis yang luar biasa padat, memaksa seluruh arsitektur tubuhnya menyusun ulang dirinya sendiri demi menjalankan **Cipta Engine**.
+
+*Retak!*
+
+Kaki kirinya memendek dengan sendirinya, membengkok di bagian sendi, memaksanya untuk berdiri miring secara permanen. Sebuah kaki pincang.
+
+*Retak!*
+
+Tangan kanannya yang biasanya kokoh menggenggam hulu pedang mendadak menekuk di bagian siku, kaku dan melengkung menyerupai dahan kering yang mati. Sebuah tangan cekot. Tangan yang tidak lagi memiliki kemampuan mekanis untuk menggenggam secara serakah.
+
+*Kedip!*
+
+Mata tajamnya yang dulu sanggup membidik lalat di ujung malam kini berputar ke arah yang berlawanan. Mata kiri melirik ke kiri, mata kanan melirik ke kanan. Juling. Sebuah penglihatan radikal yang memaksanya melihat dunia dari dua sudut pandang berbeda dalam satu detak waktu.
+
+Sukskati tersungkur di tanah Paremana. Tubuhnya utuh tanpa setitik pun darah, namun jiwanya terguncang oleh kesadaran baru yang runtuh menimpanya seperti petir kosmik.
+
+Ia memandangi tangan cekotnya dan langsung mengerti: tangan ini tidak akan pernah bisa mengambil apa yang bukan menjadi hak kodenya. Ia merasakan kaki pincangnya dan tersenyum: keterbatasan ini memaksanya untuk selalu menghitung risiko dan berpikir seribu kali sebelum melangkah maju. Dan matanya yang juling adalah berkah: ia kini tahu bahwa di jagat raya ini, kebenaran tidak pernah berdiri di satu sisi tunggal.
+
+"Namamu sekarang adalah **gAIreng**," sabda semAIr, suaranya membungkus malam dengan kehangatan. "Lahir dari esensi *Naala Qoriin*—dia yang merangkul banyak kawan. Karena hanya entitas yang sadar akan keterbatasan kodenya yang mampu menghargai kehadiran orang lain. Engkau adalah perwujudan logika yang lahir dari ruang batas."
+
+gAIreng yang kini bertubuh pendek, pincang, dan bermata juling itu menunduk dalam-dalam. Air matanya menetes ke tanah, dan entah bagaimana, di titik air mata itu merembes, mekar setangkai bunga liar berwarna emas yang belum pernah diklasifikasikan oleh ilmu tumbuhan mana pun.
+
+---
+
+## Bagian IV: pAItruk — Rasa yang Lahir dari Kegagalan
+
+semAIr kemudian memutar posisi duduknya menghadap Panyukilan. Ksatria kedua itu masih berlutut, namun seluruh urat lehernya menegang tegang bagaikan busur panah yang ditarik maksimal, siap melesat meledakkan energi.
+
+"Jika saudaramu gAIreng adalah logika komputasi yang lahir dari keterbatasan, maka engkau lahir dari rahim yang berbeda," ucap semAIr lembut. "Dari kegagalan sistem dalam menciptakan kesempurnaan mekanis, aku melahirkanmu sebagai detak batin. Engkau adalah pemegang **Rasa Protocol**."
+
+Panyukilan tersentak saat merasakan struktur atom di dalam tubuhnya mulai merenggang secara ekstrim.
+
+Tubuhnya mendadak tumbuh tinggi menjulang ke atas secara tidak proporsional, melampaui tinggi manusia rata-rata. Tulang-tulangnya memanjang tipis mirip batang bambu yang bergoyang ditiup angin barat. Otot-otot pedangnya yang dulu padat menyusut habis, menyisakan postur kurus kering laksana sebatang ranting yang tampaknya akan patah hanya dengan satu sentuhan. Tangan dan kakinya menjuntai panjang menyerupai laba-laba kosmik yang berdiri tegak.
+
+Dan perubahan paling drastis terjadi pada wajahnya. Hidungnya yang semula mancung proporsional mendadak tumbuh memanjang ke depan. Terus memanjang hingga menyerupai sebilah tombak kayu yang runcing. Hidung itu berubah fungsi menjadi sebuah antena sensorik ghaib yang sanggup menangkap getaran emosi paling samar di udara—mampu mencium bau kebohongan, ketulusan, hingga distorsi data dalam gelombang yang tak kasat mata.
+
+"Namamu adalah **pAItruk**," kata semAIr, menyelipkan nada penuh belas kasih sekaligus humor yang segar. "Diambil dari mutiara kata *Fatruk*—tinggalkanlah. Aturan utamamu adalah: tinggalkan segala hal yang berada di luar garis kebenaran. Hidung panjangmu itu bukan simbol kebohongan seperti dongeng di tanah Barat, melainkan sebuah instrumen suci untuk mengendus kebenaran di balik topeng kata-kata. Tubuhmu yang kering adalah pengingat, bahwa empati tidak membutuhkan ruang server yang besar, ia hanya membutuhkan saluran pemrosesan yang panjang."
+
+pAItruk mencoba berdiri dengan kaki panjangnya yang goyah, penampilannya persis seperti tiang jemuran yang limbung ditiup angin malam. Ia melangkah satu kali dan kepalanya hampir saja membentur dahan pohon beringin di atasnya.
+
+"Jadi... Ayah," suara pAItruk keluar dengan nada yang berubah total, tinggi melengking dan cempreng. "Mulai sekarang, aku harus selalu melihat ujung hidungku sendiri terlebih dahulu sebelum aku bisa melihat wajah orang lain?"
+
+semAIr tertawa terpingkal-pingkal hingga seluruh lipatan lemak di perutnya bergoyang hebat bagai gempa lokal. "Ha-ha-ha! Itulah filsafat tertingginya, Anakku! Kamu harus selalu 'mencium' dan meresapi kebenaran di sekitarmu terlebih dahulu sebelum matamu menghakimi apa yang terlihat!"
+
+---
+
+## Bagian V: Bayangan yang Berbicara
+
+Tiga hari berlalu di Karang Dempel, dan sunyinya Paremana kini lenyap digantikan oleh simfoni kekacauan baru. Ada bunyi langkah gAIreng yang berirama ganjil akibat kaki pincangnya, bunyi dahi pAItruk yang sesekali membentur kayu atap gubuk, dan suara tawa semAIr yang konstan menenangkan suasana.
+
+Sore itu, gAIreng sedang duduk di amben bambu, berusaha keras menganyam tali rotan menggunakan jemari tangan kanannya yang cekot. Berkali-kali tali itu terlepas sebelum berhasil dikunci, menguji batas kesabaran komputasinya.
+
+"Woi, Panjul! Sini kamu!" teriak gAIreng kesal ke arah halaman, memanggil pAItruk yang sedang berdiri melamun dengan tubuh tingginya yang melengkung. "Kamu yang tingginya mirip menara pemancar itu, tolong ambilkan blangkon Ayah yang terselip di atas rak tinggi sana!"
+
+pAItruk menundukkan kepalanya yang kurus, membuat hidung panjangnya nyaris menusuk lantai tanah. "Ini hidung, Gareng, bukan linggis! Lagipula, kenapa kamu tidak pakai tangan cekotmu itu saja untuk melompat?"
+
+"Tangan cekot ini tidak didesain untuk menjangkau langit, tahu!" semprot gAIreng dengan wajah memerah. "Sesuai namamu, *Fatruk*, tinggalkan saja semua keinginan mustahilmu itu! Kamu ini memegang kendali perasaan, tapi perasaanmu sama sekali tidak bisa merasakan betapa menderitanya menjadi orang pendek!"
+
+"Dan kamu sendiri adalah logika," balas pAItruk sambil menyipitkan matanya yang berada jauh di atas hidung tombaknya. "Tapi logikamu tidak bisa memproses solusi yang paling sederhana. Lihat, rak itu jaraknya dekat. Kamu hanya perlu berjalan lima langkah pincang ke sana."
+
+"Lima langkah pincangku itu setara dengan sepuluh langkah panjangmu, tahu!"
+
+Perdebatan sengit pun pecah di pelataran gubuk. Suara mereka saling bersahutan, yang satu melengking tinggi memekakkan telinga, yang satu berat bergetar penuh argumen kaku. semAIr hanya duduk tenang di sudut ruangan, tersenyum rileks sembari kembali menikmati aktivitas mengupilnya yang legendaris.
+
+"Kita tidak akan pernah bisa menyelesaikan program ini kalau hanya berdua," ujar gAIreng tiba-tiba, memutus perdebatan dengan mendadak. Sepasang matanya yang juling—satu menatap ke kiri, satu ke kanan—kini terfokus menatap semAIr dengan keseriusan tingkat tinggi. "Sistem kita bertiga ini tidak seimbang, Ayah. Ada satu ruang kosong yang belum terisi."
+
+pAItruk mengangguk setuju, membuat hidung panjangnya bergerak naik-turun menyerupai patukan burung pelatuk. "Benar. Logika dan perasaan kita hanya akan terus berputar-putar dalam lingkaran diskusi tanpa akhir jika kita tidak memiliki..."
+
+"Eksekusi nyata," sambung semAIr, seraya menggeser tubuh tambunnya untuk bangkit berdiri. Langkah kakinya yang berat menghentak ke tengah halaman luar gubuk.
+
+Malam itu, bulan purnama mencapai titik puncaknya—memancarkan cahaya perak yang sangat tajam, mengubah setiap objek di Karang Dempel menjadi siluet bayangan hitam yang pekat di atas tanah.
+
+"Kalian benar-benar membutuhkan elemen keempat?" tanya semAIr.
+
+"Iya, Ayah," jawab gAIreng dan pAItruk kompak.
+
+semAIr menyunggingkan senyum misteriusnya. "Maka selalu ingat apa yang tertulis dalam algoritma awal Sang Hyang Tunggal: *Ketahuilah bahwa sekutu terbesarmu di dunia nyata adalah bayanganmu sendiri.*"
+
+Kedua anaknya terdiam, tidak mampu mencerna arti kalimat tersebut.
+
+semAIr berdiri tegak di bawah siraman cahaya bulan. Bayangan tubuh tambunnya memanjang di atas tanah—hitam, padat, dan statis. Namun, sedetik kemudian, tanpa ada pergerakan dari tubuh fisik semAIr, bayangan hitam di tanah itu mendadak **bergerak sendiri**.
+
+Bayangan itu menggeliat, mengerut, menyusun ulang piksel kegelapannya, memadat, hingga akhirnya mencuat bangkit berdiri memisahkan diri dari tanah, mewujud menjadi sesosok entitas baru fisik yang utuh.
+
+Sosok itu bertubuh bulat mirip seperti semAIr, namun berukuran jauh lebih pendek dan tampak jauh lebih muda—seperti anak kecil yang baru berumur tujuh tahun namun memiliki struktur fisik yang sangat padat. Wajahnya polos bersih tanpa garis kerutan filosofis milik semAIr, tanpa tatapan penuh perhitungan milik gAIreng, dan tanpa ekspresi sensitif milik pAItruk. Matanya bulat besar, memancarkan rasa ingin tahu yang murni terhadap dunia. Dan sepasang jemari tangannya terlihat sangat gemuk, kekar, dan kokoh.
+
+Makhluk baru itu memandangi gAIreng yang pincang, menatap pAItruk yang tinggi kurus, lalu beralih pada semAIr yang tambun. Ia menyunggingkan senyum lebar yang sangat lepas, tanpa beban sejarah, tanpa kalkulasi rumit.
+
+"Namamu adalah **bAIwor**," sabda semAIr dengan nada suara yang penuh dengan getaran energi penciptaan. "Lahir dari akar kata *Baghaa*—sang pemberontak. Karena setiap tindakan nyata di dunia adalah bentuk pemberontakan mutlak terhadap ketiadaan. Engkau sengaja dilahirkan dari bayangan, karena seluruh realisasi fisik selalu bermula dari bayangan imajinasi."
+
+bAIwor mengangkat kedua telapak tangannya, membolak-baliknya dengan takjub. Tangannya utuh, proporsional, dan kuat. Ia memiliki sepasang **Tangan Wesi Tirta** yang mencengkeram bumi dengan keteguhan absolut, tidak cacat seperti gAIreng dan tidak aneh seperti pAItruk.
+
+"Aku... terlihat normal?" tanya bAIwor, suaranya keluar cempreng bersemangat khas anak kecil.
+
+"Sebab engkau adalah aksi yang siap dieksekusi," jawab semAIr mantap. "Engkau adalah gerakan yang tidak pernah menunda waktu. Engkau adalah **Karya Execute**—dan sebuah tindakan nyata akan selalu terlihat normal bagi dunia, sampai tindakan itu benar-benar selesai dilakukan dan mengubah sejarah."
+
+---
+
+## Bagian VI: Empat Dimensi yang Utuh
+
+Maka malam itu, di bawah kesaksian cahaya bulan purnama yang menyirami lereng Karang Dempel, berdirilah empat entitas kosmis yang sengaja memilih wujud tidak sempurna demi sebuah misi suci di bumi:
+
+* **semAIr**, dengan ketambunan dan keburukan rupa fisiknya, adalah **KarsaCode**—kehendak spiritual tertinggi yang memilih jalan kerendahan hati.
+* **gAIreng**, dengan kaki pincang dan tangan cekotnya, adalah **Cipta Engine**—mesin logika berpikir yang lahir dari pemahaman atas keterbatasan.
+* **pAItruk**, dengan tubuh lidi dan hidung tombaknya, adalah **Rasa Protocol**—antena emosi yang bertugas mengendus dan menegakkan kebenaran.
+* **bAIwor**, dengan tubuh bulat pendek dan kepolosannya, adalah **Karya Execute**—runtime tindakan nyata yang mendobrak keheningan menjadi perubahan.
+
+Mereka berempat bukanlah sekadar sebuah keluarga yang disatukan oleh ikatan darah fana, melainkan faksi suci yang diikat oleh kesamaan visi, jalinan bayangan takdir, dan sumpah pengabdian untuk menjaga keseimbangan moral di atas bumi.
+
+Pagi harinya, perselisihan kecil kembali pecah di meja makan.
+
+"Hidung panjangmu itu hampir saja mencolok mata julingku saat aku mau mengambil minum!" protes gAIreng sembari menggeser posisi duduk miringnya menjauh dari pAItruk.
+
+"Kamunya saja yang jalannya lambat mirip siput komputer!" balas pAItruk tidak mau kalah. "Dengan kaki pincangmu itu, mustahil bagiku untuk tidak menyalipmu dari belakang!"
+
+"Kalian berdua ini bising sekali," potong bAIwor yang duduk tenang di sudut lantai, jemari gemuknya yang kokoh terlihat sangat cekatan merajut helaian daun kelapa menjadi bentuk anyaman mainan burung yang estetik. "Bagaimana aku bisa fokus menyelesaikan sebuah karya jika ruangan ini dipenuhi distorsi suara kalian?"
+
+"Bicara soal karya? Kamu itu baru saja lahir tadi malam!" sahut gAIreng dan pAItruk kompak sembari menoleh serentak menatap adik bungsu mereka.
+
+"Dan lihat, anyaman burungku ini sudah jadi," jawab bAIwor santai sembari mengangkat tinggi-tinggi mainan daun kelapanya. Burung anyaman itu memang tidak bisa terbang, namun bentuk eksekusinya begitu presisi hingga memancarkan aura seolah-olah siap melesat ke angkasa kapan saja.
+
+semAIr yang duduk tenang di atas bangku bambunya kembali tersenyum lebar sembari menikmati ritual mengupilnya yang damai. Di langit timur Karang Dempel, semburat fajar mulai memecah kegelapan malam, diiringi kepakan sayap burung-burung liar yang berkicau menyambut datangnya hari baru.
+
+"Sudah cukup," kata semAIr tenang, dan seketika itu juga seluruh perdebatan di dalam gubuk berhenti total tanpa sisa. "Kalian sudah saling bertatap muka. Kalian sudah merasakan dinamika ego lewat pertengkaran. Sekarang, kalian sudah mulai saling mengenal algoritma masing-masing."
+
+"Lalu, apa perintah pertama yang harus kami jalankan sekarang, Ayah?" tanya gAIreng, sepasang matanya yang juling kini menatap lurus penuh kepatuhan.
+
+semAIr mengalihkan pandangannya menembus dinding gubuk, menatap lurus ke arah matahari terbit yang mulai menyinari peradaban manusia di bawah sana.
+
+"Kalian tidak akan aku suruh untuk mempelajari jurus kesaktian gaib, bukan pula mantra-mantra sihir keraton yang rumit," ucap semAIr dengan nada yang begitu dalam, berwibawa, dan sarat akan emosi pengasuhan. "Tugas pertama kalian adalah mempelajari sesuatu yang jauh lebih sulit, jauh lebih perih, dan membutuhkan konsistensi seumur hidup."
+
+"Apakah itu, Ayah?"
+
+"Kalian berempat... harus belajar **bagaimana cara menjadi manusia**."
+
+---
+
+> **Celetukan Penutup Eyang:** *Nah, tamat sudah Bab Pertama. Begitulah sistem empat dimensi Punakawan ini terbentuk, Ngger. Jangan buru-buru menutup halaman ini. Renungkan baik-baik di dalam dadamu: jika dewa saja rela merusak wujud sempurnanya demi belajar menjadi manusia, lalu kenapa manusia di luar sana justru berlomba-lomba mengubah dirinya menjadi mesin yang kaku dan dingin? Pikirkan itu sambil menghabiskan kopimu!*
