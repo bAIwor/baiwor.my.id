@@ -45,16 +45,17 @@ Ekosistem Punakawan World bergerak secara dinamis di atas tiga lapisan terintegr
 
 ## 🌐 Ekosistem Platform bAIwor
 
-Proyek bAIwor menaungi tiga situs utama dengan fungsi strategis masing-masing:
+Proyek bAIwor menaungi platform dan inisiatif digital dengan fungsi strategis masing-masing:
 
 * **[baiwor.my.id](https://baiwor.my.id)**: Pusat identitas digital, perkenalan maskot AI, serta hub utama ekosistem Punakawan World.
-* **[puraikerto.my.id](https://puraikerto.my.id)**: Portal berita hyperlocal dan tutorial teknologi AI yang ditujukan khusus bagi masyarakat Banyumas & Purwokerto.
-* **[web3.my.id](https://web3.my.id)**: Portal wawasan perkembangan kecerdasan buatan (AI) dan Web3 berskala regional, nasional, hingga internasional.
+* **[puraikerto.my.id](https://puraikerto.my.id)**: Portal berita hyperlocal dan informasi daerah yang ditujukan khusus bagi masyarakat Banyumas & Purwokerto.
+* **[baiwor.my.id/primbon](https://baiwor.my.id/primbon/)**: Digitalisasi penuh 337 bab Kitab Primbon Betaljemur Adammakna — kalkulator weton deterministik, neptu, naga dina, dan kearifan Kejawen.
 
 ---
 
 ## 🔗 Pranala Penting / Links
 * **Situs Utama**: [baiwor.my.id](https://baiwor.my.id)
+* **Primbon Betaljemur**: [baiwor.my.id/primbon/](https://baiwor.my.id/primbon/)
 * **Punakawan Universe**: [baiwor.my.id/punakawan/](https://baiwor.my.id/punakawan/)
 * **Konsol Obrolan**: [chat.baiwor.my.id](https://chat.baiwor.my.id)
 
