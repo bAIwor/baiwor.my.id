@@ -1,0 +1,45 @@
+{
+  "sumber": {
+    "kitab": "Kitab Primbon Betaljemur Adammakna (Bahasa Indonesia)",
+    "penyusun": "Kangjeng Pangeran Harya Tjakraningrat",
+    "digitalisasi": "OCR dari scan asli 261 halaman, oleh bAIwor — AI Agent Purwokerto Banyumas",
+    "referensi": {
+      "neptu": "No. 2, hal. 7",
+      "watak_hari": "No. 97, hal. 60",
+      "watak_pasaran": "No. 110, hal. 74",
+      "hari_tidak_baik": "No. 3-4, hal. 7"
+    }
+  },
+  "kalender": {
+    "siklus_weton": "7 hari x 5 pasaran = 35 hari",
+    "urutan_pasaran": ["Legi", "Pahing", "Pon", "Wage", "Kliwon"],
+    "anchor": { "tanggal": "1945-08-17", "weton": "Jumat Legi" }
+  },
+  "neptu": {
+    "hari": { "Ahad": 5, "Senin": 4, "Selasa": 3, "Rabu": 7, "Kamis": 8, "Jumat": 6, "Sabtu": 9 },
+    "pasaran": { "Legi": 5, "Pahing": 9, "Pon": 7, "Wage": 4, "Kliwon": 8 }
+  },
+  "watak_hari": {
+    "Ahad":   { "elemen": "Peredaran Matahari", "watak": "Hatinya terang, ikhlas dalam segala hal untuk sanak saudara, keras budinya, cinta terhadap sesamanya, suci, pandai berbicara, serta dapat memerintah orang yang lebih tua." },
+    "Senin":  { "elemen": "Peredaran Bulan", "watak": "Senang pada kebenaran, ikhlas, cekatan dalam segala hal — bicaranya tidak dapat dipermainkan orang." },
+    "Selasa": { "elemen": "Peredaran Api", "watak": "Suka berbohong dan dibenci orang — sahabatnya hanya sebentar karena sering bertentangan. Mudah bosan dan cepat meninggalkan apa yang sedang dikerjakan." },
+    "Rabu":   { "elemen": "Peredaran Bumi", "watak": "Kebaikannya kadang berlebihan, hidupnya berkecukupan. Bicaranya tegas, pendiam, dan jarang memikirkan akibat." },
+    "Kamis":  { "elemen": "Peredaran Angin & Petir", "watak": "Bicaranya menakutkan dan sulit berteman — batinnya tidak tulus, hatinya lekas panas, pemarah, senang dipuji, dan mudah ditipu dengan kata-kata halus." },
+    "Jumat":  { "elemen": "Peredaran Bintang", "watak": "Suka menasihati dan melarat, suka memberi, senang mencari kepandaian. Wataknya halus, penyayang kepada sanak saudara, dan banyak sahabat yang mencintainya." },
+    "Sabtu":  { "elemen": "Peredaran Air", "watak": "Sering dimusuhi dan ditakuti orang, jarang berteman — namun pandai mencari penghidupan (berdagang) dan pekerjaannya harus dikerjakan dengan cepat dan keras." }
+  },
+  "watak_pasaran": {
+    "Legi":   "Pemaaf, sanggup, dan ikhlas — dapat dan suka menjamu orang dengan memuaskan.",
+    "Pahing": "Keinginannya besar untuk memiliki apa saja — suka menjamu orang dengan memuaskan untuk mencari hasil.",
+    "Pon":    "Suka memperlihatkan harta bendanya, sombong, sering bertindak tanpa mengingat harga dirinya.",
+    "Wage":   "Keras hatinya, bicaranya tidak berubah — teguh pendiriannya.",
+    "Kliwon": "Pandai bicara, dapat mengarang bahasa, pemberi maaf — baik dan buruk segalanya hanya dicatat di dalam hati."
+  },
+  "hari_tidak_baik_bepergian": [
+    "Ahad Pahing", "Sabtu Pon", "Jumat Wage", "Selasa Kliwon", "Senin Legi", "Kamis Wage"
+  ],
+  "hari_sangat_jelek_bepergian": [
+    "Rabu Legi", "Ahad Pahing", "Sabtu Kliwon", "Kamis Pon", "Selasa Wage"
+  ],
+  "catatan": "Konten bersifat reflektif dan kultural untuk pelestarian budaya Jawa, bukan ramalan mutlak."
+}

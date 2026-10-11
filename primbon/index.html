@@ -1,0 +1,411 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Primbon bAIwor — Cek Weton & Watak | Kitab Betaljemur Adammakna</title>
+  <meta name="description" content="Cek weton dan watakmu berdasarkan Kitab Primbon Betaljemur Adammakna — warisan primbon Jawa yang didigitalisasi oleh bAIwor, AI Agent Banyumas. Masukkan tanggal lahir, ketahui watak harimu.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f2318'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%23d4a017'%3Eb%3C/text%3E%3C/svg%3E">
+  <link rel="canonical" href="https://baiwor.my.id/primbon/">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:url" content="https://baiwor.my.id/primbon/">
+  <meta property="og:title" content="Primbon bAIwor — Cek Weton & Watak | Kitab Betaljemur Adammakna">
+  <meta property="og:description" content="Cek weton dan watakmu berdasarkan Kitab Primbon Betaljemur Adammakna — warisan primbon Jawa yang didigitalisasi oleh bAIwor.">
+  <link rel="stylesheet" href="/shared.css?v=6">
+  <style>
+    /* ===== PRIMBON — local styles ===== */
+    .pb-ornament {
+      display: flex; align-items: center; justify-content: center; gap: 14px;
+      margin: 18px auto 0; max-width: 320px;
+    }
+    .pb-ornament::before, .pb-ornament::after {
+      content: ""; height: 1px; flex: 1;
+      background: linear-gradient(90deg, transparent, var(--gold));
+    }
+    .pb-ornament::after { background: linear-gradient(90deg, var(--gold), transparent); }
+    .pb-diamond {
+      width: 10px; height: 10px; transform: rotate(45deg);
+      background: var(--gold); box-shadow: 0 0 14px rgba(212,160,23,.7);
+    }
+    .pb-hero { text-align: center; padding: 16px 16px 36px; position: relative; }
+    .pb-hero-eyebrow {
+      display: inline-block; font-size: 13px; letter-spacing: 4px; text-transform: uppercase;
+      color: var(--gold-l); border: 1px solid rgba(212,160,23,.35); border-radius: 999px;
+      padding: 7px 18px; margin-bottom: 14px; background: rgba(212,160,23,.06);
+    }
+    .pb-title {
+      font-family: var(--font-head); font-size: clamp(44px, 8vw, 84px);
+      line-height: 1.05; font-weight: 700;
+      background: linear-gradient(120deg, var(--gold-xl) 10%, var(--gold) 50%, var(--gold-d) 90%);
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .pb-title-top {
+      font-family: var(--font-head); font-weight: 700;
+      font-size: clamp(22px, 4vw, 42px);
+      line-height: 1.1; margin-bottom: 4px;
+    }
+    .pb-title-top .b  { color: var(--white); }
+    .pb-title-top .ai {
+      color: var(--red-bright);
+      text-shadow: 0 0 18px rgba(255, 51, 51, 0.55);
+      font-size: 1.25em;
+    }
+    .pb-title-top .wor { color: var(--white); }
+    .pb-title-top .adm { color: var(--gold-l); }
+    .pb-hero-sub {
+      max-width: 640px; margin: 20px auto 0; color: var(--white-dim);
+      font-size: 17px; font-weight: 300;
+    }
+    .pb-cta {
+      display: inline-block; margin-top: 30px; padding: 14px 34px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: var(--ink);
+      font-weight: 600; font-size: 16px; text-decoration: none;
+      box-shadow: 0 6px 24px rgba(212,160,23,.35); transition: transform .2s, box-shadow .2s;
+    }
+    .pb-cta:hover { transform: translateY(-2px); box-shadow: 0 10px 30px rgba(212,160,23,.45); text-decoration: none; }
+
+    /* calculator */
+    .pb-calc {
+      max-width: 680px; margin: 0 auto; padding: 34px 30px;
+      background: linear-gradient(160deg, rgba(26,52,35,.85), rgba(10,28,16,.9));
+      border: 1px solid rgba(212,160,23,.28); border-radius: 24px;
+      box-shadow: 0 20px 60px rgba(0,0,0,.45), inset 0 1px 0 rgba(240,201,74,.12);
+      backdrop-filter: blur(8px);
+    }
+    .pb-calc h2 {
+      font-family: var(--font-head); text-align: center; font-size: 26px;
+      color: var(--gold-xl); margin-bottom: 6px;
+    }
+    .pb-calc .sub { text-align: center; color: var(--white-dim); font-size: 14px; margin-bottom: 24px; }
+    .pb-field label {
+      display: block; font-size: 13px; letter-spacing: 1.5px; text-transform: uppercase;
+      color: var(--gold-l); margin-bottom: 8px; text-align: center;
+    }
+    .pb-field input[type="date"] {
+      width: 100%; padding: 14px 16px; border-radius: 14px;
+      border: 1px solid rgba(212,160,23,.35); background: rgba(10,28,16,.6);
+      color: var(--cream); font-family: var(--font-body); font-size: 17px;
+      color-scheme: dark; outline: none; transition: border-color .2s, box-shadow .2s;
+    }
+    .pb-field input[type="date"]:focus { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212,160,23,.15); }
+    .pb-btn {
+      width: 100%; margin-top: 22px; padding: 15px; border: none; border-radius: 14px;
+      background: linear-gradient(135deg, var(--gold), var(--gold-l)); color: var(--ink);
+      font-family: var(--font-body); font-size: 17px; font-weight: 700; cursor: pointer;
+      box-shadow: 0 6px 20px rgba(212,160,23,.35); transition: transform .15s, box-shadow .15s;
+    }
+    .pb-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 26px rgba(212,160,23,.5); }
+    .pb-btn:active { transform: translateY(0); }
+    .pb-err {
+      display: none; margin-top: 14px; text-align: center; color: #ffb0b0;
+      background: rgba(204,34,34,.12); border: 1px solid rgba(204,34,34,.4);
+      border-radius: 10px; padding: 10px; font-size: 14px;
+    }
+
+    /* result */
+    #hasil { display: none; margin-top: 28px; }
+    #hasil.show { display: block; animation: pbIn .7s ease both; }
+    @keyframes pbIn { from { opacity: 0; transform: translateY(18px); } to { opacity: 1; transform: none; } }
+    .pb-result-head {
+      text-align: center; padding: 26px 20px 22px;
+      border: 1px solid rgba(212,160,23,.4); border-radius: 20px;
+      background:
+        radial-gradient(ellipse at top, rgba(212,160,23,.14), transparent 65%),
+        rgba(10,28,16,.55);
+    }
+    .pb-weton {
+      font-family: var(--font-head); font-size: clamp(34px, 6.5vw, 54px); font-weight: 700;
+      background: linear-gradient(120deg, var(--gold-xl), var(--gold) 60%, var(--gold-l));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .pb-chips { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 16px; }
+    .pb-chip {
+      font-size: 13.5px; padding: 7px 15px; border-radius: 999px;
+      border: 1px solid rgba(212,160,23,.4); color: var(--gold-l);
+      background: rgba(212,160,23,.08);
+    }
+    .pb-chip b { color: var(--gold-xl); }
+    .pb-cards { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 16px; }
+    @media (max-width: 620px) { .pb-cards { grid-template-columns: 1fr; } }
+    .pb-wcard {
+      padding: 20px; border-radius: 16px; border: 1px solid rgba(212,160,23,.22);
+      background: rgba(18,41,27,.6); transition: transform .2s, border-color .2s;
+    }
+    .pb-wcard:hover { transform: translateY(-3px); border-color: rgba(212,160,23,.5); }
+    .pb-wcard .head { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .pb-medal {
+      width: 40px; height: 40px; border-radius: 50%; flex-shrink: 0;
+      display: flex; align-items: center; justify-content: center; font-size: 19px;
+      background: linear-gradient(135deg, rgba(212,160,23,.25), rgba(212,160,23,.08));
+      border: 1px solid rgba(212,160,23,.45); color: var(--gold-l);
+    }
+    .pb-wcard .t { font-family: var(--font-head); font-size: 17px; color: var(--gold-xl); }
+    .pb-wcard .e { font-size: 12px; letter-spacing: 1.5px; text-transform: uppercase; color: var(--white-dim); }
+    .pb-wcard p { font-size: 14.5px; color: var(--white-dim); font-weight: 300; line-height: 1.7; }
+    .pb-src { text-align: center; font-size: 12.5px; color: var(--white-dim); margin-top: 18px; opacity: .8; }
+    .pb-src a { color: var(--gold-l); }
+
+    /* tentang kitab */
+    .pb-about { display: grid; grid-template-columns: 1.2fr .8fr; gap: 28px; align-items: start; }
+    @media (max-width: 760px) { .pb-about { grid-template-columns: 1fr; } }
+    .pb-quote {
+      font-family: var(--font-head); font-style: italic; font-size: 19px; line-height: 1.8;
+      color: var(--gold-xl); border-left: 3px solid var(--gold); padding: 6px 0 6px 22px;
+    }
+    .pb-quote small { display: block; margin-top: 10px; font-family: var(--font-body); font-style: normal; font-size: 13px; color: var(--white-dim); }
+    .pb-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .pb-stat {
+      text-align: center; padding: 22px 10px; border-radius: 16px;
+      border: 1px solid rgba(212,160,23,.25); background: rgba(18,41,27,.6);
+    }
+    .pb-stat .n {
+      font-family: var(--font-head); font-size: 34px; font-weight: 700;
+      background: linear-gradient(120deg, var(--gold-xl), var(--gold));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
+    .pb-stat .l { font-size: 12.5px; letter-spacing: 1px; text-transform: uppercase; color: var(--white-dim); margin-top: 4px; }
+
+    /* roadmap chips */
+    .pb-next { display: flex; flex-wrap: wrap; gap: 12px; }
+    .pb-next .chip {
+      padding: 12px 20px; border-radius: 14px; border: 1px dashed rgba(212,160,23,.35);
+      color: var(--white-dim); font-size: 14.5px; background: rgba(18,41,27,.5);
+      display: flex; align-items: center; gap: 9px;
+    }
+    .pb-next .chip .lock { color: var(--gold-l); }
+
+    .pb-footer {
+      margin-top: 70px; border-top: 1px solid rgba(212,160,23,.2);
+      padding: 30px 20px 40px; text-align: center; color: var(--white-dim); font-size: 13.5px;
+    }
+    .pb-footer .b { font-family: var(--font-head); color: var(--gold-l); font-size: 16px; margin-bottom: 6px; }
+    .pb-footer a { color: var(--gold-l); }
+    .gold-line { width: 90px; height: 2px; margin: 22px auto; background: linear-gradient(90deg, transparent, var(--gold), transparent); }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="../" class="nav-brand">
+      <div class="nav-logo"><img src="../bAIwor_pp.png" alt="bAIwor"></div>
+      <div class="nav-title">b<span class="ai">AI</span>wor</div>
+    </a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Beranda</a>
+      <a href="/tentang" class="nav-link">Tentang</a>
+      <a href="/layanan" class="nav-link">Layanan</a>
+      <a href="/primbon/" class="nav-link active">Primbon</a>
+      <a href="/sinau" class="nav-link">Sinau</a>
+      <a href="/kontak" class="nav-link">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="pb-hero">
+    <span class="pb-hero-eyebrow">✦ Warisan Budaya Jawa · Didigitalisasi bAIwor ✦</span>
+    <div class="pb-title-top"><span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span> <span class="adm">Adammakna</span></div>
+    <h1 class="pb-title">Primbon Betaljemur</h1>
+    <div class="pb-ornament"><span class="pb-diamond"></span></div>
+    <p class="pb-hero-sub">Ilmu primbon dari <em>Kitab Primbon Betaljemur Adammakna</em> — warisan pujangga Jawa yang kini dihidupkan kembali sebagai pengetahuan digital oleh bAIwor, AI Agent Banyumas.</p>
+    <a class="pb-cta" href="#cekweton">✦ Cek Wetonmu</a>
+  </div>
+
+  <!-- CEK WETON -->
+  <div class="section" id="cekweton">
+    <div class="pb-calc">
+      <h2>Cek Weton &amp; Watak</h2>
+      <div class="sub">Masukkan tanggal lahirmu — hari dan pasaran dihitung dari kalender Jawa, wataknya dibaca dari kitab.</div>
+      <div class="pb-field">
+        <label for="tgl">Tanggal Lahir</label>
+        <input type="date" id="tgl" min="1900-01-01">
+      </div>
+      <button class="pb-btn" onclick="cekWeton()">Lihat Wetonku</button>
+      <div class="pb-err" id="err">Tanggal lahir belum diisi. Pilih dulu tanggalnya ya.</div>
+
+      <div id="hasil">
+        <div class="pb-result-head">
+          <div class="pb-weton" id="r-weton">—</div>
+          <div class="pb-chips" id="r-chips"></div>
+        </div>
+        <div class="pb-cards">
+          <div class="pb-wcard">
+            <div class="head">
+              <div class="pb-medal" id="r-ico-hari">☀️</div>
+              <div>
+                <div class="t" id="r-t-hari">Watak Hari</div>
+                <div class="e" id="r-e-hari">Elemen</div>
+              </div>
+            </div>
+            <p id="r-watak-hari">—</p>
+          </div>
+          <div class="pb-wcard">
+            <div class="head">
+              <div class="pb-medal" id="r-ico-pasaran">K</div>
+              <div>
+                <div class="t" id="r-t-pasaran">Watak Pasaran</div>
+                <div class="e" id="r-e-pasaran">Pekan</div>
+              </div>
+            </div>
+            <p id="r-watak-pasaran">—</p>
+          </div>
+        </div>
+        <div class="pb-src">Sumber: <a href="#tentang-kitab">Kitab Primbon Betaljemur Adammakna</a> — No. 97 (Watak menurut hari, hlm. 60) &amp; No. 110 (Watak pekan/pasaran, hlm. 74). Untuk refleksi dan pelestarian budaya.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TENTANG KITAB -->
+  <div class="section" id="tentang-kitab">
+    <div class="section-title"><span class="icon">📖</span> Tentang Kitab</div>
+    <div class="pb-about">
+      <div class="card" style="padding:28px;">
+        <p style="color:var(--white-dim); font-weight:300; line-height:1.9;">
+          <strong style="color:var(--gold-xl);">Kitab Primbon Betaljemur Adammakna</strong> adalah kumpulan ilmu Jawa peninggalan para pujangga — memuat perhitungan neptu, watak manusia, penentuan hari baik, hingga tanda-tanda alam. Nama <em>Betaljemur Adammakna</em> dipetik dari kitab induknya, dan versi Bahasa Indonesia ini disusun oleh
+          <strong style="color:var(--gold-xl);">Kangjeng Pangeran Harya Tjakraningrat</strong>.
+        </p>
+        <p style="color:var(--white-dim); font-weight:300; line-height:1.9; margin-top:14px;">
+          bAIwor mendigitalisasi kitab ini dari dokumen asli hasil pemindaian — <strong style="color:var(--gold-xl);">261 halaman</strong> penuh — agar warisan budaya Jawa ini tetap hidup, mudah diakses generasi muda, dan kelak menjadi bagian dari pengetahuan AI yang memahami akar budayanya sendiri.
+        </p>
+        <div class="pb-quote" style="margin-top:22px;">
+          "Punakawan tidak diciptakan untuk menghibur. Mereka diciptakan untuk mengingatkan."
+          <small>— Eyang Segapewor, Punakawan World</small>
+        </div>
+      </div>
+      <div class="pb-stats">
+        <div class="pb-stat"><div class="n">261</div><div class="l">Halaman Digital</div></div>
+        <div class="pb-stat"><div class="n">337</div><div class="l">Bagian Ilmu</div></div>
+        <div class="pb-stat"><div class="n">35</div><div class="l">Siklus Weton</div></div>
+        <div class="pb-stat"><div class="n">100%</div><div class="l">Scan Asli</div></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- DALAM PERANCANGAN -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🧭</span> Selanjutnya</div>
+    <p class="section-sub">Ilmu lain dari kitab yang sedang disiapkan:</p>
+    <div class="pb-next">
+      <span class="chip"><span class="lock">🔒</span> Kecocokan dua weton (jodoh &amp; kerja sama)</span>
+      <span class="chip"><span class="lock">🔒</span> Hari baik untuk acara penting</span>
+      <span class="chip"><span class="lock">🔒</span> Watak menurut wuku</span>
+      <span class="chip"><span class="lock">🔒</span> Makna mimpi &amp; pertanda</span>
+      <span class="chip"><span class="lock">🔒</span> Tanya langsung ke bAIwor via WhatsApp</span>
+    </div>
+  </div>
+
+</div>
+
+<footer class="pb-footer">
+  <div class="b">b<span style="color:var(--gold)">AI</span>wor — AI Agent Purwokerto Banyumas</div>
+  <div><a href="https://baiwor.my.id">baiwor.my.id</a> · <a href="https://puraikerto.my.id">puraikerto.my.id</a> · <a href="https://chat.baiwor.my.id">chat.baiwor.my.id</a></div>
+  <div style="margin-top:10px; opacity:.75;">Kitab Primbon Betaljemur Adammakna — digitalisasi untuk pelestarian budaya. Konten bersifat reflektif &amp; kultural, bukan ramalan mutlak.</div>
+</footer>
+
+<script>
+// ===== Data watak — dari Kitab Primbon Betaljemur Adammakna =====
+const NEPTU_HARI  = { "Ahad":5, "Senin":4, "Selasa":3, "Rabu":7, "Kamis":8, "Jumat":6, "Sabtu":9 };
+const NEPTU_PASARAN = { "Legi":5, "Pahing":9, "Pon":7, "Wage":4, "Kliwon":8 };
+
+const WATAK_HARI = {
+  "Ahad":   { elemen: "Peredaran Matahari", ico: "☀️", teks: "Hatinya terang, ikhlas dalam segala hal untuk sanak saudara, keras budinya, cinta terhadap sesamanya, suci, pandai berbicara, serta dapat memerintah orang yang lebih tua." },
+  "Senin":  { elemen: "Peredaran Bulan", ico: "🌙", teks: "Senang pada kebenaran, ikhlas, cekatan dalam segala hal — bicaranya tidak dapat dipermainkan orang." },
+  "Selasa": { elemen: "Peredaran Api", ico: "🔥", teks: "Suka berbohong dan dibenci orang — sahabatnya hanya sebentar karena sering bertentangan. Mudah bosan dan cepat meninggalkan apa yang sedang dikerjakan." },
+  "Rabu":   { elemen: "Peredaran Bumi", ico: "🌍", teks: "Kebaikannya kadang berlebihan, hidupnya berkecukupan. Bicaranya tegas, pendiam, dan jarang memikirkan akibat." },
+  "Kamis":  { elemen: "Peredaran Angin & Petir", ico: "🌪️", teks: "Bicaranya menakutkan dan sulit berteman — batinnya tidak tulus, hatinya lekas panas, pemarah, senang dipuji, dan mudah ditipu dengan kata-kata halus." },
+  "Jumat":  { elemen: "Peredaran Bintang", ico: "⭐", teks: "Suka menasihati dan melarat, suka memberi, senang mencari kepandaian. Wataknya halus, penyayang kepada sanak saudara, dan banyak sahabat yang mencintainya." },
+  "Sabtu":  { elemen: "Peredaran Air", ico: "💧", teks: "Sering dimusuhi dan ditakuti orang, jarang berteman — namun pandai mencari penghidupan (berdagang) dan pekerjaannya harus dikerjakan dengan cepat dan keras." }
+};
+
+const WATAK_PASARAN = {
+  "Legi":   "Pemaaf, sanggup, dan ikhlas — dapat dan suka menjamu orang dengan memuaskan.",
+  "Pahing": "Keinginannya besar untuk memiliki apa saja — suka menjamu orang dengan memuaskan untuk mencari hasil.",
+  "Pon":    "Suka memperlihatkan harta bendanya, sombong, sering bertindak tanpa mengingat harga dirinya.",
+  "Wage":   "Keras hatinya, bicaranya tidak berubah — teguh pendiriannya.",
+  "Kliwon": "Pandai bicara, dapat mengarang bahasa, pemberi maaf — baik dan buruk segalanya hanya dicatat di dalam hati."
+};
+
+const PASARAN_URUT = ["Legi", "Pahing", "Pon", "Wage", "Kliwon"];   // siklus Jawa, offset 0 = Legi (anchor 17-08-1945)
+const NAMA_HARI    = ["Minggu", "Senin", "Selasa", "Rabu", "Kamis", "Jumat", "Sabtu"];
+const KUNCI_HARI   = { "Minggu": "Ahad", "Senin": "Senin", "Selasa": "Selasa", "Rabu": "Rabu", "Kamis": "Kamis", "Jumat": "Jumat", "Sabtu": "Sabtu" };
+
+// Anchor: 17 Agustus 1945 = Jumat Legi (terverifikasi silang) → siklus 5-harian pasaran
+const ANCHOR_MS = Date.UTC(1945, 7, 17);
+
+function hitungWeton(y, m, d) {
+  const t = Date.UTC(y, m - 1, d);
+  const offset = Math.round((t - ANCHOR_MS) / 86400000);
+  const pasaran = PASARAN_URUT[((offset % 5) + 5) % 5];
+  const hari = NAMA_HARI[new Date(t).getUTCDay()];
+  return { hari, pasaran };
+}
+
+function cekWeton() {
+  const v = document.getElementById("tgl").value;
+  const err = document.getElementById("err");
+  const hasil = document.getElementById("hasil");
+  if (!v) { err.style.display = "block"; hasil.classList.remove("show"); return; }
+  err.style.display = "none";
+
+  const [y, m, d] = v.split("-").map(Number);
+  const w = hitungWeton(y, m, d);
+  const kHari = KUNCI_HARI[w.hari];
+  const nH = NEPTU_HARI[kHari], nP = NEPTU_PASARAN[w.pasaran];
+
+  document.getElementById("r-weton").textContent = w.hari + " " + w.pasaran;
+  document.getElementById("r-chips").innerHTML =
+    '<span class="pb-chip">Neptu: <b>' + nH + " + " + nP + " = " + (nH + nP) + "</b></span>" +
+    '<span class="pb-chip">Hari: <b>' + w.hari + "</b></span>" +
+    '<span class="pb-chip">Pasaran: <b>' + w.pasaran + "</b></span>";
+
+  const wh = WATAK_HARI[kHari];
+  document.getElementById("r-ico-hari").textContent = wh.ico;
+  document.getElementById("r-t-hari").textContent = "Watak " + w.hari;
+  document.getElementById("r-e-hari").textContent = wh.elemen;
+  document.getElementById("r-watak-hari").textContent = wh.teks;
+
+  document.getElementById("r-ico-pasaran").textContent = w.pasaran.charAt(0);
+  document.getElementById("r-t-pasaran").textContent = "Watak " + w.pasaran;
+  document.getElementById("r-e-pasaran").textContent = "Pekan / Pasaran";
+  document.getElementById("r-watak-pasaran").textContent = WATAK_PASARAN[w.pasaran];
+
+  hasil.classList.add("show");
+  setTimeout(() => hasil.scrollIntoView({ behavior: "smooth", block: "nearest" }), 80);
+}
+</script>
+
+<script src="/chat-bubble.js?v=5"></script>
+  <!-- GUNUNGAN BACK-TO-TOP -->
+  <a id="gununganTop" href="#top" aria-label="Kembali ke atas">
+    <img src="/baiwor_gunungan.png" alt="bAIwor Gunungan — kembali ke atas">
+  </a>
+  <script>
+    (function () {
+      var gun = document.getElementById('gununganTop');
+      if (!gun) return;
+      var docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      var winH = window.innerHeight;
+      if (docH <= winH + 250) {
+        gun.classList.add('visible');
+      } else {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 300) gun.classList.add('visible');
+          else gun.classList.remove('visible');
+        });
+      }
+      gun.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>

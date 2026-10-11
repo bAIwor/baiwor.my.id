@@ -2,3 +2,11 @@
 scratch/
 .cpanel/
 .DS_Store
+
+# --- Primbon Betaljemur ---
+# Scan PDF asli (32 MB) sengaja tidak disimpan di repo.
+# Naskahnya sudah tersedia dalam bentuk OCR di betaljemur/data/ dan betaljemur/references/.
+# Sumber PDF disimpan di VPS Agentic dan mesin lokal Mas Wijang,
+# serta dapat dibaca publik lewat https://baiwor.my.id/primbon
+primbon/betaljemur/references/kitab-asli.pdf
+primbon/betaljemur/*.pdf
