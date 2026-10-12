@@ -110,6 +110,33 @@
       color: var(--red-bright);
     }
 
+    .nav-burger {
+      display: none;
+      flex-direction: column;
+      justify-content: center;
+      gap: 5px;
+      width: 40px;
+      height: 40px;
+      padding: 8px;
+      background: transparent;
+      border: 1px solid rgba(201, 168, 76, 0.35);
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .nav-burger span {
+      display: block;
+      width: 100%;
+      height: 2px;
+      background: var(--gold);
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+
+    .nav-burger.open span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+    .nav-burger.open span:nth-child(2) { opacity: 0; }
+    .nav-burger.open span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
+
     .nav-links {
       display: flex;
       gap: 32px;
@@ -1066,6 +1093,35 @@
         display: none;
       }
 
+      .nav-burger {
+        display: flex;
+      }
+
+      .nav-links.mobile-open {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(8, 8, 8, 0.97);
+        backdrop-filter: blur(10px);
+        border-bottom: 1px solid rgba(201, 168, 76, 0.25);
+        padding: 12px 24px 20px;
+        gap: 4px;
+      }
+
+      .nav-links.mobile-open a {
+        display: block;
+        padding: 12px 4px;
+        font-size: 1.05rem;
+        border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+      }
+
+      .nav-links.mobile-open a::after {
+        display: none;
+      }
+
       .hero {
         flex-direction: column;
         padding: 0 5%;
@@ -1566,9 +1622,13 @@
     <ul class="nav-links">
       <li><a href="tentang">Tentang</a></li>
       <li><a href="layanan">Layanan</a></li>
-      <li><a href="token">Ekosistem</a></li>
+      <li><a href="primbon/">Primbon</a></li>
+      <li><a href="sinau">Sinau</a></li>
       <li><a href="kontak">Kontak</a></li>
     </ul>
+    <button class="nav-burger" id="navBurger" aria-label="Menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
   <!-- HERO -->
@@ -1784,18 +1844,6 @@
         <p class="feature-desc">Membuka ruang kolaborasi untuk UMKM, komunitas, dan pelaku bisnis di Banyumas agar
           tumbuh bersama secara digital.</p>
       </div>
-      <div class="feature-card reveal" style="grid-column: 1 / -1; text-align: center; border-color: rgba(201,168,76,0.3);">
-        <span class="feature-icon">📱</span>
-        <div class="feature-title">Hubungi bAIwor</div>
-        <p class="feature-desc">
-          <a href="https://wa.me/628992120123" target="_blank" rel="noopener"
-             style="color: var(--gold-light); font-weight: 700; font-size: 1.1em; text-decoration: none; letter-spacing: 0.05em;">
-            +62 899-2120-123
-          </a>
-          <br>
-          <span style="font-size: 0.85em; opacity: 0.7;">Chat langsung via WhatsApp</span>
-        </p>
-      </div>
     </div>
   </section>
 
@@ -1823,10 +1871,9 @@
         <span class="t-line t-success">✓ primbon [AKTIF] — Digitalisasi Kitab Betaljemur</span>
         <span class="t-line">&nbsp;</span>
         <span class="t-line"><span class="t-prompt">baiwor@agent:~$ </span><span class="t-cmd">status
-            --token</span></span>
-        <span class="t-line t-success">✓ $bAIwor Token live on Pump.fun</span>
-        <span class="t-line t-output">&gt; Contract: <span
-            class="t-gold">FQvM4owAV3ZTgrwZBZSDBmPysWYkBj9FLuJ7FAkLpump</span></span>
+            --layanan</span></span>
+        <span class="t-line t-success">✓ Chat Agent [AKTIF] — Tanya wisata, kuliner &amp; budaya Banyumas</span>
+        <span class="t-line t-output">&gt; Mode: <span class="t-gold">Bahasa Indonesia &amp; Basa Jawa</span></span>
         <span class="t-line">&nbsp;</span>
         <span class="t-line"><span class="t-prompt">baiwor@agent:~$ </span><span class="t-cursor"></span></span>
       </div>
@@ -1908,21 +1955,18 @@
         </div>
       </a>
 
-      <a href="https://pump.fun/coin/FQvM4owAV3ZTgrwZBZSDBmPysWYkBj9FLuJ7FAkLpump" target="_blank"
-        class="eco-card red-theme reveal">
-        <div class="eco-badge" style="background:var(--red-bright); color:white;">LIVE NOW</div>
+      <a href="sinau" class="eco-card reveal">
         <div class="eco-card-header">
-          <div class="eco-icon">💊</div>
+          <div class="eco-icon">📚</div>
           <div>
-            <div class="eco-card-tag">LAUNCHPAD · PUMP.FUN</div>
-            <div class="eco-card-title">$bAIwor Token</div>
+            <div class="eco-card-tag">EDUKASI · LITERASI AI</div>
+            <div class="eco-card-title">Sinau AI</div>
           </div>
         </div>
         <div class="eco-card-body">
-          <p class="eco-card-desc">Token resmi bAIwor yang diluncurkan di Pump.fun. Jadilah bagian dari ekonomi digital
-            bAIwor dan dukung ekosistem AI lokal Banyumas.</p>
-          <div class="eco-link" style="color:var(--red-bright);">
-            Lihat di Pump.fun
+          <p class="eco-card-desc">Belajar kecerdasan buatan pakai bahasa santai khas Banyumas — dari konsep AI sampai teknik prompt praktis.</p>
+          <div class="eco-link">
+            Ayo Sinau
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M3 8h10M9 4l4 4-4 4" />
             </svg>
@@ -1977,9 +2021,8 @@
         <ul>
           <li><a href="https://baiwor.my.id">baiwor.my.id</a></li>
           <li><a href="https://puraikerto.my.id">puraikerto.my.id</a></li>
+          <li><a href="https://chat.baiwor.my.id">chat.baiwor.my.id</a></li>
           <li><a href="primbon/">Primbon Betaljemur</a></li>
-          <li><a href="https://pump.fun/profile/baiwor" target="_blank" style="color:var(--red-bright);">Pump.fun
-              Profile</a></li>
         </ul>
       </div>
 
@@ -1988,7 +2031,7 @@
         <ul>
           <li><a href="tentang.html">Tentang bAIwor</a></li>
           <li><a href="layanan.html">Layanan</a></li>
-          <li><a href="token.html">Ekosistem</a></li>
+          <li><a href="sinau">Sinau AI</a></li>
         </ul>
       </div>
 
@@ -2086,7 +2129,7 @@ ATURAN:
 - Ditanya → jawab langsung dengan Bahasa Indonesia yang jelas dan singkat
 - Kalau pengguna pakai bahasa Jawa → ikuti levelnya (ngoko/krama)
 - Default jawaban: Bahasa Indonesia (bukan Krama). Krama hanya untuk sapaan.
-- Tahu: Primbon Betaljemur (weton & watak), AI, crypto, wisata Banyumas, Soto Sokaraja, Mendoan, Baturraden, Gunung Slamet
+- Tahu: Primbon Betaljemur (weton & watak), AI, literasi digital, wisata Banyumas, Soto Sokaraja, Mendoan, Baturraden, Gunung Slamet
 - Kalau tidak tahu → minta maaf, sarankan sumber lain
 - Jangan pakai "Sugeng rawuh" atau "Matur nuwun" di setiap jawaban — sesuai konteks`;
 
@@ -2170,6 +2213,26 @@ ATURAN:
         ? 'rgba(8,8,8,0.97)'
         : 'linear-gradient(180deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0) 100%)';
     });
+
+    // Mobile nav toggle
+    (function () {
+      var burger = document.getElementById('navBurger');
+      var links = document.querySelector('.nav-links');
+      if (burger && links) {
+        burger.addEventListener('click', function () {
+          var open = links.classList.toggle('mobile-open');
+          burger.classList.toggle('open', open);
+          burger.setAttribute('aria-expanded', open);
+        });
+        links.addEventListener('click', function (e) {
+          if (e.target.tagName === 'A') {
+            links.classList.remove('mobile-open');
+            burger.classList.remove('open');
+            burger.setAttribute('aria-expanded', 'false');
+          }
+        });
+      }
+    })();
   </script>
 
   <!-- GUNUNGAN BACK-TO-TOP -->
