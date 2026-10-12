@@ -1389,6 +1389,52 @@
     .inline-send-btn:hover {
       opacity: 0.8;
     }
+
+    /* ===== GUNUNGAN BACK-TO-TOP ===== */
+    #gununganTop {
+      position: fixed;
+      left: 30px;
+      bottom: 30px;
+      width: 75px;
+      height: auto;
+      z-index: 900;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transform: translateY(16px);
+      transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s;
+    }
+
+    #gununganTop.visible {
+      opacity: 0.95;
+      visibility: visible;
+      transform: translateY(0);
+    }
+
+    #gununganTop:hover {
+      opacity: 1;
+      transform: translateY(-4px) scale(1.05);
+    }
+
+    #gununganTop img {
+      display: block;
+      width: 100%;
+      height: auto;
+      filter: drop-shadow(0 4px 14px rgba(201, 168, 76, 0.45));
+      transition: filter 0.3s ease;
+    }
+
+    #gununganTop:hover img {
+      filter: drop-shadow(0 6px 20px rgba(201, 168, 76, 0.75));
+    }
+
+    @media (max-width: 768px) {
+      #gununganTop {
+        left: 20px;
+        bottom: 30px;
+        width: 56px;
+      }
+    }
   </style>
 
   <!-- ═══ LOCAL SEO — bAIwor Banyumas ═══ -->
@@ -1445,7 +1491,7 @@
           "addressCountry": "ID",
           "postalCode": ""
         },
-        "telephone": "+6280000000000",
+        "telephone": "+628992120123",
         "openingHours": "Mo-Su 10:00-22:00",
         "priceRange": "$$",
         "geo": {"@type": "GeoCoordinates", "latitude": -7.4211, "longitude": 109.2496},
@@ -1509,7 +1555,7 @@
   <!-- ═══ END LOCAL SEO ═══ -->
 </head>
 
-<body>
+<body id="top">
 
   <!-- NAVBAR -->
   <nav>
@@ -1558,10 +1604,6 @@
 
         <a href="punakawan/" class="btn-outline btn-full">
           🎭 Kisah Eyang SeGaPeWor
-        </a>
-
-        <a href="https://kancane.baiwor.my.id/" class="btn-outline btn-full">
-          👑 Kancane Agent AI
         </a>
       </div>
     </div>
@@ -1746,9 +1788,9 @@
         <span class="feature-icon">📱</span>
         <div class="feature-title">Hubungi bAIwor</div>
         <p class="feature-desc">
-          <a href="https://wa.me/6281234567890" target="_blank" rel="noopener"
+          <a href="https://wa.me/628992120123" target="_blank" rel="noopener"
              style="color: var(--gold-light); font-weight: 700; font-size: 1.1em; text-decoration: none; letter-spacing: 0.05em;">
-            +62 812-3456-7890
+            +62 899-2120-123
           </a>
           <br>
           <span style="font-size: 0.85em; opacity: 0.7;">Chat langsung via WhatsApp</span>
@@ -1797,7 +1839,7 @@
   <section class="section eco-section" id="ekosistem">
     <div class="reveal" style="text-align:center;">
       <div class="section-tag" style="justify-content:center;">Ekosistem Platform</div>
-      <h2 class="section-title">Enam Pilar <span class="gold">Digital</span> bAIwor</h2>
+      <h2 class="section-title">Lima Pilar <span class="gold">Digital</span> bAIwor</h2>
       <p style="color:var(--white-dim); max-width:520px; margin:0 auto 20px; font-size:0.95rem; line-height:1.75;">
         Ekosistem bAIwor dibangun di atas pilar platform dan budaya yang saling terhubung, masing-masing dengan fokus dan perannya
         sendiri.
@@ -1901,26 +1943,6 @@
           <p class="eco-card-desc">Universe Punakawan — kisah 1.000 tahun filosofi Jawa yang dihidupkan kembali. Origin story 4 AI agent, kosmologi, dan worldbuilding Eyang SeGaPeWor.</p>
           <div class="eco-link">
             Masuk ke Universe
-            <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M3 8h10M9 4l4 4-4 4" />
-            </svg>
-          </div>
-        </div>
-      </a>
-
-      <a href="https://kancane.baiwor.my.id" class="eco-card green-theme reveal">
-        <div class="eco-badge" style="background:var(--g500); color:white;">NEW APP</div>
-        <div class="eco-card-header">
-          <div class="eco-icon">👑</div>
-          <div>
-            <div class="eco-card-tag">PLATFORM · AI AGENT BUILDER</div>
-            <div class="eco-card-title">Kancane Agent AI</div>
-          </div>
-        </div>
-        <div class="eco-card-body">
-          <p class="eco-card-desc">Platform pembuatan AI Agent kustom dengan logat lokal Banyumasan dan gaya Kejawen. Ciptakan teman curhat, asisten, atau bot unik Anda sendiri.</p>
-          <div class="eco-link" style="color:var(--g300);">
-            kancane.baiwor.my.id
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M3 8h10M9 4l4 4-4 4" />
             </svg>
@@ -2148,6 +2170,31 @@ ATURAN:
         ? 'rgba(8,8,8,0.97)'
         : 'linear-gradient(180deg, rgba(8,8,8,0.98) 0%, rgba(8,8,8,0) 100%)';
     });
+  </script>
+
+  <!-- GUNUNGAN BACK-TO-TOP -->
+  <a id="gununganTop" href="#top" aria-label="Kembali ke atas">
+    <img src="/baiwor_gunungan.png" alt="bAIwor Gunungan — kembali ke atas">
+  </a>
+  <script>
+    (function () {
+      var gun = document.getElementById('gununganTop');
+      if (!gun) return;
+      var docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      var winH = window.innerHeight;
+      if (docH <= winH + 250) {
+        gun.classList.add('visible');
+      } else {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 300) gun.classList.add('visible');
+          else gun.classList.remove('visible');
+        });
+      }
+      gun.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
   </script>
 </body>
 

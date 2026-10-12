@@ -142,7 +142,7 @@
           "addressCountry": "ID",
           "postalCode": ""
         },
-        "telephone": "+628****0000",
+        "telephone": "+628992120123",
         "openingHours": "Mo-Su 10:00-22:00",
         "priceRange": "$$",
         "geo": {"@type": "GeoCoordinates", "latitude": -7.4211, "longitude": 109.2496},
@@ -361,7 +361,7 @@
     </div>
     <div style="flex:1; min-width:220px; padding:18px; border:1px solid rgba(212,160,23,0.15); border-radius:12px; background:rgba(0,0,0,0.25);">
       <strong style="color:var(--gold-l); font-size:15px; display:block; margin-bottom:8px;">Kontak & Layanan</strong>
-      📞 WhatsApp: <a href="https://wa.me/6281234567890" class="wa-contact-link" style="color:#25D366; font-weight:600; text-decoration:none;">+62 812-3456-7890</a><br>
+      📞 WhatsApp: <a href="https://wa.me/628992120123" class="wa-contact-link" style="color:#25D366; font-weight:600; text-decoration:none;">+62 899-2120-123</a><br>
       🕒 Jam Operasional: <span style="color:var(--white);">Buka 10.00 Tutup 22.00</span>
     </div>
   </div>
@@ -389,5 +389,30 @@ function copyCA(id) {
 }
 </script>
 
+<script src="/chat-bubble.js?v=5"></script>
+  <!-- GUNUNGAN BACK-TO-TOP -->
+  <a id="gununganTop" href="#top" aria-label="Kembali ke atas">
+    <img src="/baiwor_gunungan.png" alt="bAIwor Gunungan — kembali ke atas">
+  </a>
+  <script>
+    (function () {
+      var gun = document.getElementById('gununganTop');
+      if (!gun) return;
+      var docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      var winH = window.innerHeight;
+      if (docH <= winH + 250) {
+        gun.classList.add('visible');
+      } else {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 300) gun.classList.add('visible');
+          else gun.classList.remove('visible');
+        });
+      }
+      gun.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
 </body>
 </html>
