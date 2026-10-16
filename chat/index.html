@@ -1,12 +1,23 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TSY9LJ6Q14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag("js", new Date());
+  gtag("config", "G-TSY9LJ6Q14");
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>bAIwor — Agentic Chat — Purwokerto</title>
-  <meta name="description" content="bAIwor adalah agen AI yang menjadi gerbang informasi Kabupaten Banyumas — wisata, budaya, sejarah, pemerintahan, dan lebih banyak lagi.">
+  <link rel="canonical" href="https://chat.baiwor.my.id/">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://chat.baiwor.my.id/">
   <meta property="og:title" content="bAIwor — Agentic Chat — Purwokerto">
   <meta property="og:description" content="Tanya apa saja tentang Kabupaten Banyumas. bAIwor siap membantu 24/7.">
+  <meta property="og:site_name" content="bAIwor — AI Agent Purwokerto Banyumas">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -31,6 +42,9 @@
   --ink:    #1a1007;
   --ink2:   #3d2e1a;
   --ink3:   #6b5a3e;
+  --red:    #cc2222;
+  --red-bright: #ff3333;
+  --white:  #ffffff;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -48,6 +62,7 @@ body {
 /* ===== LAYOUT ===== */
 .app {
   height: 100vh;
+  height: 100dvh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -133,11 +148,15 @@ body {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 24px;
   font-weight: 700;
-  color: var(--cream2);
+  color: var(--white);
   letter-spacing: 0.3px;
   line-height: 1;
 }
-.hdr-title .ai { color: var(--gold-l); }
+.hdr-title .b, .hdr-title .wor { color: var(--white); }
+.hdr-title .ai {
+  color: var(--red-bright);
+  text-shadow: 0 0 14px rgba(255,51,51,0.65);
+}
 
 .hdr-sub {
   margin-top: 4px;
@@ -230,11 +249,24 @@ body {
 .welcome-title {
   font-family: 'Playfair Display', Georgia, serif;
   font-size: 28px;
-  font-weight: 600;
-  color: var(--ink);
-  margin-bottom: 8px;
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--g700) 0%, var(--g800) 100%);
+  color: var(--white);
+  padding: 6px 24px;
+  border-radius: 999px;
+  border: 1px solid rgba(212,160,23,0.35);
+  box-shadow: 0 4px 18px rgba(15,35,24,0.2);
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
-.welcome-title .ai { color: var(--g500); }
+.welcome-title .b, .welcome-title .wor { color: var(--white); }
+.welcome-title .ai {
+  color: var(--red-bright);
+  text-shadow: 0 0 14px rgba(255,51,51,0.65);
+}
 .welcome-sub {
   font-size: 14px;
   font-weight: 300;
@@ -312,6 +344,9 @@ body {
   flex-direction: column;
   gap: 3px;
 }
+.row.b .msg-wrap {
+  max-width: 88%;
+}
 .msg-name {
   font-size: 11px;
   font-weight: 500;
@@ -331,10 +366,75 @@ body {
 .bbl.b {
   background: #ffffff;
   color: var(--ink);
-  border-radius: 5px 18px 18px 18px;
+  border-radius: 18px 18px 18px 5px; /* Pointer matches bot avatar below bubble */
   border: 1px solid rgba(45,106,79,0.1);
   border-left: 3px solid var(--g400);
   box-shadow: 0 2px 10px rgba(0,0,0,0.06);
+}
+
+.row.b {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 8px;
+}
+
+.row.b .msg-wrap {
+  max-width: 100%;
+}
+
+.msg-footer {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-left: 6px;
+}
+
+.msg-footer .ava {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,160,23,0.3);
+  background: var(--g600);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  overflow: hidden;
+}
+
+.msg-footer .ava img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.msg-footer .msg-name {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--white);
+  background: var(--g800);
+  padding: 2px 7px;
+  border-radius: 5px;
+  border: 1px solid rgba(212,160,23,0.3);
+  display: inline-flex;
+  align-items: center;
+  gap: 1px;
+  line-height: 1.2;
+}
+.msg-footer .msg-name .b, .msg-footer .msg-name .wor {
+  color: var(--white);
+}
+.msg-footer .msg-name .ai {
+  color: var(--red-bright);
+  font-weight: 700;
+  text-shadow: 0 0 8px rgba(255,51,51,0.5);
+}
+
+.msg-footer .msg-actions {
+  display: flex;
+  gap: 6px;
 }
 
 /* user bubble */
@@ -529,15 +629,36 @@ body {
 
 /* ===== MOBILE ===== */
 @media (max-width: 600px) {
-  .app { padding: 0; }
+  html, body {
+    height: 100%;
+    height: 100dvh;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: #ffffff;
+    background-image: none;
+  }
+  .app { padding: 0; height: 100vh; height: 100dvh; }
   .card {
     border-radius: 0;
-    height: 100vh;
+    height: 100%;
     height: 100dvh;
     max-height: unset;
     box-shadow: none;
+    background: #ffffff;
   }
   .hdr-title { font-size: 20px; }
+  .ftr { display: none; }
+  .input-area {
+    padding: 12px 12px calc(12px + env(safe-area-inset-bottom, 0px));
+    border-top: 1px solid rgba(45,106,79,0.12);
+  }
+  .tbox {
+    font-size: 16px; /* Prevents iOS auto-zoom on focus */
+    padding: 10px 14px;
+  }
 }
 </style>
 </head>
@@ -554,7 +675,7 @@ body {
           <img src="bAIwor_pp.png" alt="bAIwor" style="width:100%;height:100%;border-radius:15px;object-fit:cover;">
         </div>
         <div class="hdr-info">
-          <div class="hdr-title">b<span class="ai">AI</span>wor</div>
+          <div class="hdr-title"><span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span></div>
           <div class="hdr-sub">Agentic Chat — Purwokerto</div>
         </div>
         <div class="hdr-status">
@@ -574,7 +695,7 @@ body {
     <div class="msgs" id="msgs">
       <div class="welcome" id="welcomeScreen">
         <div class="welcome-icon"><img src="bAIwor_pp.png" alt="bAIwor" style="width:80px;height:80px;border-radius:50%;object-fit:cover;box-shadow:0 4px 20px rgba(45,106,79,0.2);"></div>
-        <div class="welcome-title">b<span class="ai">AI</span>wor</div>
+        <div class="welcome-title"><span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span></div>
         <div class="welcome-sub">Asisten AI dari Purwokerto — tanya apa saja tentang Kabupaten Banyumas, wisata, budaya, sejarah, dan lainnya.</div>
         <div class="welcome-chips" id="welcomeChips">
           <button class="welcome-chip" onclick="sendChip('Wisata alam di Banyumas')">🏔 Wisata alam</button>
@@ -599,7 +720,7 @@ body {
     <!-- FOOTER -->
     <footer class="ftr">
       <span>🌿</span>
-      <a href="https://chat.baiwor.my.id" target="_blank">chat.baiwor.my.id</a>
+      <a href="https://baiwor.my.id">baiwor.my.id</a>
     </footer>
 
   </div>
@@ -704,32 +825,50 @@ function addMessage(role, text, save = true) {
 
   const ava = document.createElement('div');
   ava.className = 'ava';
-  ava.innerHTML = isBot ? '<img src=\"bAIwor_pp.png\" alt=\"bAIwor\">' : '<span style=\"font-size:13px;font-weight:600;color:var(--g800)\">A</span>';
-
-  const wrap = document.createElement('div');
-  wrap.className = 'msg-wrap';
-
-  const name = document.createElement('div');
-  name.className = 'msg-name';
-  name.textContent = isBot ? 'bAIwor' : 'Anda';
-
-  const bbl = document.createElement('div');
-  bbl.className = 'bbl ' + (isBot ? 'b' : 'u');
-  bbl.innerHTML = isBot ? renderMarkdown(text) : escapeHtml(text);
-
-  wrap.appendChild(name);
-  wrap.appendChild(bbl);
+  ava.innerHTML = isBot ? '<img src="bAIwor_pp.png" alt="bAIwor">' : '<span style="font-size:13px;font-weight:600;color:var(--g800)">A</span>';
 
   if (isBot) {
+    const bbl = document.createElement('div');
+    bbl.className = 'bbl b';
+    bbl.innerHTML = renderMarkdown(text);
+
+    const footer = document.createElement('div');
+    footer.className = 'msg-footer';
+
+    const name = document.createElement('div');
+    name.className = 'msg-name';
+    name.innerHTML = '<span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span>';
+
     const actions = document.createElement('div');
     actions.className = 'msg-actions';
     actions.innerHTML = `<button class="action-btn" onclick="copyMessage(this)">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>`;
-    wrap.appendChild(actions);
+
+    footer.appendChild(ava);
+    footer.appendChild(name);
+    footer.appendChild(actions);
+
+    row.appendChild(bbl);
+    row.appendChild(footer);
+  } else {
+    const wrap = document.createElement('div');
+    wrap.className = 'msg-wrap';
+
+    const name = document.createElement('div');
+    name.className = 'msg-name';
+    name.textContent = 'Anda';
+
+    const bbl = document.createElement('div');
+    bbl.className = 'bbl u';
+    bbl.innerHTML = escapeHtml(text);
+
+    wrap.appendChild(name);
+    wrap.appendChild(bbl);
+
+    row.appendChild(ava);
+    row.appendChild(wrap);
   }
 
-  row.appendChild(ava);
-  row.appendChild(wrap);
   msgsEl.appendChild(row);
   scrollBottom();
 
@@ -764,7 +903,14 @@ function removeTyping() {
 }
 
 function copyMessage(btn) {
-  const text = btn.closest('.msg-wrap').innerText.replace('Copy', '').trim();
+  const rowB = btn.closest('.row.b');
+  let text = '';
+  if (rowB) {
+    const bbl = rowB.querySelector('.bbl.b');
+    text = bbl.innerText.trim();
+  } else {
+    text = btn.closest('.msg-wrap').innerText.replace('Copy', '').trim();
+  }
   navigator.clipboard.writeText(text);
   const old = btn.innerHTML;
   btn.innerHTML = 'Copied!';
@@ -806,7 +952,7 @@ async function callAPI() {
     const response = await fetch('chat.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'minimax-m3-free', messages: convMessages })
+      body: JSON.stringify({ model: 'gemma4:31b-cloud', messages: convMessages })
     });
 
     const data = await response.json();
@@ -823,18 +969,26 @@ async function callAPI() {
 
       const row = document.createElement('div');
       row.className = 'row b';
+
       const ava = document.createElement('div');
       ava.className = 'ava';
       ava.innerHTML = '<img src="bAIwor_pp.png" alt="bAIwor">';
-      const wrap = document.createElement('div');
-      wrap.className = 'msg-wrap';
+      ava.style.width = '24px';
+      ava.style.height = '24px';
+      ava.style.borderWidth = '1px';
+
+      const footer = document.createElement('div');
+      footer.className = 'msg-footer';
+
       const name = document.createElement('div');
       name.className = 'msg-name';
-      name.textContent = 'bAIwor';
-      wrap.appendChild(name);
-      wrap.appendChild(bbl);
-      row.appendChild(ava);
-      row.appendChild(wrap);
+      name.innerHTML = '<span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span>';
+
+      footer.appendChild(ava);
+      footer.appendChild(name);
+
+      row.appendChild(bbl);
+      row.appendChild(footer);
       msgsEl.appendChild(row);
 
       // Type character by character
@@ -851,7 +1005,7 @@ async function callAPI() {
           actions.className = 'msg-actions';
           actions.innerHTML = `<button class="action-btn" onclick="copyMessage(this)">
             <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="2" ry="2"></rect><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"></path></svg> Copy</button>`;
-          wrap.appendChild(actions);
+          footer.appendChild(actions);
           bbl.removeAttribute('id');
 
           messages.push({ role: 'assistant', content: fullText });
@@ -871,7 +1025,9 @@ async function callAPI() {
 
   isStreaming = false;
   sendBtn.disabled = false;
-  tboxEl.focus();
+  if (window.innerWidth > 600) {
+    tboxEl.focus();
+  }
 }
 
 // === KEYBOARD SHORTCUT: Ctrl+N for New Chat ===
@@ -882,8 +1038,17 @@ document.addEventListener('keydown', (e) => {
   }
 });
 
-// Focus input on load
-setTimeout(() => tboxEl.focus(), 200);
+// Focus input on load (desktop only)
+if (window.innerWidth > 600) {
+  setTimeout(() => tboxEl.focus(), 200);
+}
 </script>
+
+<style>
+.home-bubble{position:fixed;right:18px;bottom:84px;z-index:100;width:46px;height:46px;border-radius:50%;object-fit:cover;border:2px solid #ffffff;box-shadow:0 6px 18px rgba(0,0,0,0.35);cursor:pointer;transition:transform .2s ease;}
+.home-bubble:active{transform:scale(0.92);}
+@media(min-width:769px){.home-bubble{bottom:90px;}}
+</style>
+<a href="https://baiwor.my.id/" aria-label="Kembali ke baiwor.my.id"><img src="bAIwor_pp.png" alt="Beranda bAIwor" class="home-bubble"></a>
 </body>
 </html>

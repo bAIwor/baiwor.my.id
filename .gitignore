@@ -1,12 +1,20 @@
-*.bak.ollama
+*.bak*
 scratch/
 .cpanel/
 .DS_Store
+.workbuddy-ai/
+_local-backup/
+DEPLOY.md
+
+# Dokumen Legalitas & Perusahaan Internal (RAHASIA)
+bAIwor_Agentic_Indonesia/
+bAIwor_Agentic_Indonesia/*
+*.pdf
+
+# File Pose / Mentah Grafis Internal
+pose/
 
 # --- Primbon Betaljemur ---
-# Scan PDF asli (32 MB) sengaja tidak disimpan di repo.
-# Naskahnya sudah tersedia dalam bentuk OCR di betaljemur/data/ dan betaljemur/references/.
-# Sumber PDF disimpan di VPS Agentic dan mesin lokal Mas Wijang,
-# serta dapat dibaca publik lewat https://baiwor.my.id/primbon
+# Scan PDF asli sengaja tidak disimpan di repo git publik
 primbon/betaljemur/references/kitab-asli.pdf
 primbon/betaljemur/*.pdf

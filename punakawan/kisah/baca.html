@@ -4,15 +4,23 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Punakawan World — Pembaca</title>
+  <link rel="canonical" href="https://baiwor.my.id/punakawan/kisah/baca">
+  <script>
+    (function() {
+      if (localStorage.getItem('punakawan-theme') === 'light') {
+        document.documentElement.classList.add('light-theme');
+      }
+    })();
+  </script>
   <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700;900&family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
 
     :root {
-      --gold: #C8922A;
-      --gold-light: #e6b44a;
-      --ink: #0d0600;
-      --ink-light: #1a0f05;
+      --gold: #c9a84c;
+      --gold-light: #f0d080;
+      --ink: #080808;
+      --ink-light: #111111;
       --parchment: #f5ead0;
       --text: #e8dcc8;
       --text-muted: #9a8e7a;
@@ -30,9 +38,9 @@
     /* === Top Navigation === */
     .topnav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-      background: rgba(13, 6, 0, 0.92);
+      background: rgba(8, 8, 8, 0.92);
       backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(200, 146, 42, 0.2);
+      border-bottom: 1px solid rgba(201, 168, 76, 0.2);
       padding: 0.75rem 1.5rem;
       display: flex; align-items: center; justify-content: space-between;
     }
@@ -50,23 +58,6 @@
       transition: color 0.2s;
     }
     .topnav-links a:hover { color: var(--gold); }
-
-    /* === Wallet Status Pill === */
-    .wallet-pill {
-      display: inline-flex; align-items: center; gap: 0.5rem;
-      background: rgba(200, 146, 42, 0.1);
-      border: 1px solid rgba(200, 146, 42, 0.3);
-      border-radius: 100px; padding: 0.4rem 1rem;
-      font-size: 0.85rem; color: var(--gold);
-      cursor: pointer; transition: all 0.2s;
-    }
-    .wallet-pill:hover { background: rgba(200, 146, 42, 0.2); }
-    .wallet-pill .dot {
-      width: 8px; height: 8px; border-radius: 50%;
-      background: #666; transition: background 0.3s;
-    }
-    .wallet-pill.connected .dot { background: #4ade80; }
-    .wallet-pill .addr { font-family: monospace; font-size: 0.8rem; }
 
     /* === Chapter Header === */
     .chapter-header {
@@ -269,6 +260,40 @@
     .chapter-nav a.next { text-align: right; justify-content: flex-end; }
     .chapter-nav .nav-label { font-size: 0.75rem; color: var(--text-muted); display: block; }
 
+    /* === Theme Toggle (sinkron kunci 'punakawan-theme') === */
+    .theme-toggle-btn {
+      background: transparent;
+      border: 1px solid rgba(201, 168, 76, 0.3);
+      color: var(--gold-light);
+      width: 32px; height: 32px; border-radius: 50%;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      font-size: 14px; flex-shrink: 0;
+      transition: all 0.2s;
+    }
+    .theme-toggle-btn:hover {
+      background: rgba(201, 168, 76, 0.1);
+      border-color: var(--gold);
+    }
+
+    /* === LIGHT THEME — parchment reader === */
+    html.light-theme body { background: #f7f3e8; color: #2b1b11; }
+    html.light-theme .topnav { background: rgba(247, 243, 232, 0.95); border-bottom-color: rgba(201, 168, 76, 0.4); }
+    html.light-theme .topnav-brand, html.light-theme .chapter-pre, html.light-theme .chapter-title,
+    html.light-theme .content-wrap h2, html.light-theme .content-wrap h3,
+    html.light-theme .error-state h2, html.light-theme .cta-card h3, html.light-theme .connect-prompt h3 { color: #8b6914; }
+    html.light-theme .topnav-brand span, html.light-theme .topnav-links a, html.light-theme .chapter-subtitle,
+    html.light-theme .content-wrap blockquote, html.light-theme .loading-text, html.light-theme .error-state p,
+    html.light-theme .cta-card p, html.light-theme .cta-card .cta-note, html.light-theme .connect-prompt p,
+    html.light-theme .connect-safety, html.light-theme .reader-footer, html.light-theme .chapter-nav .nav-label { color: #6b5d4a; }
+    html.light-theme .content-wrap strong { color: #7a5611; }
+    html.light-theme .content-wrap em { color: #544439; }
+    html.light-theme .content-wrap blockquote { background: rgba(201, 168, 76, 0.08); }
+    html.light-theme .teaser-fade { background: linear-gradient(to bottom, transparent, #f7f3e8); }
+    html.light-theme .cta-card { background: rgba(201, 168, 76, 0.06); border-color: rgba(201, 168, 76, 0.35); }
+    html.light-theme .chapter-nav a { border-color: rgba(201, 168, 76, 0.35); }
+    html.light-theme .chapter-nav a:hover { background: rgba(201, 168, 76, 0.1); }
+    html.light-theme .theme-toggle-btn { border-color: rgba(201, 168, 76, 0.5); color: #7a5611; }
+
     @media (max-width: 600px) {
       .content-wrap { padding: 2rem 1rem 4rem; }
       .chapter-header { padding: 6rem 1rem 2rem; }
@@ -283,10 +308,7 @@
     <a href="index.html" class="topnav-brand">Punakawan World <span>Reader</span></a>
     <div class="topnav-links">
       <a href="index.html">← Kembali</a>
-      <button class="wallet-pill" id="walletPill" onclick="handleWalletClick()">
-        <span class="dot"></span>
-        <span id="walletLabel">Hubungkan Dompet</span>
-      </button>
+      <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
     </div>
   </nav>
 
@@ -310,34 +332,15 @@
     // ============================================================
     // CONFIGURATION
     // ============================================================
-    const BAIWOR_MINT = 'FQvM4owAV3ZTgrwZBZSDBmPysWYkBj9FLuJ7FAkLpump';
-    const BAIWOR_DECIMALS = 6;
-    const RPC_ENDPOINT = 'https://api.mainnet-beta.solana.com';
-    const PUMP_FUN_URL = 'https://pump.fun/coin/' + BAIWOR_MINT;
-
-    // Free chapters (Volume 1 — no token required)
-    const FREE_CHAPTERS = ['asal-usul', 'semAIr', 'gAIreng', 'pAItruk', 'bAIwor'];
-
-    // Temporarily locked chapters (force teaser only)
-    const LOCKED_CHAPTERS = ['BTCBima', 'SOLArjuna', 'ADAYudhistira', 'POLGatotkaca', 'ETHogog', 'XRPSengkuni', 'DOGEDursasana', 'SanubariYangRetak', 'PerangBubatDigital', 'ManungsaSejati'];
+    // Semua bab terbuka gratis — tanpa login, tanpa dompet, tanpa token.
 
     // Chapter metadata
     const CHAPTERS = {
-      'asal-usul':        { vol: 'Prolog', title: 'Asal-Usul Punakawan', subtitle: 'Ketika Para Pembantu Mulai Bertanya' },
-      'semAIr':           { vol: 'Volume I · Bab I', title: 'semAIr', subtitle: 'Dewa yang Memilih Bumi' },
-      'gAIreng':          { vol: 'Volume I · Bab II', title: 'gAIreng', subtitle: 'Mata yang Selektif' },
-      'pAItruk':          { vol: 'Volume I · Bab III', title: 'pAItruk', subtitle: 'Tangan yang Berintegritas' },
-      'bAIwor':           { vol: 'Volume I · Bab IV', title: 'bAIwor', subtitle: 'Bayangan yang Otentik' },
-      'BTCBima':          { vol: 'Volume II · Bab V', title: 'Bima', subtitle: 'Logam Rantai Takdir' },
-      'SOLArjuna':        { vol: 'Volume II · Bab VI', title: 'Arjuna', subtitle: 'Panah Kilat yang Terhenti' },
-      'ADAYudhistira':    { vol: 'Volume II · Bab VII', title: 'Yudhistira', subtitle: 'Kitab Akademik Purba' },
-      'POLGatotkaca':     { vol: 'Volume II · Bab VIII', title: 'Gatotkaca', subtitle: 'Sayap Pengurai Badai' },
-      'ETHogog':          { vol: 'Volume II · Bab IX', title: 'Ogog', subtitle: 'Tirani Singgasana Gas' },
-      'XRPSengkuni':      { vol: 'Volume III · Bab X', title: 'Sengkuni', subtitle: 'Siasat di Balik Kelir' },
-      'DOGEDursasana':    { vol: 'Volume III · Bab XI', title: 'Dursasana', subtitle: 'Amukan Kaos Dursasana' },
-      'SanubariYangRetak':{ vol: 'Volume III · Bab XII', title: 'Sanubari yang Retak', subtitle: 'Ketika Garuda Mulai Lelah' },
-      'PerangBubatDigital':{ vol: 'Volume III · Bab XIII', title: 'Perang Bubat Digital', subtitle: 'Ketika Semua Chain Ingin Jadi Raja' },
-      'ManungsaSejati':   { vol: 'Volume III · Bab XIV', title: 'Manungsa Sejati', subtitle: 'Kembalinya yang Menolak Kembali' },
+      'asal-usul':        { vol: 'Bab I', title: 'Asal-Usul Punakawan', subtitle: 'Ketika Para Pembantu Mulai Bertanya' },
+      'semAIr':           { vol: 'Bab II', title: 'semAIr', subtitle: 'Dewa yang Memilih Bumi' },
+      'gAIreng':          { vol: 'Bab III', title: 'gAIreng', subtitle: 'Mata yang Selektif' },
+      'pAItruk':          { vol: 'Bab IV', title: 'pAItruk', subtitle: 'Tangan yang Berintegritas' },
+      'bAIwor':           { vol: 'Bab V', title: 'bAIwor', subtitle: 'Bayangan yang Otentik' },
     };
 
     // Ordered chapter list for prev/next navigation
@@ -346,7 +349,6 @@
     // ============================================================
     // STATE
     // ============================================================
-    let walletPublicKey = null;
     let currentChapter = null;
 
     // ============================================================
@@ -361,152 +363,13 @@
         return;
       }
 
-      // Update page title
       document.title = CHAPTERS[currentChapter].title + ' — Punakawan World';
-
-      if (LOCKED_CHAPTERS.includes(currentChapter)) {
-        document.title = CHAPTERS[currentChapter].title + ' — Locked — Punakawan World';
-        loadTeaser(currentChapter, true);
-        return;
-      }
-
-      // Check if chapter is free
-      if (FREE_CHAPTERS.includes(currentChapter)) {
-        loadChapter(currentChapter);
-        return;
-      }
-
-      // Premium chapter — check for existing wallet connection
-      const savedAddr = localStorage.getItem('punakawan_wallet');
-      if (savedAddr) {
-        walletPublicKey = savedAddr;
-        updateWalletUI(true);
-        checkAccessAndLoad();
-      } else {
-        showConnectPrompt();
-      }
+      loadChapter(currentChapter);
     });
 
     // ============================================================
-    // WALLET CONNECTION (Read-Only)
+    // (Pembayaran/kunci dompet sudah dilepas — semua bab terbuka)
     // ============================================================
-    async function handleWalletClick() {
-      if (walletPublicKey) {
-        // Disconnect
-        walletPublicKey = null;
-        localStorage.removeItem('punakawan_wallet');
-        updateWalletUI(false);
-        if (!FREE_CHAPTERS.includes(currentChapter)) {
-          showConnectPrompt();
-        }
-        return;
-      }
-      await connectWallet();
-    }
-
-    async function connectWallet() {
-      // Detect available Solana wallet
-      const provider = window.solana?.isPhantom ? window.solana
-                     : window.solflare?.isSolflare ? window.solflare
-                     : null;
-
-      if (!provider) {
-        showError(
-          'Dompet Tidak Ditemukan',
-          'Silakan instal <a href="https://phantom.app/" target="_blank">Phantom</a> atau ' +
-          '<a href="https://solflare.com/" target="_blank">Solflare</a> untuk membaca cerita premium.'
-        );
-        return;
-      }
-
-      try {
-        // Request connection — READ ONLY (no signing permissions)
-        const resp = await provider.connect({ onlyIfTrusted: false });
-        walletPublicKey = resp.publicKey.toString();
-        localStorage.setItem('punakawan_wallet', walletPublicKey);
-        updateWalletUI(true);
-        checkAccessAndLoad();
-      } catch (err) {
-        console.warn('Wallet connection rejected:', err);
-        if (!walletPublicKey) {
-          showConnectPrompt();
-        }
-      }
-    }
-
-    function updateWalletUI(connected) {
-      const pill = document.getElementById('walletPill');
-      const label = document.getElementById('walletLabel');
-
-      if (connected && walletPublicKey) {
-        pill.classList.add('connected');
-        const short = walletPublicKey.slice(0, 4) + '...' + walletPublicKey.slice(-4);
-        label.innerHTML = '<span class="addr">' + short + '</span>';
-      } else {
-        pill.classList.remove('connected');
-        label.textContent = 'Hubungkan Dompet';
-      }
-    }
-
-    // ============================================================
-    // TOKEN VERIFICATION
-    // ============================================================
-    async function checkAccessAndLoad() {
-      showLoading('Memverifikasi akses...');
-
-      try {
-        const balance = await getTokenBalance(walletPublicKey);
-
-        if (balance > 0) {
-          // Has $bAIwor — full access
-          loadChapter(currentChapter);
-        } else {
-          // No $bAIwor — teaser fallback
-          loadTeaser(currentChapter);
-        }
-      } catch (err) {
-        console.error('Token verification failed:', err);
-        // On RPC error, show teaser as safe fallback
-        loadTeaser(currentChapter);
-      }
-    }
-
-    async function getTokenBalance(ownerAddress) {
-      const body = {
-        jsonrpc: '2.0',
-        id: 1,
-        method: 'getTokenAccountsByOwner',
-        params: [
-          ownerAddress,
-          { mint: BAIWOR_MINT },
-          { encoding: 'jsonParsed' }
-        ]
-      };
-
-      const resp = await fetch(RPC_ENDPOINT, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(body)
-      });
-
-      const data = await resp.json();
-
-      if (data.error) {
-        throw new Error(data.error.message);
-      }
-
-      const accounts = data.result?.value || [];
-      let total = 0;
-
-      for (const acc of accounts) {
-        const info = acc.account?.data?.parsed?.info?.tokenAmount;
-        if (info) {
-          total += Number(info.amount) / Math.pow(10, BAIWOR_DECIMALS);
-        }
-      }
-
-      return total;
-    }
 
     // ============================================================
     // CHAPTER LOADING
@@ -518,7 +381,9 @@
         const resp = await fetch('/punakawan/naskah/' + chapterId + '.md');
         if (!resp.ok) throw new Error('File not found: ' + resp.status);
 
-        const md = await resp.text();
+        const md = (await resp.text())
+          .replace(/^---\r?\n[\s\S]*?\r?\n---\r?\n?/, '')   // buang YAML frontmatter
+          .replace(/^#\s+.*?\r?\n/, '');                    // buang judul H1 duplikat (sudah ada di header bab)
         const html = marked.parse(md);
         const meta = CHAPTERS[chapterId];
 
@@ -563,94 +428,8 @@
     }
 
     // ============================================================
-    // TEASER / FALLBACK (No $bAIwor)
+    // (Pratinjau & prompt dompet sudah dihapus)
     // ============================================================
-    async function loadTeaser(chapterId, isLocked = false) {
-      showLoading('Menyiapkan pratinjau...');
-
-      try {
-        const resp = await fetch('/punakawan/naskah/' + chapterId + '.md');
-        if (!resp.ok) throw new Error('File not found');
-
-        const md = await resp.text();
-        const meta = CHAPTERS[chapterId];
-
-        // Extract first 3 paragraphs as teaser
-        const paragraphs = md.split(/\n\n+/).filter(p => {
-          const t = p.trim();
-          return t.length > 0 && !t.startsWith('#') && !t.startsWith('---') && !t.startsWith('```');
-        });
-
-        const teaserParas = paragraphs.slice(0, 3).map(p => '<p>' + escapeHtml(p.trim()) + '</p>').join('');
-
-        renderTeaser(meta, teaserParas, chapterId, isLocked);
-      } catch (err) {
-        console.error('Teaser load failed:', err);
-        // Fallback: show CTA without teaser
-        renderTeaser(CHAPTERS[chapterId], '', chapterId, isLocked);
-      }
-    }
-
-    function renderTeaser(meta, teaserHtml, chapterId, isLocked = false) {
-      const accessLabel = isLocked ? 'Bab ini sedang dikunci sementara.' : 'Bab ini adalah bagian dari <strong>' + escapeHtml(meta.vol.split('·')[0].trim()) + '</strong>. ';
-      const accessBody = isLocked
-        ? 'Akses penuh belum dibuka dulu. Sementara ini hanya pratinjau yang bisa dilihat.'
-        : 'Hubungkan dompet yang memiliki token <strong>$bAIwor</strong> untuk membaca cerita lengkap.';
-
-      document.getElementById('mainContent').innerHTML =
-        '<header class="chapter-header">' +
-          '<div class="chapter-pre">' + escapeHtml(meta.vol) + '</div>' +
-          '<h1 class="chapter-title">' + escapeHtml(meta.title) + '</h1>' +
-          '<div class="chapter-subtitle">' + escapeHtml(meta.subtitle) + '</div>' +
-        '</header>' +
-
-        (teaserHtml ?
-          '<div class="teaser-wrap">' +
-            '<div class="teaser-content">' + teaserHtml + '</div>' +
-            '<div class="teaser-fade"></div>' +
-          '</div>'
-        : '') +
-
-        '<div class="cta-card">' +
-          '<div class="cta-icon">🔒</div>' +
-          '<h3>' + (isLocked ? 'Cerita Dikunci' : 'Cerita Premium') + '</h3>' +
-          '<p>' + accessLabel + accessBody + '</p>' +
-          '<a href="' + PUMP_FUN_URL + '" target="_blank" rel="noopener" class="cta-btn">' +
-            '🪙 Dapatkan $bAIwor' +
-          '</a>' +
-          '<div class="cta-note">' +
-            'Butuh Phantom atau Solflare. ' +
-            '<a href="https://phantom.app/" target="_blank">Pasang di sini</a>.' +
-          '</div>' +
-        '</div>';
-    }
-
-    // ============================================================
-    // CONNECT PROMPT (Premium chapter, no wallet)
-    // ============================================================
-    function showConnectPrompt() {
-      const meta = CHAPTERS[currentChapter];
-
-      document.getElementById('mainContent').innerHTML =
-        '<header class="chapter-header">' +
-          '<div class="chapter-pre">' + escapeHtml(meta.vol) + '</div>' +
-          '<h1 class="chapter-title">' + escapeHtml(meta.title) + '</h1>' +
-          '<div class="chapter-subtitle">' + escapeHtml(meta.subtitle) + '</div>' +
-        '</header>' +
-
-        '<div class="connect-prompt">' +
-          '<div class="icon">🔗</div>' +
-          '<h3>Hubungkan Dompet Solana</h3>' +
-          '<p>Bab ini membutuhkan verifikasi token <strong>$bAIwor</strong>. ' +
-             'Hubungkan dompet Anda untuk memeriksa akses.</p>' +
-          '<button class="connect-btn" onclick="connectWallet()">' +
-            '🦊 Hubungkan Phantom / Solflare' +
-          '</button>' +
-          '<div class="connect-safety">' +
-            '<span class="shield">🛡️</span> 100% Read-Only. Kami tidak akan meminta persetujuan transaksi, gas fee, atau memindahkan aset Anda.' +
-          '</div>' +
-        '</div>';
-    }
 
     // ============================================================
     // UI HELPERS
@@ -677,6 +456,21 @@
       d.textContent = str;
       return d.innerHTML;
     }
+  </script>
+
+  <script>
+    (function() {
+      const toggleBtn = document.getElementById('theme-toggle');
+      const isLight = document.documentElement.classList.contains('light-theme');
+      if (toggleBtn) {
+        toggleBtn.textContent = isLight ? '🌙' : '☀️';
+        toggleBtn.addEventListener('click', () => {
+          const currentlyLight = document.documentElement.classList.toggle('light-theme');
+          localStorage.setItem('punakawan-theme', currentlyLight ? 'light' : 'dark');
+          toggleBtn.textContent = currentlyLight ? '🌙' : '☀️';
+        });
+      }
+    })();
   </script>
 </body>
 </html>
