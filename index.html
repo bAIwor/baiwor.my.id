@@ -2,6 +2,15 @@
 <html lang="id">
 
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TSY9LJ6Q14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TSY9LJ6Q14');
+</script>
   <meta charset="UTF-8">
   <meta name="description" content="bAIwor adalah AI Agent untuk warga Kabupaten Banyumas. Chat AI gratis tentang wisata Baturraden, kuliner Mendoan, budaya Bawor, dan informasi Purwokerto. Tersedia 24/7.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -1424,6 +1433,211 @@
         width: 56px;
       }
     }
+  
+    /* ===== GMI CLOUDER SPOTLIGHT ===== */
+    .clouder-spotlight-section {
+      position: relative;
+      z-index: 2;
+      padding: 50px 5%;
+      display: flex;
+      justify-content: center;
+    }
+
+    .clouder-card {
+      width: 100%;
+      max-width: 1140px;
+      background: radial-gradient(circle at 10% 20%, rgba(0, 140, 255, 0.09) 0%, transparent 50%),
+                  radial-gradient(circle at 90% 80%, rgba(201, 168, 76, 0.07) 0%, transparent 50%),
+                  linear-gradient(160deg, rgba(16, 20, 26, 0.94) 0%, rgba(8, 10, 14, 0.98) 100%);
+      border: 1px solid rgba(0, 170, 255, 0.25);
+      border-radius: 12px;
+      padding: 40px;
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.6), 0 0 24px rgba(0, 140, 255, 0.1);
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .clouder-card:hover {
+      border-color: rgba(0, 200, 255, 0.45);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.7), 0 0 32px rgba(0, 140, 255, 0.18);
+    }
+
+    .clouder-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #00b4d8, var(--gold), transparent);
+    }
+
+    .clouder-badge-wrap {
+      margin-bottom: 24px;
+    }
+
+    .clouder-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.75rem;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #38bdf8;
+      background: rgba(14, 165, 233, 0.12);
+      border: 1px solid rgba(14, 165, 233, 0.35);
+      padding: 5px 14px;
+      border-radius: 4px;
+    }
+
+    .clouder-grid {
+      display: grid;
+      grid-template-columns: 420px 1fr;
+      gap: 40px;
+      align-items: center;
+    }
+
+    .clouder-media {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.5);
+      transition: transform 0.3s ease;
+    }
+
+    .clouder-media:hover {
+      transform: translateY(-4px) scale(1.01);
+    }
+
+    .clouder-img {
+      width: 100%;
+      height: auto;
+      display: block;
+      object-fit: cover;
+    }
+
+    .clouder-sub {
+      font-family: 'Share Tech Mono', monospace;
+      font-size: 0.85rem;
+      color: var(--gold);
+      letter-spacing: 0.12em;
+      margin-bottom: 8px;
+    }
+
+    .clouder-title {
+      font-family: 'Cinzel Decorative', serif;
+      font-size: 2.1rem;
+      line-height: 1.2;
+      color: var(--white);
+      margin-bottom: 16px;
+    }
+
+    .clouder-gold {
+      color: var(--gold);
+    }
+
+    .clouder-blue {
+      color: #38bdf8;
+      text-shadow: 0 0 16px rgba(56, 189, 248, 0.4);
+    }
+
+    .clouder-desc {
+      font-size: 1.05rem;
+      line-height: 1.65;
+      color: var(--white-dim);
+      margin-bottom: 24px;
+    }
+
+    .clouder-desc strong {
+      color: var(--white);
+    }
+
+    .clouder-perks {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 28px;
+    }
+
+    .perk-pill {
+      font-size: 0.82rem;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      padding: 6px 14px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      color: #e2e8f0;
+    }
+
+    .clouder-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn-clouder-x {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: #ffffff;
+      color: #000000;
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-clouder-x:hover {
+      background: #e2e8f0;
+      transform: translateY(-2px);
+      box-shadow: 0 4px 16px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-clouder-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(14, 165, 233, 0.15);
+      color: #38bdf8;
+      border: 1px solid rgba(14, 165, 233, 0.4);
+      padding: 12px 24px;
+      font-weight: 700;
+      font-size: 0.88rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: all 0.2s ease;
+    }
+
+    .btn-clouder-link:hover {
+      background: rgba(14, 165, 233, 0.28);
+      border-color: #38bdf8;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 900px) {
+      .clouder-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+      .clouder-card {
+        padding: 24px 20px;
+      }
+      .clouder-title {
+        font-size: 1.6rem;
+      }
+    }
+
   </style>
 
   <!-- ═══ LOCAL SEO — bAIwor Banyumas ═══ -->
@@ -1626,6 +1840,44 @@
       <span class="stat-label">Potensi Kolaborasi</span>
     </div>
   </div>
+
+  <div class="divider"></div>
+
+  <!-- GMI CLOUDER ANNOUNCEMENT SPOTLIGHT -->
+  <section class="clouder-spotlight-section">
+    <div class="clouder-card reveal">
+      <div class="clouder-badge-wrap">
+        <span class="clouder-tag">⚡ GLOBAL PARTNERSHIP &amp; MILESTONE</span>
+      </div>
+      <div class="clouder-grid">
+        <div class="clouder-media">
+          <img src="gmi_clouder_announce.png" alt="Wijang Hartoto - GMI Clouder Official Announcement" class="clouder-img">
+        </div>
+        <div class="clouder-content">
+          <div class="clouder-sub">// GMI Cloud Ambassador Program</div>
+          <h2 class="clouder-title">b<span class="clouder-gold">AI</span>wor <span style="font-size:1.4rem; color:var(--white-dim); font-family:'Rajdhani',sans-serif;">x</span> <span class="clouder-blue">GMI Cloud</span></h2>
+          <p class="clouder-desc">
+            Kabar gembira! <strong>bAIwor</strong> resmi terpilih dan bergabung dalam program <strong>GMI Clouder (Global Ambassador)</strong>. 
+            Melalui kolaborasi ini, ekosistem bAIwor didukung oleh infrastruktur komputasi cloud GPU mutakhir dari <strong>GMI Cloud</strong> untuk mengakselerasi pengembangan AI Agent, riset data publik lokal, dan kemajuan komunitas AI di Indonesia.
+          </p>
+          <div class="clouder-perks">
+            <span class="perk-pill">☁️ Enterprise GPU Compute</span>
+            <span class="perk-pill">⚡ High-Performance Inference</span>
+            <span class="perk-pill">🤝 Global Builder Community</span>
+          </div>
+          <div class="clouder-actions">
+            <a href="https://x.com/web3myid" target="_blank" rel="noopener noreferrer" class="btn-clouder-x">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              Lihat di X (Twitter)
+            </a>
+            <a href="https://www.gmicloud.ai" target="_blank" rel="noopener noreferrer" class="btn-clouder-link">
+              Jelajahi GMI Cloud ↗
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <div class="divider"></div>
 
@@ -2011,8 +2263,8 @@
       <div class="footer-links-group">
         <h4>Jelajahi</h4>
         <ul>
-          <li><a href="tentang.html">Tentang bAIwor</a></li>
-          <li><a href="layanan.html">Layanan</a></li>
+          <li><a href="/tentang">Tentang bAIwor</a></li>
+          <li><a href="/layanan">Layanan</a></li>
           <li><a href="sinau">Sinau AI</a></li>
         </ul>
       </div>

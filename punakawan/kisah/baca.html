@@ -1,9 +1,20 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TSY9LJ6Q14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TSY9LJ6Q14');
+</script>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Punakawan World — Pembaca</title>
+  <meta name="description" content="Baca kisah Punakawan World: petualangan semAIr, gAIreng, pAItruk, dan bAIwor dalam memadukan filosofi Jawa dengan kecerdasan buatan.">
+
   <link rel="canonical" href="https://baiwor.my.id/punakawan/kisah/baca">
   <script>
     (function() {
@@ -305,9 +316,9 @@
 
   <!-- Top Nav -->
   <nav class="topnav">
-    <a href="index.html" class="topnav-brand">Punakawan World <span>Reader</span></a>
+    <a href="/punakawan/kisah/" class="topnav-brand">Punakawan World <span>Reader</span></a>
     <div class="topnav-links">
-      <a href="index.html">← Kembali</a>
+      <a href="/punakawan/kisah/">← Kembali</a>
       <button id="theme-toggle" class="theme-toggle-btn" aria-label="Toggle Theme">☀️</button>
     </div>
   </nav>
@@ -322,7 +333,7 @@
 
   <!-- Footer -->
   <footer class="reader-footer">
-    <a href="index.html">Punakawan World</a> — Eyang SeGaPeWor, 2025
+    <a href="/punakawan/kisah/">Punakawan World</a> — Eyang SeGaPeWor, 2025
   </footer>
 
   <!-- Marked.js CDN for Markdown parsing -->
@@ -390,7 +401,7 @@
         renderChapter(meta, html, chapterId);
       } catch (err) {
         console.error('Failed to load chapter:', err);
-        showError('Gagal Memuat', 'Naskah tidak dapat dimuat. <a href="index.html">Kembali ke beranda</a>.');
+        showError('Gagal Memuat', 'Naskah tidak dapat dimuat. <a href="/punakawan/kisah/">Kembali ke beranda</a>.');
       }
     }
 
@@ -447,7 +458,7 @@
         '<div class="error-state">' +
           '<h2>' + title + '</h2>' +
           '<p>' + message + '</p>' +
-          '<a href="index.html">← Kembali ke Punakawan World</a>' +
+          '<a href="/punakawan/kisah/">← Kembali ke Punakawan World</a>' +
         '</div>';
     }
 

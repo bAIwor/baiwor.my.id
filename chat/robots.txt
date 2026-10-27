@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://chat.baiwor.my.id/sitemap.xml

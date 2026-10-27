@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-TSY9LJ6Q14"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-TSY9LJ6Q14');
+</script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sinau — Belajar Kecerdasan Buatan bareng bAIwor | AI Agent Banyumas</title>
+  <meta name="description" content="Sinau kecerdasan buatan (AI) nganggo basa santai khas Banyumas bareng bAIwor. Pahami apa kuwi AI & AI Agent, cara nganggo bAIwor, tips gawe prompt, mitos vs fakta, etika, lan kamus istilah.">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f2318'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%23d4a017'%3Eb%3C/text%3E%3C/svg%3E">
+  <link rel="stylesheet" href="shared.css?v=6">
+  <style>
+    .qa-item { border-bottom: 1px solid rgba(212,160,23,0.10); padding: 14px 0; }
+    .qa-item:last-child { border-bottom: none; }
+    .qa-q { font-weight: 600; color: var(--cream2); font-size: 15px; margin-bottom: 6px; }
+    .qa-a { font-size: 14px; color: var(--ink3); line-height: 1.7; }
+    .prompt-sample {
+      background: rgba(0,0,0,0.35);
+      border: 1px solid rgba(212,160,23,0.12);
+      border-radius: 10px;
+      padding: 12px 14px;
+      font-size: 13px;
+      color: var(--cream3);
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    .prompt-sample .lbl { color: var(--gold); font-weight: 600; font-size: 11px; text-transform: uppercase; letter-spacing: .4px; display:block; margin-bottom: 4px; }
+    .do-dont { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+    @media (max-width: 640px){ .do-dont { grid-template-columns: 1fr; } }
+    .do-dont h4 { font-family: var(--font-head); font-size: 15px; margin-bottom: 10px; }
+    .do-dont .yes h4 { color: #6fd0a3; }
+    .do-dont .no h4 { color: var(--red-bright); }
+    .do-dont ul { list-style: none; }
+    .do-dont li { font-size: 13px; color: var(--ink3); line-height: 1.6; padding-left: 22px; position: relative; margin-bottom: 8px; }
+    .do-dont .yes li::before { content: "✓"; position: absolute; left: 0; color: #6fd0a3; }
+    .do-dont .no li::before { content: "✕"; position: absolute; left: 0; color: var(--red-bright); }
+    .cta-band { text-align: center; background: linear-gradient(135deg, rgba(45,106,79,0.25), rgba(15,35,24,0.6)); border: 1px solid rgba(212,160,23,0.18); border-radius: 18px; padding: 34px 24px; margin-top: 8px; }
+    .cta-band h3 { font-family: var(--font-head); font-size: 22px; color: var(--cream2); margin-bottom: 8px; }
+    .cta-band p { color: var(--ink3); font-size: 14px; margin-bottom: 20px; }
+  </style>
+
+  <!-- ═══ LOCAL SEO — bAIwor Banyumas ═══ -->
+  <meta name="geo.region" content="ID-JT">
+  <meta name="geo.placename" content="Purwokerto, Kabupaten Banyumas, Jawa Tengah, Indonesia">
+  <meta name="geo.position" content="-7.4211;109.2496">
+  <meta name="ICBM" content="-7.4211, 109.2496">
+  <meta http-equiv="content-language" content="id-ID">
+  <meta name="language" content="Indonesian">
+  <meta name="keywords" content="sinau, sinau AI, belajar AI, apa itu AI, AI Agent, kecerdasan buatan bahasa Indonesia, cara pakai chat AI, contoh prompt, mitos fakta AI, etika AI, kamus istilah AI, ngAIlmu, bAIwor Purwokerto, Banyumas, ngapak, krama">
+  <meta name="author" content="bAIwor — AI Agent Purwokerto Banyumas">
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+  <link rel="canonical" href="https://baiwor.my.id/sinau">
+  <meta property="og:type" content="article">
+  <meta property="og:locale" content="id_ID">
+  <meta property="og:url" content="https://baiwor.my.id/sinau">
+  <meta property="og:title" content="Sinau — Belajar Kecerdasan Buatan bareng bAIwor">
+  <meta property="og:description" content="Sinau AI nganggo basa santai khas Banyumas: apa kuwi AI & AI Agent, cara nganggo bAIwor, tips prompt, mitos vs fakta, lan kamus istilah.">
+  <meta property="og:site_name" content="bAIwor — AI Agent Purwokerto Banyumas">
+  <meta property="og:image" content="https://baiwor.my.id/bAIwor_pp.png">
+  <meta property="og:image:width" content="400">
+  <meta property="og:image:height" content="400">
+  <meta property="og:image:alt" content="bAIwor — Maskot AI Agent Purwokerto Banyumas">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Sinau — Belajar Kecerdasan Buatan bareng bAIwor">
+  <meta name="twitter:description" content="Sinau AI nganggo basa santai khas Banyumas. Tradisi ketemu teknologi ben mudheng lan migunani.">
+  <meta name="twitter:image" content="https://baiwor.my.id/bAIwor_pp.png">
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": ["LocalBusiness", "Organization"],
+        "@id": "https://baiwor.my.id/#organization",
+        "name": "bAIwor",
+        "alternateName": ["bAIwor AI Agent", "Banyumas AI Worker", "AI Banyumas"],
+        "description": "AI Agent berbasis kecerdasan buatan yang melayani warga Kabupaten Banyumas dan Purwokerto.",
+        "url": "https://baiwor.my.id",
+        "logo": {"@type": "ImageObject", "url": "https://baiwor.my.id/bAIwor_pp.png"},
+        "image": "https://baiwor.my.id/bAIwor_pp.png",
+        "address": {"@type": "PostalAddress", "addressLocality": "Purwokerto", "addressRegion": "Kabupaten Banyumas", "addressCountry": "ID"},
+        "telephone": "+628992120123",
+        "openingHours": "Mo-Su 10:00-22:00",
+        "geo": {"@type": "GeoCoordinates", "latitude": -7.4211, "longitude": 109.2496},
+        "serviceType": ["Chat AI", "Asisten Informasi Lokal", "AI Agent", "Edukasi AI"],
+        "knowsAbout": ["Edukasi AI", "Wisata Banyumas", "Kuliner Banyumas", "Bawor", "Punakawan", "Bahasa Jawa"],
+        "sameAs": ["https://puraikerto.my.id"]
+      },
+      {
+        "@type": "Article",
+        "@id": "https://baiwor.my.id/sinau#article",
+        "url": "https://baiwor.my.id/sinau",
+        "headline": "Sinau — Belajar Kecerdasan Buatan bareng bAIwor",
+        "description": "Panduan pemula memahami AI dan AI Agent dengan bahasa santai khas Banyumas, lengkap dengan contoh prompt, mitos vs fakta, etika, dan kamus istilah.",
+        "inLanguage": "id-ID",
+        "isPartOf": {"@id": "https://baiwor.my.id/#website"},
+        "author": {"@id": "https://baiwor.my.id/#organization"},
+        "publisher": {"@id": "https://baiwor.my.id/#organization"}
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {"@type":"Question","name":"Apa itu AI Agent?","acceptedAnswer":{"@type":"Answer","text":"AI Agent adalah asisten berbasis kecerdasan buatan yang bisa diajak chat, memahami pertanyaan, lalu menjawab atau mengerjakan tugas. Beda dengan bot biasa yang kaku, AI Agent menyusun jawaban sesuai konteks percakapan."}},
+          {"@type":"Question","name":"Apakah jawaban AI selalu benar?","acceptedAnswer":{"@type":"Answer","text":"Tidak selalu. AI kadang bisa salah atau mengarang (disebut halusinasi). Untuk hal penting seperti kesehatan, hukum, atau angka, selalu cek ulang ke sumber resmi seperti banyumaskab.go.id."}},
+          {"@type":"Question","name":"Apakah data pribadi saya aman saat pakai AI?","acceptedAnswer":{"@type":"Answer","text":"Anggap semua yang kamu kirim bisa dibaca. Jangan pernah menuliskan NIK, password, kode OTP, atau data rahasia pribadi/orang lain ke dalam chat AI."}},
+          {"@type":"Question","name":"Harus pakai bahasa Jawa kalau ngobrol dengan bAIwor?","acceptedAnswer":{"@type":"Answer","text":"Tidak harus. Kamu bebas pakai Bahasa Indonesia, Jawa ngoko, maupun krama. bAIwor akan menyesuaikan dengan gayamu."}}
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://baiwor.my.id/#website",
+        "url": "https://baiwor.my.id",
+        "name": "bAIwor — AI Agent Purwokerto Banyumas",
+        "inLanguage": "id-ID",
+        "publisher": {"@id": "https://baiwor.my.id/#organization"}
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="navbar-inner">
+    <a href="/" class="nav-brand">
+      <div class="nav-logo"><img src="bAIwor_pp.png" alt="bAIwor"></div>
+      <div class="nav-title">b<span class="ai">AI</span>wor</div>
+    </a>
+    <button class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')" aria-label="Menu">
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    </button>
+    <div class="nav-links">
+      <a href="/" class="nav-link">Beranda</a>
+      <a href="/tentang" class="nav-link">Tentang</a>
+      <a href="/layanan" class="nav-link">Layanan</a>
+      <a href="/primbon/" class="nav-link">Primbon</a>
+      <a href="/sinau" class="nav-link active">Sinau</a>
+      <a href="/kontak" class="nav-link">Kontak</a>
+    </div>
+  </div>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <div class="hero">
+    <h1 class="hero-title"><span class="accent">Sinau</span> <span class="ai">AI</span></h1>
+    <div class="gold-line"></div>
+    <p class="hero-sub">Belajar kecerdasan buatan nganggo basa santai khas Banyumas bareng bAIwor. Saka oyod tradisi tumuju teknologi masa depan — ben mudheng, ora kagetan, lan migunani.</p>
+  </div>
+
+  <!-- APA ITU AI -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🧠</span> Apa Sih AI Kuwi?</div>
+    <p class="section-sub">AI alias <em>Kecerdasan Buatan</em> kuwi program komputer sing bisa "mikir" niru cara manungsa: ngenali pola, mahami basa, banjur ngasilake wangsulan utawa karya. Gampange, AI dilatih saka yutan conto supaya bisa nebak tutuge obrolan utawa tugas sing paling pas lan mlebu nalar.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">💬</div>
+        <div class="card-title">Ngomong &amp; Nulis</div>
+        <div class="card-desc">Ngronce ukara, nerjemahake, ngringkes, tekan nggawe tulisan/caption. Iki sing paling kerep kok enggo saben dinane.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">👀</div>
+        <div class="card-title">Ngenali Pola</div>
+        <div class="card-desc">Kenali gambar, swara, tulisan tangan, tekan ndeteksi transaksi aneh utawa anomali data kanthi cepet.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🤝</div>
+        <div class="card-title">AI Agent</div>
+        <div class="card-desc">AI sing ora mung mangsuli, nanging bisa nggarap tugas: golek info, nyusun rencana, lan koordinasi — persis kaya bAIwor iki.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CARA PAKAI BAIWOR -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🚀</span> Cara Nganggo bAIwor</div>
+    <p class="section-sub">Ora perlu kursus utawa pinter koding. Limang langkah gampang iki wis cukup kanggo miwiti.</p>
+    <div class="card">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-date">Langkah 1</div>
+          <div class="timeline-title">Bukak chat-e</div>
+          <div class="timeline-desc">Mampir maring <a href="https://chat.baiwor.my.id">chat.baiwor.my.id</a> — gratis, langsung nganggo liwat browser tanpa perlu instal aplikasi.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Langkah 2</div>
+          <div class="timeline-title">Sapa &amp; langsung takon</div>
+          <div class="timeline-desc">Gaya bebas: "Halo", "Sugeng enjing", utawa langsung "Resep mendoan kriuk kepriwe?". Ora kudu basa kaku.</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Langkah 3</div>
+          <div class="timeline-title">Wenehi konteks sing cetha</div>
+          <div class="timeline-desc">Kian cetha panjalukmu, kian migunani wangsulane. Conto: "Aku turis saka Jakarta, arep 2 dina neng Baturraden, budget hemat kanggo keluarga."</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Langkah 4</div>
+          <div class="timeline-title">Nyuwun owahan (iterasi)</div>
+          <div class="timeline-desc">Wangsulan pisanan dudu asil mutlak. Sampeyan bisa nyuwun: "dadekna luwih ringkes", "wenehi conto nyata", utawa "terangna nganggo basa santai".</div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-date">Langkah 5</div>
+          <div class="timeline-title">Priksa lan verifikasi</div>
+          <div class="timeline-desc">Kanggo prakara wigati (kesehatan, hukum, angka resmi), tetep verifikasi maring sumber resmi kaya <a href="https://banyumaskab.go.id" target="_blank" rel="noopener">banyumaskab.go.id</a>.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TIPS PROMPT -->
+  <div class="section">
+    <div class="section-title"><span class="icon">✍️</span> Tips Nggawe Prompt (Panjaluk)</div>
+    <p class="section-sub"><strong>Prompt</strong> kuwi printah utawa pitakon sing kok kirim menyang AI. Rumus gampange: <strong>Peran + Tugas + Konteks + Format</strong>.</p>
+    <div class="do-dont">
+      <div class="yes">
+        <h4>✅ Sing Apik Ditindakake</h4>
+        <ul>
+          <li>Konkret &amp; cetha tujuane apa.</li>
+          <li>Wenehi konteks (kanggo sapa, kahanane kepriwe, watesane apa).</li>
+          <li>Sebutna format wangsulan sing dipengini ("ing wujud tabel", "3 poin ringkes").</li>
+          <li>Bisa terus diterusake obrolane (follow-up), ora kudu sepisan rampung.</li>
+        </ul>
+      </div>
+      <div class="no">
+        <h4>❌ Sing Kudu Disingkiri</h4>
+        <ul>
+          <li>Printah sing ambigu/kabur: "gawekna tulisan". (tulisan apa? kanggo sapa?)</li>
+          <li>Njaluk data rahasia utawa privasi wong liya.</li>
+          <li>Percaya 100% tanpa dipriksa maneh, utamane babagan angka &amp; warta anyar.</li>
+          <li>Masang NIK, password, utawa kode OTP ing jero obrolan chat.</li>
+        </ul>
+      </div>
+    </div>
+    <div style="margin-top:16px;">
+      <div class="prompt-sample"><span class="lbl">Conto — Wisata</span>"Tumindaka minangka pemandu lokal Banyumas. Gawekna itinerary 1 dina ing Baturraden kanggo kulawarga 4 wong, budget hemat, komplit karo jadwal jam &amp; prakiraan ragad. Bentuk tabel."</div>
+      <div class="prompt-sample"><span class="lbl">Conto — Kuliner</span>"Resep gethuk goreng Sokaraja versi rumahan, bahan sing gampang digoleki ing pasar, langkah nganggo nomer, lan tips supaya ora gampang tengik."</div>
+      <div class="prompt-sample"><span class="lbl">Conto — Basa</span>"Terjemahna ukara iki dadi basa Jawa krama alus: 'Selamat pagi, apakah Anda sudah makan?' Banjur jlentrehna alesane milih tembung-tembung kasebut."</div>
+    </div>
+  </div>
+
+  <!-- MITOS VS FAKTA -->
+  <div class="section">
+    <div class="section-title"><span class="icon">⚖️</span> Mitos vs Fakta AI</div>
+    <p class="section-sub">Aja gampang gumun lan aja gampang wedi. AI kuwi piranti kaya dene arit utawa cangkul — becik lan orane gumantung sapa sing nggunakake.</p>
+    <div class="card">
+      <table class="info-table">
+        <tr><td>Mitos</td><td>"AI bisa mikir duwe perasaan persis kaya manungsa."</td></tr>
+        <tr><td>Fakta</td><td>AI ngolah pola matematika saka data; AI ora duwe ati, eling, utawa rasa kaya manungsa.</td></tr>
+        <tr><td>Mitos</td><td>"Wangsulane AI mesthi bener lan mutlak."</td></tr>
+        <tr><td>Fakta</td><td>AI bisa ngalami <em>halusinasi</em>: katon yakin mangsuli nanging nyatane ngarang/salah. Kudu tetep dicroscek.</td></tr>
+        <tr><td>Mitos</td><td>"AI bakal ngilangake kabeh pakaryan manungsa."</td></tr>
+        <tr><td>Fakta</td><td>AI ngowahi lan ngewangi cara kerja. Manungsa sing pinter manfaatake AI bakal luwih unggul lan produktif.</td></tr>
+        <tr><td>Mitos</td><td>"Nganggo AI kuwi curang utawa males."</td></tr>
+        <tr><td>Fakta</td><td>Padha karo nganggo kalkulator: becik yen kanggo ngasilake karya sing luwih apik, ala yen mung kanggo nipu utawa plagiasi.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- ETIKA & SAFETY -->
+  <div class="section">
+    <div class="section-title"><span class="icon">🛡️</span> Etika &amp; Kaslametan</div>
+    <p class="section-sub">Watak Banyumasan kuwi blaka suta — jujur apa anane. Semono uga nalika nggunakake teknologi AI, gunakna kanthi bener ben mberkahi liyan.</p>
+    <div class="card-grid">
+      <div class="card">
+        <div class="card-icon">🔒</div>
+        <div class="card-title">Jaga Data Pribadi</div>
+        <div class="card-desc">Aja nulis NIK, nomor rekening, password, OTP, utawa data pribadi rahasia liyane ing jero chat AI.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">✅</div>
+        <div class="card-title">Verifikasi &amp; Titeni</div>
+        <div class="card-desc">Babagan kesehatan, hukum, lan data resmi wajib dikonfirmasi menyang pihak sing berwenang. AI minangka mitra mikir, dudu penentu tunggal.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🙏</div>
+        <div class="card-title">Jujur &amp; Transparan</div>
+        <div class="card-desc">Yen nggawe tulisan utawa karya kanggo tugas umum, luwih becik blaka yen dibantu nganggo piranti AI. Aja dinggo ngapusi.</div>
+      </div>
+      <div class="card">
+        <div class="card-icon">🚫</div>
+        <div class="card-title">Ora Kanggo Tumindak Ala</div>
+        <div class="card-desc">Aja nggunakake AI kanggo nyebar hoaks, ujaran sengit, utawa nglanggar hak cipta wong liya.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- KAMUS ISTILAH -->
+  <div class="section">
+    <div class="section-title"><span class="icon">📖</span> Kamus Istilah AI (Gampang Dipahami)</div>
+    <p class="section-sub">Istilah-istilah sing kerep keprungu — dijlentrehake nganggo basa padinan.</p>
+    <div class="card">
+      <table class="info-table">
+        <tr><td>AI</td><td>Kecerdasan Buatan — program komputer sing dirancang supaya bisa mikir lan ngrampungake tugas niru kecerdasan manungsa.</td></tr>
+        <tr><td>LLM</td><td>Large Language Model — jinis AI sing dilatih saka milyaran teks supaya pinter diajak ngobrol lan nulis basa manungsa.</td></tr>
+        <tr><td>Prompt</td><td>Ukara pitakon utawa instruksi sing kok kirimake maring AI supaya diwangsuli.</td></tr>
+        <tr><td>Token</td><td>Ibarat potongan suku kata/karakter sing diwaca dening mesin AI saben ngolah teks.</td></tr>
+        <tr><td>Model</td><td>"Mesin utek" AI sing wis dilatih; saben model duwe keunggulan lan gaya wangsulan sing beda.</td></tr>
+        <tr><td>AI Agent</td><td>Sistem AI mandiri sing ora mung njawab chat, nanging bisa koordinasi lan nggarap pirang-pirang langkah tugas kanthi otomatis.</td></tr>
+        <tr><td>Halusinasi</td><td>Kahanan nalika AI ngarang jawaban sing salah kanthi rasa yakin banget.</td></tr>
+        <tr><td>Context</td><td>Riwayat utawa wates memori obrolan sadurunge sing isih dieling-eling dening AI sajrone obrolan lumaku.</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <!-- FAQ -->
+  <div class="section">
+    <div class="section-title"><span class="icon">❓</span> Pitakon Sing Asring Ditakokake (FAQ)</div>
+    <div class="card">
+      <div class="qa-item">
+        <div class="qa-q">Apa kudu ngerti koding/program kanggo nganggo AI?</div>
+        <div class="qa-a">Ora perlu babar blas. Nganggo AI saiki mung kaya ngobrol biasa — kuncine mung cetha carane takon.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Apa kudu nganggo basa Jawa yen ngobrol karo bAIwor?</div>
+        <div class="qa-a">Ora kudu. Sampeyan bebas nganggo Bahasa Indonesia, Jawa ngoko, utawa krama alus. bAIwor bakal nyelarasake karo basamu.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Kepriwe yen wangsulane AI ana sing kliru?</div>
+        <div class="qa-a">Kuwi lumrah. Wenehana koreksi utawa takona maneh kanthi panjaluk sing luwih rinci. Verifikasi menyang sumber asli yen wigati.</div>
+      </div>
+      <div class="qa-item">
+        <div class="qa-q">Apa bAIwor nyimpen data pribadiku?</div>
+        <div class="qa-a">Sistem ora njaluk data rahasia. Supaya tansah aman, aja tau nulis password, OTP, utawa dokumen rahasia ing jero chat.</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- CTA -->
+  <div class="section">
+    <div class="cta-band">
+      <h3>Wis Mudheng? Ayo Langsung Dicoba!</h3>
+      <p>Sinau kuwi paling manjur yen langsung dipraktekake. Takona maring bAIwor babagan wisata, kuliner, basa, utawa apa bae.</p>
+      <a href="https://chat.baiwor.my.id" target="_blank" rel="noopener" class="token-link" style="font-size:14px; padding:12px 28px; border-radius:30px; font-weight:600;">💬 Miwiti Chat bareng bAIwor</a>
+    </div>
+  </div>
+
+</div>
+
+<!-- FOOTER -->
+<footer class="site-footer">
+
+  <!-- Local Business NAP Block -->
+  <div class="local-nap-block" style="display:flex; flex-wrap:wrap; justify-content:center; gap:20px; margin-bottom:24px; font-size:13px; color:rgba(245,240,232,0.8); text-align:left; max-width:800px; margin-left:auto; margin-right:auto;">
+    <div style="flex:1; min-width:220px; padding:18px; border:1px solid rgba(212,160,23,0.15); border-radius:12px; background:rgba(0,0,0,0.25);">
+      <strong style="color:var(--gold-l); font-size:15px; display:block; margin-bottom:8px;">bAIwor AI Agent</strong>
+      📍 Purwokerto<br>
+      Kabupaten Banyumas, Jawa Tengah
+    </div>
+    <div style="flex:1; min-width:220px; padding:18px; border:1px solid rgba(212,160,23,0.15); border-radius:12px; background:rgba(0,0,0,0.25);">
+      <strong style="color:var(--gold-l); font-size:15px; display:block; margin-bottom:8px;">Kontak &amp; Layanan</strong>
+      📞 WhatsApp: <a href="https://wa.me/628992120123" class="wa-contact-link" style="color:#25D366; font-weight:600; text-decoration:none;">+62 899-2120-123</a><br>
+      🕒 Jam Operasional: <span style="color:var(--white);">Buka 10.00 Tutup 22.00</span>
+    </div>
+  </div>
+
+  🌿 <a href="https://chat.baiwor.my.id">chat.baiwor.my.id</a>
+</footer>
+
+<script src="/chat-bubble.js?v=5"></script>
+  <!-- GUNUNGAN BACK-TO-TOP -->
+  <a id="gununganTop" href="#top" aria-label="Kembali ke atas">
+    <img src="/baiwor_gunungan.png" alt="bAIwor Gunungan — kembali ke atas">
+  </a>
+  <script>
+    (function () {
+      var gun = document.getElementById('gununganTop');
+      if (!gun) return;
+      var docH = Math.max(document.body.scrollHeight, document.documentElement.scrollHeight);
+      var winH = window.innerHeight;
+      if (docH <= winH + 250) {
+        gun.classList.add('visible');
+      } else {
+        window.addEventListener('scroll', function () {
+          if (window.scrollY > 300) gun.classList.add('visible');
+          else gun.classList.remove('visible');
+        });
+      }
+      gun.addEventListener('click', function (e) {
+        e.preventDefault();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+</body>
+</html>
