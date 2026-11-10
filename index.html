@@ -1494,12 +1494,13 @@
       }
       .pose-controls {
         position: relative;
+        flex-wrap: wrap;
+        justify-content: center;
       }
       .pose-btn {
         display: flex;
-        position: absolute;
-        top: 42%;
-        transform: translateY(-50%);
+        position: static;
+        transform: none;
         width: 44px;
         height: 44px;
         z-index: 15;
@@ -1508,12 +1509,14 @@
         box-shadow: 0 4px 20px rgba(0, 0, 0, 0.9), 0 0 12px rgba(201, 168, 76, 0.5);
       }
       .pose-btn.prev {
-        left: 4px;
+        left: auto;
       }
       .pose-btn.next {
-        right: 4px;
+        right: auto;
       }
       .pose-track-wrapper {
+        flex: 1 1 100%;
+        order: -1;
         margin: 0 -4%;
         padding: 10px 0 20px;
       }
@@ -1533,11 +1536,11 @@
         padding: 4px 14px;
       }
       .pose-img-wrap {
-        height: 310px;
+        height: 260px;
         margin-bottom: 14px;
       }
       .pose-img-wrap img {
-        max-height: 300px;
+        max-height: 250px;
       }
       .pose-title {
         font-size: 1.15rem;
@@ -2199,9 +2202,9 @@
   <section class="section eco-section" id="ekosistem">
     <div class="reveal" style="text-align:center;">
       <div class="section-tag" style="justify-content:center;">Ekosistem Platform</div>
-      <h2 class="section-title">Sembilan Pilar <span class="gold">Digital</span> <span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span></h2>
+      <h2 class="section-title">9 Pilar <span class="gold">Digital</span> <span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span></h2>
       <p style="color:var(--white-dim); max-width:540px; margin:0 auto 20px; font-size:0.95rem; line-height:1.75;">
-        Ekosistem bAIwor dibangun di atas sembilan pilar platform, budaya, dan perkakas teknologi yang saling terhubung untuk masa depan digital Banyumas.
+        Ekosistem bAIwor dibangun di atas 9 pilar platform, budaya, dan perkakas teknologi yang saling terhubung untuk masa depan digital Banyumas.
       </p>
     </div>
     <div class="eco-grid">
@@ -2358,7 +2361,7 @@
           </div>
         </div>
         <div class="eco-card-body">
-          <p class="eco-card-desc">Pilar kedelapan bAIwor. Disiapkan menyusul untuk melengkapi jajaran sembilan pilar digital.</p>
+          <p class="eco-card-desc">Pilar kedelapan bAIwor. Disiapkan menyusul untuk melengkapi jajaran 9 pilar digital.</p>
           <div class="eco-link" style="color:var(--white-dim); opacity:0.65;">
             Segera Hadir
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
@@ -2378,7 +2381,7 @@
           </div>
         </div>
         <div class="eco-card-body">
-          <p class="eco-card-desc">Simpul pamungkas sembilan pilar digital bAIwor. Mempersiapkan lompatan teknologi cerdas bagi masyarakat Banyumas.</p>
+          <p class="eco-card-desc">Simpul pamungkas 9 pilar digital bAIwor. Mempersiapkan lompatan teknologi cerdas bagi masyarakat Banyumas.</p>
           <div class="eco-link" style="color:var(--white-dim); opacity:0.65;">
             Segera Hadir
             <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2">
@@ -2397,7 +2400,7 @@
       <div class="section-tag" style="justify-content: center;">Ekspresi & Karakter</div>
       <h2 class="section-title">Galeri <span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span></h2>
       <p style="color:var(--white-dim); max-width:580px; margin:0 auto 28px; font-size:0.95rem; line-height:1.75;">
-        Ragam ekspresi dan persona maskot kebanggaan Banyumas — memadukan kelugasan karakter Bawor tradisional dengan keramahan kecerdasan buatan masa depan.
+        Ragam ekspresi dan persona.
       </p>
     </div>
 
