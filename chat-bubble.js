@@ -21,7 +21,7 @@
   a.className = "baiwor-chat-bubble";
   a.setAttribute("aria-label", "Ngobrol dengan bAIwor");
   a.innerHTML =
-    '<img src="' + BASE + '/bAIwor_pp.png" alt="bAIwor">' +
+    '<img src="' + BASE + '/baiwor_pp_128.png" alt="bAIwor">' +
     '<span class="bcb-label">Ngobrol dengan bAIwor' +
     '<span class="bcb-sub">AI Agent Banyumas · 24/7</span></span>';
 

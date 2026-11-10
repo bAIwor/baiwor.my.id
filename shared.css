@@ -504,46 +504,6 @@ a:hover { color: var(--gold); text-decoration: underline; }
   font-weight: 400;
 }
 
-/* ===== PUNAKAWAN GRID ===== */
-.punakawan-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-}
-.punakawan-card {
-  background: rgba(15,35,24,0.5);
-  border: 1px solid rgba(212,160,23,0.1);
-  border-radius: 16px;
-  padding: 24px;
-  text-align: center;
-  transition: border-color 0.2s, transform 0.2s;
-}
-.punakawan-card:hover {
-  border-color: rgba(212,160,23,0.25);
-  transform: translateY(-2px);
-}
-.punakawan-emoji {
-  font-size: 36px;
-  margin-bottom: 10px;
-}
-.punakawan-name {
-  font-family: var(--font-head);
-  font-size: 16px;
-  font-weight: 600;
-  color: var(--cream2);
-  margin-bottom: 4px;
-}
-.punakawan-role {
-  font-size: 12px;
-  color: var(--gold);
-  font-weight: 500;
-  margin-bottom: 8px;
-}
-.punakawan-desc {
-  font-size: 12px;
-  color: var(--ink3);
-  line-height: 1.5;
-}
 
 /* ===== BACK LINK ===== */
 .back-link {
@@ -602,3 +562,106 @@ a:hover { color: var(--gold); text-decoration: underline; }
     width: 56px;
   }
 }
+
+/* ===== CLOUDER PALETTE — PER-PAGE THEMES ===== */
+:root {
+  --navy: #0C0E2E;
+  --lavender: #C1A9F3;
+  --cl-blue: #378CF3;
+  --cl-cyan: #4CCAD2;
+  --cl-green: #5AC557;
+  --cl-yellow: #F6DA00;
+  --cl-pink: #F44CA6;
+}
+body.theme-tentang { --accent: #378CF3; --accent-2: #4CCAD2; }
+body.theme-layanan { --accent: #F44CA6; --accent-2: #F6DA00; }
+body.theme-primbon { --accent: #F6DA00; --accent-2: #F44CA6; }
+body.theme-sinau { --accent: #4CCAD2; --accent-2: #378CF3; }
+body.theme-kontak { --accent: #5AC557; --accent-2: #F6DA00; }
+
+body[class*="theme-"] {
+  background-color: var(--navy);
+}
+
+body[class*="theme-"] .container,
+body[class*="theme-"] .site-footer { position: relative; z-index: 1; }
+
+/* Pixel mosaic corners (Clouder poster echo) */
+body[class*="theme-"]::before,
+body[class*="theme-"]::after {
+  content: '';
+  position: fixed;
+  width: 14px;
+  height: 14px;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.9;
+}
+body[class*="theme-"]::before {
+  top: 0; left: 0;
+  background: var(--accent);
+  box-shadow: 14px 0 0 var(--accent-2), 28px 0 0 var(--accent),
+    0 14px 0 var(--accent-2), 0 28px 0 var(--lavender);
+}
+body[class*="theme-"]::after {
+  bottom: 0; right: 0;
+  background: var(--accent);
+  box-shadow: -14px 0 0 var(--lavender), 0 -14px 0 var(--accent),
+    -14px -14px 0 var(--accent-2), -28px 0 0 var(--accent-2);
+}
+
+/* Navbar */
+body[class*="theme-"] .navbar {
+  background: rgba(12, 14, 46, 0.94);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+  border-bottom: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+}
+body[class*="theme-"] .nav-link:hover {
+  color: var(--accent);
+  background: rgba(255, 255, 255, 0.06);
+}
+body[class*="theme-"] .nav-link.active {
+  color: #0C0E2E;
+  background: var(--accent);
+  border-color: var(--accent);
+  font-weight: 700;
+}
+@media (max-width: 768px) {
+  body[class*="theme-"] .nav-links {
+    background: rgba(12, 14, 46, 0.97);
+  }
+}
+
+/* Hero */
+body[class*="theme-"] .hero-title .accent { color: var(--accent); }
+body[class*="theme-"] .hero-sub { color: var(--accent); }
+body[class*="theme-"] .gold-line { background: var(--accent); }
+
+/* Sections & cards */
+body[class*="theme-"] .section-title .icon { color: var(--accent); }
+body[class*="theme-"] .card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(201, 168, 76, 0.12);
+  border: 1px solid color-mix(in srgb, var(--accent) 20%, transparent);
+}
+body[class*="theme-"] .card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 8px 28px rgba(0, 0, 0, 0.4);
+}
+body[class*="theme-"] .card-title { color: var(--accent); }
+body[class*="theme-"] .stat-card {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid color-mix(in srgb, var(--accent) 18%, transparent);
+}
+body[class*="theme-"] .stat-num { color: var(--accent); }
+
+/* Timeline */
+body[class*="theme-"] .timeline::before { background: var(--accent); }
+body[class*="theme-"] .timeline-item::before { background: var(--accent); border-color: var(--navy); }
+body[class*="theme-"] .timeline-date { color: var(--accent); }
+
+/* Footer */
+body[class*="theme-"] .site-footer {
+  border-top: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+}
+body[class*="theme-"] .site-footer a { color: var(--accent); }

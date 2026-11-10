@@ -24,6 +24,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%230f2318'/%3E%3Ctext x='50' y='72' text-anchor='middle' font-family='Georgia,serif' font-size='58' font-weight='700' fill='%23d4a017'%3Eb%3C/text%3E%3C/svg%3E">
+  <link rel="apple-touch-icon" href="baiwor_pp_128.png">
 
 <style>
 :root {
@@ -674,7 +675,7 @@ body {
       <div class="hdr-bg"></div>
       <div class="hdr-inner">
         <div class="logo" onclick="newChat()" title="Chat baru">
-          <img src="bAIwor_pp.png" alt="bAIwor" style="width:100%;height:100%;border-radius:15px;object-fit:cover;">
+          <img src="baiwor_pp_128.png" alt="bAIwor" style="width:100%;height:100%;border-radius:15px;object-fit:cover;">
         </div>
         <div class="hdr-info">
           <div class="hdr-title"><span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span></div>
@@ -696,7 +697,7 @@ body {
     <!-- MESSAGES -->
     <div class="msgs" id="msgs">
       <div class="welcome" id="welcomeScreen">
-        <div class="welcome-icon"><img src="bAIwor_pp.png" alt="bAIwor" style="width:80px;height:80px;border-radius:50%;object-fit:cover;box-shadow:0 4px 20px rgba(45,106,79,0.2);"></div>
+        <div class="welcome-icon"><img src="baiwor_pp_128.png" alt="bAIwor" style="width:80px;height:80px;border-radius:50%;object-fit:cover;box-shadow:0 4px 20px rgba(45,106,79,0.2);"></div>
         <div class="welcome-title"><span class="b">b</span><span class="ai">AI</span><span class="wor">wor</span></div>
         <div class="welcome-sub">Asisten AI dari Purwokerto — tanya apa saja tentang Kabupaten Banyumas, wisata, budaya, sejarah, dan lainnya.</div>
         <div class="welcome-chips" id="welcomeChips">
@@ -730,9 +731,7 @@ body {
 
 <script>
 // === CHAT LOGIC ===
-const STORAGE_KEY = 'bAIwor_conversations';
-let conversations = JSON.parse(localStorage.getItem(STORAGE_KEY) || '[]');
-let currentConvId = null;
+// Percakapan berjalan tunggal, disimpan di memori (tidak di-persist ke localStorage).
 let messages = [];
 let isStreaming = false;
 
@@ -791,27 +790,8 @@ function renderMarkdown(text) {
   return html;
 }
 
-// === CONVERSATION PERSISTENCE ===
-function saveConversations() {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(conversations));
-}
-
-function getOrCreateConv() {
-  if (currentConvId) return conversations.find(c => c.id === currentConvId);
-  const conv = {
-    id: 'conv_' + Date.now(),
-    title: '',
-    messages: [],
-    updated: Date.now()
-  };
-  conversations.unshift(conv);
-  currentConvId = conv.id;
-  saveConversations();
-  return conv;
-}
-
+// === RESET PERCAKAPAN ===
 function newChat() {
-  currentConvId = null;
   messages = [];
   document.querySelectorAll('.row, .typing-row').forEach(e => e.remove());
   welcomeScreen.style.display = 'flex';
@@ -820,14 +800,14 @@ function newChat() {
 }
 
 // === RENDER MESSAGES ===
-function addMessage(role, text, save = true) {
+function addMessage(role, text) {
   const isBot = role === 'assistant';
   const row = document.createElement('div');
   row.className = 'row ' + (isBot ? 'b' : 'u');
 
   const ava = document.createElement('div');
   ava.className = 'ava';
-  ava.innerHTML = isBot ? '<img src="bAIwor_pp.png" alt="bAIwor">' : '<span style="font-size:13px;font-weight:600;color:var(--g800)">A</span>';
+  ava.innerHTML = isBot ? '<img src="baiwor_pp_128.png" alt="bAIwor">' : '<span style="font-size:13px;font-weight:600;color:var(--g800)">A</span>';
 
   if (isBot) {
     const bbl = document.createElement('div');
@@ -873,14 +853,6 @@ function addMessage(role, text, save = true) {
 
   msgsEl.appendChild(row);
   scrollBottom();
-
-  if (save) {
-    const conv = getOrCreateConv();
-    if (!conv.title && role === 'user') conv.title = text.substring(0, 50);
-    conv.messages.push({ role, content: text });
-    conv.updated = Date.now();
-    saveConversations();
-  }
 }
 
 function showTyping() {
@@ -889,7 +861,7 @@ function showTyping() {
   row.id = 'typing-row';
   const ava = document.createElement('div');
   ava.className = 'ava';
-  ava.innerHTML = '<img src="bAIwor_pp.png" alt="bAIwor">';
+  ava.innerHTML = '<img src="baiwor_pp_128.png" alt="bAIwor">';
   const bbl = document.createElement('div');
   bbl.className = 'typing-bbl';
   bbl.innerHTML = '<div class="tdot"></div><div class="tdot"></div><div class="tdot"></div>';
@@ -954,12 +926,17 @@ async function callAPI() {
     const response = await fetch('chat.php', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ model: 'gemma4:31b-cloud', messages: convMessages })
+      body: JSON.stringify({ messages: convMessages })
     });
 
     const data = await response.json();
 
     removeTyping();
+
+    if (!response.ok) {
+      addMessage('assistant', 'Nyuwun pangapunten, chat lagi sakte offline. Mangga dipun-cobi maneh sawetara meneh.');
+      return;
+    }
 
     if (data.choices && data.choices[0] && data.choices[0].message) {
       const fullText = data.choices[0].message.content;
@@ -974,7 +951,7 @@ async function callAPI() {
 
       const ava = document.createElement('div');
       ava.className = 'ava';
-      ava.innerHTML = '<img src="bAIwor_pp.png" alt="bAIwor">';
+      ava.innerHTML = '<img src="baiwor_pp_128.png" alt="bAIwor">';
       ava.style.width = '24px';
       ava.style.height = '24px';
       ava.style.borderWidth = '1px';
@@ -1011,10 +988,6 @@ async function callAPI() {
           bbl.removeAttribute('id');
 
           messages.push({ role: 'assistant', content: fullText });
-          const conv = getOrCreateConv();
-          conv.messages.push({ role: 'assistant', content: fullText });
-          conv.updated = Date.now();
-          saveConversations();
         }
       }, 8);
     } else {
@@ -1051,6 +1024,6 @@ if (window.innerWidth > 600) {
 .home-bubble:active{transform:scale(0.92);}
 @media(min-width:769px){.home-bubble{bottom:90px;}}
 </style>
-<a href="https://baiwor.my.id/" aria-label="Kembali ke baiwor.my.id"><img src="bAIwor_pp.png" alt="Beranda bAIwor" class="home-bubble"></a>
+<a href="https://baiwor.my.id/" aria-label="Kembali ke baiwor.my.id"><img src="baiwor_pp_128.png" alt="Beranda bAIwor" class="home-bubble"></a>
 </body>
 </html>

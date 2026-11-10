@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TikTok OAuth Callback - bAIwor</title>
+    <style>
+        body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; background: #0d1117; color: #c9d1d9; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; padding: 20px; box-sizing: border-box; }
+        .card { background: #161b22; border: 1px solid #30363d; border-radius: 12px; padding: 32px; max-width: 600px; width: 100%; box-shadow: 0 8px 24px rgba(0,0,0,0.5); }
+        h1 { color: #58a6ff; font-size: 24px; margin-top: 0; }
+        .code-box { background: #0d1117; border: 1px solid #30363d; border-radius: 8px; padding: 16px; word-break: break-all; font-family: monospace; font-size: 15px; color: #7ee787; margin: 16px 0; }
+        .btn { background: #238636; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-size: 14px; font-weight: 600; }
+        .btn:hover { background: #2ea043; }
+        .status { margin-top: 16px; font-size: 14px; color: #8b949e; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h1>🎉 TikTok Authorization Berhasil!</h1>
+        <p>Kode autentikasi (Authorization Code) dari TikTok berhasil diterima:</p>
+        <div id="codeDisplay" class="code-box">Memeriksa kode...</div>
+        <button class="btn" onclick="copyCode()">Copy Code</button>
+        <div id="status" class="status">Copy kode di atas dan kirimkan ke chat asisten AI untuk menyelesaikan koneksi.</div>
+    </div>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const code = params.get('code');
+        const state = params.get('state');
+        const error = params.get('error');
+        const errorDesc = params.get('error_description');
+
+        const display = document.getElementById('codeDisplay');
+        const status = document.getElementById('status');
+
+        if (code) {
+            display.textContent = code;
+        } else if (error) {
+            display.style.color = '#f85149';
+            display.textContent = 'Error: ' + error + (errorDesc ? ' - ' + errorDesc : '');
+            status.textContent = 'Otorisasi gagal atau dibatalkan oleh pengguna.';
+        } else {
+            display.textContent = 'Tidak ada parameter code yang ditemukan di URL.';
+        }
+
+        function copyCode() {
+            if (code) {
+                navigator.clipboard.writeText(code).then(() => {
+                    alert('Kode berhasil disalin ke clipboard!');
+                });
+            }
+        }
+    </script>
+</body>
+</html>
