@@ -11,8 +11,8 @@ bAIwor_Agentic_Indonesia/
 bAIwor_Agentic_Indonesia/*
 *.pdf
 
-# File Pose / Mentah Grafis Internal
-pose/
+# File Pose / Mentah Grafis Internal (PNG mentah besar di-ignore, WebP web di-track)
+pose/*.png
 go/
 
 # --- Primbon Betaljemur ---
